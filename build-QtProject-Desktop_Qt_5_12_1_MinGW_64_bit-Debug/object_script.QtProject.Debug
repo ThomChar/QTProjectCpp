@@ -1,0 +1,11 @@
+debug/main.o
+debug/mainwindow.o
+debug/login.o
+debug/ajoutpatient.o
+debug/ajoutpersonnel.o
+debug/apropos.o
+debug/moc_mainwindow.o
+debug/moc_login.o
+debug/moc_ajoutpatient.o
+debug/moc_ajoutpersonnel.o
+debug/moc_apropos.o

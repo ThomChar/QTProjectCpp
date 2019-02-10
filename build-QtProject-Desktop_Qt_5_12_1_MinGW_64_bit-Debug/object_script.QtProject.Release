@@ -1,0 +1,11 @@
+release/main.o
+release/mainwindow.o
+release/login.o
+release/ajoutpatient.o
+release/ajoutpersonnel.o
+release/apropos.o
+release/moc_mainwindow.o
+release/moc_login.o
+release/moc_ajoutpatient.o
+release/moc_ajoutpersonnel.o
+release/moc_apropos.o

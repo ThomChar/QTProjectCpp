@@ -27,15 +27,27 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    login.cpp
+    login.cpp \
+    ajoutpatient.cpp \
+    ajoutpersonnel.cpp \
+    apropos.cpp \
+    calendar.cpp
 
 HEADERS += \
         mainwindow.h \
-    login.h
+    login.h \
+    ajoutpatient.h \
+    ajoutpersonnel.h \
+    apropos.h \
+    calendar.h
 
 FORMS += \
         mainwindow.ui \
-    login.ui
+    login.ui \
+    ajoutpatient.ui \
+    ajoutpersonnel.ui \
+    apropos.ui \
+    calendar.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
