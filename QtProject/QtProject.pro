@@ -31,7 +31,10 @@ SOURCES += \
     ajoutpatient.cpp \
     ajoutpersonnel.cpp \
     apropos.cpp \
-    calendar.cpp
+    calendrier.cpp \
+    modeltablepatient.cpp \
+    patient.cpp \
+    personnel.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +42,10 @@ HEADERS += \
     ajoutpatient.h \
     ajoutpersonnel.h \
     apropos.h \
-    calendar.h
+    calendrier.h \
+    modeltablepatient.h \
+    patient.h \
+    personnel.h
 
 FORMS += \
         mainwindow.ui \
@@ -47,7 +53,7 @@ FORMS += \
     ajoutpatient.ui \
     ajoutpersonnel.ui \
     apropos.ui \
-    calendar.ui
+    calendrier.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

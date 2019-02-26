@@ -10,6 +10,7 @@
 #define UI_AJOUTPERSONNEL_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
@@ -17,6 +18,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QToolButton>
 
 QT_BEGIN_NAMESPACE
 
@@ -54,6 +56,8 @@ public:
     QFrame *line_4;
     QLabel *label_11;
     QComboBox *comboBox_2;
+    QToolButton *toolButton;
+    QFrame *line_3;
 
     void setupUi(QDialog *ajoutPersonnel)
     {
@@ -64,7 +68,7 @@ public:
         label_16->setObjectName(QString::fromUtf8("label_16"));
         label_16->setGeometry(QRect(10, 420, 111, 21));
         QFont font;
-        font.setPointSize(10);
+        font.setPointSize(9);
         label_16->setFont(font);
         lineEdit_4 = new QLineEdit(ajoutPersonnel);
         lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
@@ -75,7 +79,7 @@ public:
         lineEdit_3->setGeometry(QRect(400, 100, 141, 22));
         label_12 = new QLabel(ajoutPersonnel);
         label_12->setObjectName(QString::fromUtf8("label_12"));
-        label_12->setGeometry(QRect(280, 420, 71, 21));
+        label_12->setGeometry(QRect(270, 420, 81, 21));
         label_12->setFont(font);
         lineEdit_8 = new QLineEdit(ajoutPersonnel);
         lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
@@ -83,13 +87,14 @@ public:
         pushButton_2 = new QPushButton(ajoutPersonnel);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(210, 470, 161, 31));
+        pushButton_2->setFont(font);
         label_14 = new QLabel(ajoutPersonnel);
         label_14->setObjectName(QString::fromUtf8("label_14"));
-        label_14->setGeometry(QRect(280, 270, 81, 21));
+        label_14->setGeometry(QRect(270, 270, 91, 21));
         label_14->setFont(font);
         label_8 = new QLabel(ajoutPersonnel);
         label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(10, 160, 211, 16));
+        label_8->setGeometry(QRect(10, 160, 231, 16));
         label_8->setFont(font);
         lineEdit = new QLineEdit(ajoutPersonnel);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
@@ -108,11 +113,12 @@ public:
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(10, 0, 521, 41));
         QFont font1;
-        font1.setPointSize(16);
+        font1.setPointSize(14);
         label->setFont(font1);
         pushButton = new QPushButton(ajoutPersonnel);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(380, 470, 161, 31));
+        pushButton->setFont(font);
         label_3 = new QLabel(ajoutPersonnel);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(10, 100, 111, 21));
@@ -149,7 +155,7 @@ public:
         line_2->setFrameShadow(QFrame::Sunken);
         label_7 = new QLabel(ajoutPersonnel);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(280, 230, 81, 21));
+        label_7->setGeometry(QRect(270, 230, 91, 21));
         label_7->setFont(font);
         label_10 = new QLabel(ajoutPersonnel);
         label_10->setObjectName(QString::fromUtf8("label_10"));
@@ -174,7 +180,7 @@ public:
         line_4->setFrameShadow(QFrame::Sunken);
         label_11 = new QLabel(ajoutPersonnel);
         label_11->setObjectName(QString::fromUtf8("label_11"));
-        label_11->setGeometry(QRect(10, 390, 111, 21));
+        label_11->setGeometry(QRect(10, 390, 131, 21));
         label_11->setFont(font);
         comboBox_2 = new QComboBox(ajoutPersonnel);
         comboBox_2->addItem(QString());
@@ -187,6 +193,18 @@ public:
         comboBox_2->addItem(QString());
         comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
         comboBox_2->setGeometry(QRect(80, 350, 251, 22));
+        toolButton = new QToolButton(ajoutPersonnel);
+        toolButton->setObjectName(QString::fromUtf8("toolButton"));
+        toolButton->setGeometry(QRect(330, 60, 31, 21));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("ressources/calender_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton->setIcon(icon);
+        toolButton->setAutoRaise(true);
+        line_3 = new QFrame(ajoutPersonnel);
+        line_3->setObjectName(QString::fromUtf8("line_3"));
+        line_3->setGeometry(QRect(10, 440, 531, 20));
+        line_3->setFrameShape(QFrame::HLine);
+        line_3->setFrameShadow(QFrame::Sunken);
 
         retranslateUi(ajoutPersonnel);
 
@@ -200,31 +218,31 @@ public:
     {
         ajoutPersonnel->setWindowTitle(QApplication::translate("ajoutPersonnel", "Dialog", nullptr));
         label_16->setText(QApplication::translate("ajoutPersonnel", "Login", nullptr));
-        lineEdit_4->setText(QApplication::translate("ajoutPersonnel", "ex: 65 avenue Jean Portalis", nullptr));
-        lineEdit_3->setText(QApplication::translate("ajoutPersonnel", "ex: Marc", nullptr));
+        lineEdit_4->setText(QString());
+        lineEdit_3->setText(QString());
         label_12->setText(QApplication::translate("ajoutPersonnel", "Password", nullptr));
-        lineEdit_8->setText(QApplication::translate("ajoutPersonnel", "ex : 15 (en minutes)", nullptr));
+        lineEdit_8->setText(QString());
         pushButton_2->setText(QApplication::translate("ajoutPersonnel", "Annuler", nullptr));
         label_14->setText(QApplication::translate("ajoutPersonnel", "email (Facul)", nullptr));
         label_8->setText(QApplication::translate("ajoutPersonnel", "Coordonn\303\251es du Personnel (Facul) :", nullptr));
-        lineEdit->setText(QApplication::translate("ajoutPersonnel", "ex: JJ/MM/AAAA", nullptr));
-        lineEdit_10->setText(QApplication::translate("ajoutPersonnel", "ex: 0701020304", nullptr));
+        lineEdit->setText(QString());
+        lineEdit_10->setText(QString());
         label_5->setText(QApplication::translate("ajoutPersonnel", "Adresse", nullptr));
-        lineEdit_11->setText(QApplication::translate("ajoutPersonnel", "ex: marc.jean@email.fr", nullptr));
+        lineEdit_11->setText(QString());
         label->setText(QApplication::translate("ajoutPersonnel", "Formulaire d'Inscription d'un Personnel de Soins", nullptr));
         pushButton->setText(QApplication::translate("ajoutPersonnel", "Ajouter", nullptr));
-        label_3->setText(QApplication::translate("ajoutPersonnel", "Nom du Personnel", nullptr));
-        lineEdit_6->setText(QApplication::translate("ajoutPersonnel", "ex: 37200", nullptr));
+        label_3->setText(QApplication::translate("ajoutPersonnel", "Nom Personnel", nullptr));
+        lineEdit_6->setText(QString());
         label_9->setText(QApplication::translate("ajoutPersonnel", "Type", nullptr));
         label_6->setText(QApplication::translate("ajoutPersonnel", "Ville", nullptr));
-        lineEdit_2->setText(QApplication::translate("ajoutPersonnel", "ex: Jean", nullptr));
-        label_2->setText(QApplication::translate("ajoutPersonnel", "Date d'aujourd'hui ", nullptr));
-        lineEdit_5->setText(QApplication::translate("ajoutPersonnel", "ex: Tours", nullptr));
-        label_4->setText(QApplication::translate("ajoutPersonnel", "Prenom du Personnel", nullptr));
+        lineEdit_2->setText(QString());
+        label_2->setText(QApplication::translate("ajoutPersonnel", "Date de cr\303\251ation ", nullptr));
+        lineEdit_5->setText(QString());
+        label_4->setText(QApplication::translate("ajoutPersonnel", "Prenom Personnel", nullptr));
         label_7->setText(QApplication::translate("ajoutPersonnel", "Code Postale", nullptr));
         label_10->setText(QApplication::translate("ajoutPersonnel", "Informations Personnel :", nullptr));
-        lineEdit_9->setText(QApplication::translate("ajoutPersonnel", "ex : 5 (le plus prioritaire)", nullptr));
-        label_13->setText(QApplication::translate("ajoutPersonnel", "Tel. (Facul)", nullptr));
+        lineEdit_9->setText(QString());
+        label_13->setText(QApplication::translate("ajoutPersonnel", "Tel.(Facul)", nullptr));
         label_11->setText(QApplication::translate("ajoutPersonnel", "Pour informaticien :", nullptr));
         comboBox_2->setItemText(0, QApplication::translate("ajoutPersonnel", "ex: m\303\251decin A", nullptr));
         comboBox_2->setItemText(1, QApplication::translate("ajoutPersonnel", "m\303\251decin A", nullptr));
@@ -235,6 +253,7 @@ public:
         comboBox_2->setItemText(6, QApplication::translate("ajoutPersonnel", "psychologue", nullptr));
         comboBox_2->setItemText(7, QApplication::translate("ajoutPersonnel", "informaticien", nullptr));
 
+        toolButton->setText(QString());
     } // retranslateUi
 
 };

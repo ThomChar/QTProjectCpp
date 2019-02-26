@@ -4,8 +4,14 @@ release/login.o
 release/ajoutpatient.o
 release/ajoutpersonnel.o
 release/apropos.o
+release/calendrier.o
+release/modeltablepatient.o
+release/patient.o
+release/personnel.o
 release/moc_mainwindow.o
 release/moc_login.o
 release/moc_ajoutpatient.o
 release/moc_ajoutpersonnel.o
 release/moc_apropos.o
+release/moc_calendrier.o
+release/moc_modeltablepatient.o

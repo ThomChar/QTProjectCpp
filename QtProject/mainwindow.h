@@ -2,10 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "calendar.h"
+#include "calendrier.h"
 #include "ajoutpatient.h"
 #include "ajoutpersonnel.h"
 #include "apropos.h"
+#include "modeltablepatient.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,20 +19,31 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void setStatusBar(const QString &message);
+    bool verifierDate(QString date);
+    bool verifierNomPropre(QString nomPropre);
+    bool verifierNumID(QString numId);
 
 private slots:
     void ajouterPatient();
     void afficherCalendrier();
+    void afficherCalendrier_2();
     void ajouterPersonnel();
     void afficherAPropos();
 
+    //affichage
+    void afficherDateSelect();
+    void afficherDateSelect_2();
+    void rechercherPatient();
 
 private:
     Ui::MainWindow *ui;
-    calendar *calendrier;
+    Calendrier *calendrier;
+    Calendrier * calendrier_2;
     ajoutPatient *patientWindow;
     ajoutPersonnel *personnnelWindow;
     aPropos *aProposWindow;
+    modelTablePatient *modelPatient;
 };
 
 #endif // MAINWINDOW_H

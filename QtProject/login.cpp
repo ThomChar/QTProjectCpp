@@ -10,6 +10,7 @@ login::login(QWidget *parent) :
     ui->setupUi(this);
     w = new MainWindow();
     this->setWindowTitle("Authentification");
+    this->setFixedSize( this->size());
 
     //connection
     //evenement pour annuler

@@ -24,7 +24,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
@@ -44,7 +44,7 @@
     <enum>Qt::DefaultContextMenu</enum>
    </property>
    <property name="text">
-    <string>ex: 65 avenue Jean Portalis</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_3">
@@ -57,21 +57,21 @@
     </rect>
    </property>
    <property name="text">
-    <string>ex: Marc</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_12">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>270</x>
      <y>420</y>
-     <width>71</width>
+     <width>81</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
@@ -88,7 +88,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ex : 15 (en minutes)</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
@@ -100,6 +100,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Annuler</string>
    </property>
@@ -107,15 +112,15 @@
   <widget class="QLabel" name="label_14">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>270</x>
      <y>270</y>
-     <width>81</width>
+     <width>91</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
@@ -127,13 +132,13 @@
     <rect>
      <x>10</x>
      <y>160</y>
-     <width>211</width>
+     <width>231</width>
      <height>16</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
@@ -150,7 +155,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ex: JJ/MM/AAAA</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_10">
@@ -163,7 +168,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ex: 0701020304</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
@@ -177,7 +182,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
@@ -194,7 +199,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ex: marc.jean@email.fr</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -208,7 +213,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -223,6 +228,11 @@
      <width>161</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Ajouter</string>
@@ -242,11 +252,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Nom du Personnel</string>
+    <string>Nom Personnel</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_6">
@@ -259,7 +269,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ex: 37200</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_9">
@@ -273,7 +283,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
@@ -291,7 +301,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
@@ -308,7 +318,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ex: Jean</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -322,11 +332,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Date d'aujourd'hui </string>
+    <string>Date de création </string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_5">
@@ -339,7 +349,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ex: Tours</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -353,11 +363,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Prenom du Personnel</string>
+    <string>Prenom Personnel</string>
    </property>
   </widget>
   <widget class="Line" name="line_2">
@@ -376,15 +386,15 @@
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>270</x>
      <y>230</y>
-     <width>81</width>
+     <width>91</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
@@ -402,7 +412,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
@@ -432,7 +442,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ex : 5 (le plus prioritaire)</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_13">
@@ -446,11 +456,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Tel. (Facul)</string>
+    <string>Tel.(Facul)</string>
    </property>
   </widget>
   <widget class="Line" name="line_4">
@@ -471,13 +481,13 @@
     <rect>
      <x>10</x>
      <y>390</y>
-     <width>111</width>
+     <width>131</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
@@ -533,6 +543,39 @@
      <string>informaticien</string>
     </property>
    </item>
+  </widget>
+  <widget class="QToolButton" name="toolButton">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>60</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>ressources/calender_icon.png</normaloff>ressources/calender_icon.png</iconset>
+   </property>
+   <property name="autoRaise">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="Line" name="line_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>440</y>
+     <width>531</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
   </widget>
  </widget>
  <resources/>

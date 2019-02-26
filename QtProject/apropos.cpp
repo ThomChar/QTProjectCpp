@@ -7,6 +7,7 @@ aPropos::aPropos(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("A propos");
+    this->setFixedSize( this->size());
 }
 
 aPropos::~aPropos()

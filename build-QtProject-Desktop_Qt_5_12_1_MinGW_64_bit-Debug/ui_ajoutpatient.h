@@ -10,6 +10,7 @@
 #define UI_AJOUTPATIENT_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
@@ -18,6 +19,8 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
+#include <QtWidgets/QTimeEdit>
+#include <QtWidgets/QToolButton>
 
 QT_BEGIN_NAMESPACE
 
@@ -44,8 +47,6 @@ public:
     QLabel *label_11;
     QLabel *label_12;
     QLineEdit *lineEdit_7;
-    QLineEdit *lineEdit_8;
-    QLineEdit *lineEdit_9;
     QFrame *line_2;
     QLabel *label_13;
     QLineEdit *lineEdit_10;
@@ -59,6 +60,10 @@ public:
     QFrame *line_4;
     QLabel *label_16;
     QComboBox *comboBox;
+    QToolButton *toolButton;
+    QToolButton *toolButton_2;
+    QTimeEdit *timeEdit;
+    QComboBox *comboBox_2;
 
     void setupUi(QDialog *ajoutPatient)
     {
@@ -67,15 +72,15 @@ public:
         ajoutPatient->resize(550, 695);
         label = new QLabel(ajoutPatient);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(10, 10, 431, 41));
+        label->setGeometry(QRect(10, 10, 471, 41));
         QFont font;
-        font.setPointSize(16);
+        font.setPointSize(14);
         label->setFont(font);
         label_2 = new QLabel(ajoutPatient);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(10, 70, 111, 21));
         QFont font1;
-        font1.setPointSize(10);
+        font1.setPointSize(9);
         label_2->setFont(font1);
         label_3 = new QLabel(ajoutPatient);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -83,7 +88,7 @@ public:
         label_3->setFont(font1);
         label_4 = new QLabel(ajoutPatient);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(280, 110, 121, 21));
+        label_4->setGeometry(QRect(270, 110, 131, 21));
         label_4->setFont(font1);
         lineEdit = new QLineEdit(ajoutPatient);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
@@ -112,14 +117,14 @@ public:
         lineEdit_5->setGeometry(QRect(80, 240, 181, 22));
         label_7 = new QLabel(ajoutPatient);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(280, 240, 81, 21));
+        label_7->setGeometry(QRect(270, 240, 91, 21));
         label_7->setFont(font1);
         lineEdit_6 = new QLineEdit(ajoutPatient);
         lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
         lineEdit_6->setGeometry(QRect(370, 240, 171, 22));
         label_8 = new QLabel(ajoutPatient);
         label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(10, 170, 151, 16));
+        label_8->setGeometry(QRect(10, 170, 171, 16));
         label_8->setFont(font1);
         line = new QFrame(ajoutPatient);
         line->setObjectName(QString::fromUtf8("line"));
@@ -132,7 +137,7 @@ public:
         label_9->setFont(font1);
         label_10 = new QLabel(ajoutPatient);
         label_10->setObjectName(QString::fromUtf8("label_10"));
-        label_10->setGeometry(QRect(10, 330, 161, 16));
+        label_10->setGeometry(QRect(10, 330, 191, 16));
         label_10->setFont(font1);
         label_11 = new QLabel(ajoutPatient);
         label_11->setObjectName(QString::fromUtf8("label_11"));
@@ -140,17 +145,11 @@ public:
         label_11->setFont(font1);
         label_12 = new QLabel(ajoutPatient);
         label_12->setObjectName(QString::fromUtf8("label_12"));
-        label_12->setGeometry(QRect(280, 400, 91, 21));
+        label_12->setGeometry(QRect(270, 400, 101, 21));
         label_12->setFont(font1);
         lineEdit_7 = new QLineEdit(ajoutPatient);
         lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
         lineEdit_7->setGeometry(QRect(120, 360, 211, 22));
-        lineEdit_8 = new QLineEdit(ajoutPatient);
-        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
-        lineEdit_8->setGeometry(QRect(120, 400, 141, 22));
-        lineEdit_9 = new QLineEdit(ajoutPatient);
-        lineEdit_9->setObjectName(QString::fromUtf8("lineEdit_9"));
-        lineEdit_9->setGeometry(QRect(370, 400, 171, 22));
         line_2 = new QFrame(ajoutPatient);
         line_2->setObjectName(QString::fromUtf8("line_2"));
         line_2->setGeometry(QRect(10, 310, 531, 20));
@@ -165,7 +164,7 @@ public:
         lineEdit_10->setGeometry(QRect(80, 280, 181, 22));
         label_14 = new QLabel(ajoutPatient);
         label_14->setObjectName(QString::fromUtf8("label_14"));
-        label_14->setGeometry(QRect(280, 280, 81, 21));
+        label_14->setGeometry(QRect(270, 280, 91, 21));
         label_14->setFont(font1);
         lineEdit_11 = new QLineEdit(ajoutPatient);
         lineEdit_11->setObjectName(QString::fromUtf8("lineEdit_11"));
@@ -175,7 +174,7 @@ public:
         textEdit->setGeometry(QRect(10, 510, 531, 111));
         label_15 = new QLabel(ajoutPatient);
         label_15->setObjectName(QString::fromUtf8("label_15"));
-        label_15->setGeometry(QRect(10, 490, 151, 16));
+        label_15->setGeometry(QRect(10, 490, 161, 16));
         label_15->setFont(font1);
         line_3 = new QFrame(ajoutPatient);
         line_3->setObjectName(QString::fromUtf8("line_3"));
@@ -185,9 +184,11 @@ public:
         pushButton = new QPushButton(ajoutPatient);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(382, 640, 161, 28));
+        pushButton->setFont(font1);
         pushButton_2 = new QPushButton(ajoutPatient);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(210, 640, 161, 28));
+        pushButton_2->setFont(font1);
         line_4 = new QFrame(ajoutPatient);
         line_4->setObjectName(QString::fromUtf8("line_4"));
         line_4->setGeometry(QRect(10, 40, 531, 20));
@@ -199,8 +200,32 @@ public:
         label_16->setFont(font1);
         comboBox = new QComboBox(ajoutPatient);
         comboBox->addItem(QString());
+        comboBox->addItem(QString());
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         comboBox->setGeometry(QRect(120, 440, 251, 22));
+        toolButton = new QToolButton(ajoutPatient);
+        toolButton->setObjectName(QString::fromUtf8("toolButton"));
+        toolButton->setGeometry(QRect(330, 360, 31, 21));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("ressources/calender_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton->setIcon(icon);
+        toolButton->setAutoRaise(true);
+        toolButton_2 = new QToolButton(ajoutPatient);
+        toolButton_2->setObjectName(QString::fromUtf8("toolButton_2"));
+        toolButton_2->setGeometry(QRect(330, 70, 31, 21));
+        toolButton_2->setIcon(icon);
+        toolButton_2->setAutoRaise(true);
+        timeEdit = new QTimeEdit(ajoutPatient);
+        timeEdit->setObjectName(QString::fromUtf8("timeEdit"));
+        timeEdit->setGeometry(QRect(120, 400, 141, 22));
+        comboBox_2 = new QComboBox(ajoutPatient);
+        comboBox_2->addItem(QString());
+        comboBox_2->addItem(QString());
+        comboBox_2->addItem(QString());
+        comboBox_2->addItem(QString());
+        comboBox_2->addItem(QString());
+        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        comboBox_2->setGeometry(QRect(370, 400, 171, 22));
 
         retranslateUi(ajoutPatient);
 
@@ -214,35 +239,43 @@ public:
     {
         ajoutPatient->setWindowTitle(QApplication::translate("ajoutPatient", "Dialog", nullptr));
         label->setText(QApplication::translate("ajoutPatient", "Formulaire d'Inscription d'un nouveau Patient", nullptr));
-        label_2->setText(QApplication::translate("ajoutPatient", "Date d'aujourd'hui ", nullptr));
+        label_2->setText(QApplication::translate("ajoutPatient", "Date de cr\303\251ation", nullptr));
         label_3->setText(QApplication::translate("ajoutPatient", "Nom du Patient", nullptr));
         label_4->setText(QApplication::translate("ajoutPatient", "Prenom du Patient", nullptr));
-        lineEdit->setText(QApplication::translate("ajoutPatient", "ex: JJ/MM/AAAA", nullptr));
-        lineEdit_2->setText(QApplication::translate("ajoutPatient", "ex: Jean", nullptr));
-        lineEdit_3->setText(QApplication::translate("ajoutPatient", "ex: Marc", nullptr));
+        lineEdit->setInputMask(QString());
+        lineEdit->setText(QString());
+        lineEdit_2->setText(QString());
+        lineEdit_3->setText(QString());
         label_5->setText(QApplication::translate("ajoutPatient", "Adresse", nullptr));
-        lineEdit_4->setText(QApplication::translate("ajoutPatient", "ex: 65 avenue Jean Portalis", nullptr));
+        lineEdit_4->setText(QString());
         label_6->setText(QApplication::translate("ajoutPatient", "Ville", nullptr));
-        lineEdit_5->setText(QApplication::translate("ajoutPatient", "ex: Tours", nullptr));
+        lineEdit_5->setText(QString());
         label_7->setText(QApplication::translate("ajoutPatient", "Code Postale", nullptr));
-        lineEdit_6->setText(QApplication::translate("ajoutPatient", "ex: 37200", nullptr));
+        lineEdit_6->setText(QString());
         label_8->setText(QApplication::translate("ajoutPatient", "Coordonn\303\251es du Patient :", nullptr));
-        label_9->setText(QApplication::translate("ajoutPatient", "Jour Consultation", nullptr));
+        label_9->setText(QApplication::translate("ajoutPatient", "Jour Consul.", nullptr));
         label_10->setText(QApplication::translate("ajoutPatient", "Informations Consultation :", nullptr));
         label_11->setText(QApplication::translate("ajoutPatient", "Dur\303\251e Consul.", nullptr));
         label_12->setText(QApplication::translate("ajoutPatient", "Priorit\303\251 (1 \303\240 5)", nullptr));
-        lineEdit_7->setText(QApplication::translate("ajoutPatient", "ex: JJ/MM/AAAA", nullptr));
-        lineEdit_8->setText(QApplication::translate("ajoutPatient", "ex : 15 (en minutes)", nullptr));
-        lineEdit_9->setText(QApplication::translate("ajoutPatient", "ex : 5 (le plus prioritaire)", nullptr));
-        label_13->setText(QApplication::translate("ajoutPatient", "Tel. (Facul)", nullptr));
-        lineEdit_10->setText(QApplication::translate("ajoutPatient", "ex: 0701020304", nullptr));
+        lineEdit_7->setText(QString());
+        label_13->setText(QApplication::translate("ajoutPatient", "Tel.(Facul)", nullptr));
+        lineEdit_10->setText(QString());
         label_14->setText(QApplication::translate("ajoutPatient", "email (Facul)", nullptr));
-        lineEdit_11->setText(QApplication::translate("ajoutPatient", "ex: marc.jean@email.fr", nullptr));
+        lineEdit_11->setText(QString());
         label_15->setText(QApplication::translate("ajoutPatient", "Commentaires (Facul) :", nullptr));
         pushButton->setText(QApplication::translate("ajoutPatient", "Ajouter", nullptr));
         pushButton_2->setText(QApplication::translate("ajoutPatient", "Annuler", nullptr));
         label_16->setText(QApplication::translate("ajoutPatient", "Personnel li\303\251", nullptr));
         comboBox->setItemText(0, QApplication::translate("ajoutPatient", "ex: Anne Marie", nullptr));
+        comboBox->setItemText(1, QApplication::translate("ajoutPatient", "exemple", nullptr));
+
+        toolButton->setText(QString());
+        toolButton_2->setText(QString());
+        comboBox_2->setItemText(0, QApplication::translate("ajoutPatient", "1", nullptr));
+        comboBox_2->setItemText(1, QApplication::translate("ajoutPatient", "2", nullptr));
+        comboBox_2->setItemText(2, QApplication::translate("ajoutPatient", "3", nullptr));
+        comboBox_2->setItemText(3, QApplication::translate("ajoutPatient", "4", nullptr));
+        comboBox_2->setItemText(4, QApplication::translate("ajoutPatient", "5", nullptr));
 
     } // retranslateUi
 

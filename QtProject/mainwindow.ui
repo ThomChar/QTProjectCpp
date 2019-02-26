@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>649</width>
-    <height>449</height>
+    <width>830</width>
+    <height>545</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>641</width>
-      <height>361</height>
+      <width>821</width>
+      <height>451</height>
      </rect>
     </property>
     <property name="font">
@@ -48,7 +48,7 @@
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>520</x>
         <y>10</y>
         <width>121</width>
         <height>21</height>
@@ -56,19 +56,19 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>9</pointsize>
        </font>
       </property>
       <property name="text">
        <string>Prenom du Patient</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="lineEdit_4">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>70</x>
         <y>80</y>
-        <width>171</width>
+        <width>161</width>
         <height>22</height>
        </rect>
       </property>
@@ -83,14 +83,29 @@
       <property name="contextMenuPolicy">
        <enum>Qt::DefaultContextMenu</enum>
       </property>
+      <property name="inputMask">
+       <string/>
+      </property>
       <property name="text">
-       <string>ex: JJ/MM/AAAA</string>
+       <string/>
+      </property>
+      <property name="dragEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+      <property name="cursorMoveStyle">
+       <enum>Qt::VisualMoveStyle</enum>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>240</x>
         <y>10</y>
         <width>101</width>
         <height>21</height>
@@ -98,7 +113,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>9</pointsize>
        </font>
       </property>
       <property name="text">
@@ -108,9 +123,9 @@
      <widget class="QLineEdit" name="lineEdit_2">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>350</x>
         <y>10</y>
-        <width>171</width>
+        <width>161</width>
         <height>22</height>
        </rect>
       </property>
@@ -120,15 +135,18 @@
        </font>
       </property>
       <property name="text">
-       <string>ex: Jean</string>
+       <string/>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_3">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>650</x>
         <y>10</y>
-        <width>171</width>
+        <width>161</width>
         <height>22</height>
        </rect>
       </property>
@@ -138,51 +156,54 @@
        </font>
       </property>
       <property name="text">
-       <string>ex: Marc</string>
+       <string/>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>80</y>
-        <width>111</width>
+        <y>50</y>
+        <width>161</width>
         <height>21</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>9</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>Date de RDV</string>
+       <string>Date de RDV (après le)</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>40</y>
-        <width>121</width>
+        <y>10</y>
+        <width>61</width>
         <height>21</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>9</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>Num. identification</string>
+       <string>Num. ID</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_4">
+     <widget class="QLineEdit" name="lineEdit">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>40</y>
-        <width>171</width>
+        <x>70</x>
+        <y>10</y>
+        <width>161</width>
         <height>22</height>
        </rect>
       </property>
@@ -192,7 +213,10 @@
        </font>
       </property>
       <property name="text">
-       <string>ex: 010203040506</string>
+       <string/>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="Line" name="line">
@@ -200,7 +224,7 @@
        <rect>
         <x>10</x>
         <y>110</y>
-        <width>621</width>
+        <width>801</width>
         <height>16</height>
        </rect>
       </property>
@@ -213,15 +237,30 @@
        <rect>
         <x>10</x>
         <y>130</y>
-        <width>621</width>
-        <height>192</height>
+        <width>801</width>
+        <height>281</height>
        </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>801</width>
+        <height>281</height>
+       </size>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::NoSelection</enum>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::SolidLine</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QToolButton" name="toolButton">
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>230</x>
         <y>80</y>
         <width>31</width>
         <height>21</height>
@@ -241,15 +280,15 @@
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>650</x>
         <y>80</y>
-        <width>171</width>
+        <width>161</width>
         <height>21</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>11</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="text">
@@ -262,11 +301,131 @@
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QLineEdit" name="lineEdit_5">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>80</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::DefaultContextMenu</enum>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="dragEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+      <property name="cursorMoveStyle">
+       <enum>Qt::VisualMoveStyle</enum>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_2">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>80</y>
+        <width>31</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>ressources/calender_icon.png</normaloff>ressources/calender_icon.png</iconset>
+      </property>
+      <property name="autoRaise">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>50</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Date de RDV (avant le)</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
       <string>Planification</string>
      </attribute>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Personnels Actifs :</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>801</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QTreeView" name="treeView">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>801</width>
+        <height>361</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -275,8 +434,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>649</width>
-     <height>21</height>
+     <width>830</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

@@ -27,7 +27,7 @@ public:
     {
         if (aPropos->objectName().isEmpty())
             aPropos->setObjectName(QString::fromUtf8("aPropos"));
-        aPropos->resize(649, 139);
+        aPropos->resize(690, 139);
         label = new QLabel(aPropos);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(10, 20, 381, 111));
@@ -43,7 +43,7 @@ public:
         label_2->setFont(font);
         label_3 = new QLabel(aPropos);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(410, 70, 221, 51));
+        label_3->setGeometry(QRect(410, 70, 281, 51));
         QFont font1;
         font1.setPointSize(9);
         font1.setBold(false);
