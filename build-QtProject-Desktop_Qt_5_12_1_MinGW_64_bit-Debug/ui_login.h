@@ -33,7 +33,7 @@ public:
     {
         if (login->objectName().isEmpty())
             login->setObjectName(QString::fromUtf8("login"));
-        login->resize(380, 300);
+        login->resize(405, 317);
         label = new QLabel(login);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(110, 30, 161, 41));
