@@ -29,6 +29,7 @@
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QTreeView>
+#include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -61,19 +62,19 @@ public:
     QHBoxLayout *nomPatient;
     QLabel *label_4;
     QLineEdit *lineEdit_3;
-    QHBoxLayout *horizontalLayout_6;
-    QVBoxLayout *verticalLayout_13;
-    QLabel *label_6;
-    QHBoxLayout *horizontalLayout_7;
-    QLineEdit *lineEdit_5;
-    QToolButton *toolButton_2;
-    QSpacerItem *horizontalSpacer_4;
-    QVBoxLayout *verticalLayout_15;
+    QHBoxLayout *recherhce_dates;
+    QVBoxLayout *date_aprs_le;
     QLabel *label_2;
-    QHBoxLayout *horizontalLayout_9;
+    QHBoxLayout *champs_date_apres_le;
     QLineEdit *lineEdit_4;
     QToolButton *toolButton;
     QSpacerItem *horizontalSpacer_5;
+    QVBoxLayout *date_avant_le;
+    QLabel *label_6;
+    QHBoxLayout *champ_date_avant_le;
+    QLineEdit *lineEdit_5;
+    QToolButton *toolButton_2;
+    QSpacerItem *horizontalSpacer_4;
     QVBoxLayout *verticalLayout_16;
     QPushButton *pushButton;
     QFrame *line;
@@ -83,6 +84,7 @@ public:
     QLabel *label;
     QFrame *line_2;
     QTreeView *treeView;
+    QTreeWidget *treeWidget;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuAjouter;
@@ -225,69 +227,24 @@ public:
 
         verticalLayout_18->addLayout(recherche);
 
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        horizontalLayout_6->setContentsMargins(-1, -1, -1, 0);
-        verticalLayout_13 = new QVBoxLayout();
-        verticalLayout_13->setSpacing(6);
-        verticalLayout_13->setObjectName(QString::fromUtf8("verticalLayout_13"));
-        verticalLayout_13->setContentsMargins(-1, -1, -1, 0);
-        label_6 = new QLabel(widget);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setFont(font1);
-
-        verticalLayout_13->addWidget(label_6);
-
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setSpacing(6);
-        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        horizontalLayout_7->setContentsMargins(-1, -1, -1, 0);
-        lineEdit_5 = new QLineEdit(widget);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
-        lineEdit_5->setFont(font1);
-        lineEdit_5->setMouseTracking(true);
-        lineEdit_5->setContextMenuPolicy(Qt::DefaultContextMenu);
-        lineEdit_5->setDragEnabled(false);
-        lineEdit_5->setReadOnly(false);
-        lineEdit_5->setCursorMoveStyle(Qt::VisualMoveStyle);
-        lineEdit_5->setClearButtonEnabled(true);
-
-        horizontalLayout_7->addWidget(lineEdit_5);
-
-        toolButton_2 = new QToolButton(widget);
-        toolButton_2->setObjectName(QString::fromUtf8("toolButton_2"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8("ressources/calender_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        toolButton_2->setIcon(icon3);
-        toolButton_2->setAutoRaise(true);
-
-        horizontalLayout_7->addWidget(toolButton_2);
-
-
-        verticalLayout_13->addLayout(horizontalLayout_7);
-
-
-        horizontalLayout_6->addLayout(verticalLayout_13);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_6->addItem(horizontalSpacer_4);
-
-        verticalLayout_15 = new QVBoxLayout();
-        verticalLayout_15->setSpacing(6);
-        verticalLayout_15->setObjectName(QString::fromUtf8("verticalLayout_15"));
-        verticalLayout_15->setContentsMargins(-1, -1, -1, 0);
+        recherhce_dates = new QHBoxLayout();
+        recherhce_dates->setSpacing(6);
+        recherhce_dates->setObjectName(QString::fromUtf8("recherhce_dates"));
+        recherhce_dates->setContentsMargins(-1, -1, -1, 0);
+        date_aprs_le = new QVBoxLayout();
+        date_aprs_le->setSpacing(6);
+        date_aprs_le->setObjectName(QString::fromUtf8("date_aprs_le"));
+        date_aprs_le->setContentsMargins(-1, -1, -1, 0);
         label_2 = new QLabel(widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setFont(font1);
 
-        verticalLayout_15->addWidget(label_2);
+        date_aprs_le->addWidget(label_2);
 
-        horizontalLayout_9 = new QHBoxLayout();
-        horizontalLayout_9->setSpacing(6);
-        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        horizontalLayout_9->setContentsMargins(-1, -1, -1, 0);
+        champs_date_apres_le = new QHBoxLayout();
+        champs_date_apres_le->setSpacing(6);
+        champs_date_apres_le->setObjectName(QString::fromUtf8("champs_date_apres_le"));
+        champs_date_apres_le->setContentsMargins(-1, -1, -1, 0);
         lineEdit_4 = new QLineEdit(widget);
         lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
         lineEdit_4->setFont(font1);
@@ -298,24 +255,69 @@ public:
         lineEdit_4->setCursorMoveStyle(Qt::VisualMoveStyle);
         lineEdit_4->setClearButtonEnabled(true);
 
-        horizontalLayout_9->addWidget(lineEdit_4);
+        champs_date_apres_le->addWidget(lineEdit_4);
 
         toolButton = new QToolButton(widget);
         toolButton->setObjectName(QString::fromUtf8("toolButton"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8("ressources/calender_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton->setIcon(icon3);
         toolButton->setAutoRaise(true);
 
-        horizontalLayout_9->addWidget(toolButton);
+        champs_date_apres_le->addWidget(toolButton);
 
 
-        verticalLayout_15->addLayout(horizontalLayout_9);
+        date_aprs_le->addLayout(champs_date_apres_le);
 
 
-        horizontalLayout_6->addLayout(verticalLayout_15);
+        recherhce_dates->addLayout(date_aprs_le);
 
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_6->addItem(horizontalSpacer_5);
+        recherhce_dates->addItem(horizontalSpacer_5);
+
+        date_avant_le = new QVBoxLayout();
+        date_avant_le->setSpacing(6);
+        date_avant_le->setObjectName(QString::fromUtf8("date_avant_le"));
+        date_avant_le->setContentsMargins(-1, -1, -1, 0);
+        label_6 = new QLabel(widget);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setFont(font1);
+
+        date_avant_le->addWidget(label_6);
+
+        champ_date_avant_le = new QHBoxLayout();
+        champ_date_avant_le->setSpacing(6);
+        champ_date_avant_le->setObjectName(QString::fromUtf8("champ_date_avant_le"));
+        champ_date_avant_le->setContentsMargins(-1, -1, -1, 0);
+        lineEdit_5 = new QLineEdit(widget);
+        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
+        lineEdit_5->setFont(font1);
+        lineEdit_5->setMouseTracking(true);
+        lineEdit_5->setContextMenuPolicy(Qt::DefaultContextMenu);
+        lineEdit_5->setDragEnabled(false);
+        lineEdit_5->setReadOnly(false);
+        lineEdit_5->setCursorMoveStyle(Qt::VisualMoveStyle);
+        lineEdit_5->setClearButtonEnabled(true);
+
+        champ_date_avant_le->addWidget(lineEdit_5);
+
+        toolButton_2 = new QToolButton(widget);
+        toolButton_2->setObjectName(QString::fromUtf8("toolButton_2"));
+        toolButton_2->setIcon(icon3);
+        toolButton_2->setAutoRaise(true);
+
+        champ_date_avant_le->addWidget(toolButton_2);
+
+
+        date_avant_le->addLayout(champ_date_avant_le);
+
+
+        recherhce_dates->addLayout(date_avant_le);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        recherhce_dates->addItem(horizontalSpacer_4);
 
         verticalLayout_16 = new QVBoxLayout();
         verticalLayout_16->setSpacing(6);
@@ -331,10 +333,10 @@ public:
         verticalLayout_16->addWidget(pushButton);
 
 
-        horizontalLayout_6->addLayout(verticalLayout_16);
+        recherhce_dates->addLayout(verticalLayout_16);
 
 
-        verticalLayout_18->addLayout(horizontalLayout_6);
+        verticalLayout_18->addLayout(recherhce_dates);
 
 
         verticalLayout_11->addWidget(widget);
@@ -381,7 +383,22 @@ public:
         line_2->setFrameShadow(QFrame::Sunken);
         treeView = new QTreeView(tab_2);
         treeView->setObjectName(QString::fromUtf8("treeView"));
-        treeView->setGeometry(QRect(10, 50, 801, 361));
+        treeView->setGeometry(QRect(50, 50, 801, 361));
+        treeWidget = new QTreeWidget(tab_2);
+        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem(treeWidget);
+        new QTreeWidgetItem(__qtreewidgetitem);
+        new QTreeWidgetItem(__qtreewidgetitem);
+        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem(treeWidget);
+        new QTreeWidgetItem(__qtreewidgetitem1);
+        QTreeWidgetItem *__qtreewidgetitem2 = new QTreeWidgetItem(treeWidget);
+        new QTreeWidgetItem(__qtreewidgetitem2);
+        QTreeWidgetItem *__qtreewidgetitem3 = new QTreeWidgetItem(treeWidget);
+        new QTreeWidgetItem(__qtreewidgetitem3);
+        new QTreeWidgetItem(treeWidget);
+        new QTreeWidgetItem(treeWidget);
+        new QTreeWidgetItem(treeWidget);
+        treeWidget->setObjectName(QString::fromUtf8("treeWidget"));
+        treeWidget->setGeometry(QRect(110, 110, 691, 281));
         tabWidget->addTab(tab_2, QString());
 
         verticalLayout_10->addWidget(tabWidget);
@@ -419,7 +436,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
         pushButton->setDefault(true);
 
 
@@ -439,17 +456,48 @@ public:
         lineEdit_2->setText(QString());
         label_4->setText(QApplication::translate("MainWindow", "Prenom du Patient", nullptr));
         lineEdit_3->setText(QString());
-        label_6->setText(QApplication::translate("MainWindow", "Date de RDV (avant le)", nullptr));
-        lineEdit_5->setInputMask(QString());
-        lineEdit_5->setText(QString());
-        toolButton_2->setText(QString());
         label_2->setText(QApplication::translate("MainWindow", "Date de RDV (apr\303\250s le)", nullptr));
         lineEdit_4->setInputMask(QString());
         lineEdit_4->setText(QString());
         toolButton->setText(QString());
+        label_6->setText(QApplication::translate("MainWindow", "Date de RDV (avant le)", nullptr));
+        lineEdit_5->setInputMask(QString());
+        lineEdit_5->setText(QString());
+        toolButton_2->setText(QString());
         pushButton->setText(QApplication::translate("MainWindow", "Rechercher", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Recherche de Patient", nullptr));
         label->setText(QApplication::translate("MainWindow", "Personnels Actifs :", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem = treeWidget->headerItem();
+        ___qtreewidgetitem->setText(0, QApplication::translate("MainWindow", "Personnel de soin", nullptr));
+
+        const bool __sortingEnabled = treeWidget->isSortingEnabled();
+        treeWidget->setSortingEnabled(false);
+        QTreeWidgetItem *___qtreewidgetitem1 = treeWidget->topLevelItem(0);
+        ___qtreewidgetitem1->setText(0, QApplication::translate("MainWindow", "m\303\251decin A", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem2 = ___qtreewidgetitem1->child(0);
+        ___qtreewidgetitem2->setText(0, QApplication::translate("MainWindow", "Jean Michel", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem3 = ___qtreewidgetitem1->child(1);
+        ___qtreewidgetitem3->setText(0, QApplication::translate("MainWindow", "Jean S\303\251rien", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem4 = treeWidget->topLevelItem(1);
+        ___qtreewidgetitem4->setText(0, QApplication::translate("MainWindow", "m\303\251decin B", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem5 = ___qtreewidgetitem4->child(0);
+        ___qtreewidgetitem5->setText(0, QApplication::translate("MainWindow", "Sarah Croche", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem6 = treeWidget->topLevelItem(2);
+        ___qtreewidgetitem6->setText(0, QApplication::translate("MainWindow", "radiologue", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem7 = ___qtreewidgetitem6->child(0);
+        ___qtreewidgetitem7->setText(0, QApplication::translate("MainWindow", "Pacome Toulemonde", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem8 = treeWidget->topLevelItem(3);
+        ___qtreewidgetitem8->setText(0, QApplication::translate("MainWindow", "in\357\254\201rmi\303\250re", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem9 = ___qtreewidgetitem8->child(0);
+        ___qtreewidgetitem9->setText(0, QApplication::translate("MainWindow", "Nouveau sous-\303\251l\303\251ment", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem10 = treeWidget->topLevelItem(4);
+        ___qtreewidgetitem10->setText(0, QApplication::translate("MainWindow", "kin\303\251sith\303\251rapeute", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem11 = treeWidget->topLevelItem(5);
+        ___qtreewidgetitem11->setText(0, QApplication::translate("MainWindow", "psychologue", nullptr));
+        QTreeWidgetItem *___qtreewidgetitem12 = treeWidget->topLevelItem(6);
+        ___qtreewidgetitem12->setText(0, QApplication::translate("MainWindow", "informaticien", nullptr));
+        treeWidget->setSortingEnabled(__sortingEnabled);
+
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Planification", nullptr));
         menuFile->setTitle(QApplication::translate("MainWindow", "Fichier", nullptr));
         menuAjouter->setTitle(QApplication::translate("MainWindow", "Ajouter", nullptr));
