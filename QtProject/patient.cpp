@@ -1,4 +1,5 @@
 #include "patient.h"
+#include <QString>
 
 Patient::Patient()
 {
@@ -7,6 +8,7 @@ Patient::Patient()
 Patient::Patient(string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
                  string dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires){
     this->dateCreation = dateCreation;
+    this->numId = 0.0;
     this->nom = nom;
     this->prenom = prenom;
     this->adresse = adresse;
@@ -30,6 +32,12 @@ string Patient::getDateCreation(){
 }
 void Patient::setDateCreation(string dateCreation){
     this->dateCreation = dateCreation;
+}
+int Patient::getNumId(){
+    return this->numId;
+}
+void Patient::setNumId(int numId){
+    this->numId = numId;
 }
 string Patient::getNom(){
     return this->nom;

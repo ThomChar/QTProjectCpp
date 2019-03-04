@@ -1,5 +1,7 @@
 #include "ajoutpersonnel.h"
 #include "ui_ajoutpersonnel.h"
+#include "mainwindow.h"
+#include "personnel.h"
 #include <QMessageBox>
 
 ajoutPersonnel::ajoutPersonnel(QWidget *parent) :
@@ -339,6 +341,22 @@ void ajoutPersonnel::ajouterPersonnel()
     }
 
     if (verifier == true){  // Si le formulaire est correctement rempli
+
+        //Création du Patient en local
+       /* Personnel newPersonnel(ui->lineEdit->text().toStdString(),ui->lineEdit_2->text().toStdString(),
+                           ui->lineEdit_3->text().toStdString(),ui->lineEdit_4->text().toStdString(),
+                           ui->lineEdit_5->text().toStdString(),ui->lineEdit_6->text().toStdString(),
+                           ui->lineEdit_10->text().toStdString(),ui->lineEdit_11->text().toStdString(),
+                           ui->comboBox_2->currentText().toStdString(),ui->lineEdit_8->text().toStdString(),
+                           ui->lineEdit_9->text().toStdString());
+        QList<Personnel> listePersonnels;*/
+
+        //Ajout du PErsonnel en local;
+        //listePersonnels.push_back(newPersonnel);
+
+    //Mise à jour de la status Bar
+
+    qobject_cast<MainWindow*>(parent())->setStatusBar("Personnel "+ui->lineEdit_2->text()+" "+ui->lineEdit_3->text()+" ajouté !");
 
     // Fermeture du formulaire
     this->close();

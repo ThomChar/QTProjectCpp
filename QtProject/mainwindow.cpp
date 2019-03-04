@@ -14,10 +14,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     calendrier = new Calendrier();
     calendrier_2 = new Calendrier();
-    patientWindow = new ajoutPatient();
-    personnnelWindow = new ajoutPersonnel();
+    patientWindow = new ajoutPatient(this);
+    personnnelWindow = new ajoutPersonnel(this);
     aProposWindow = new aPropos();
-    modelPatient = new modelTablePatient();
+    //modelPatient = new modelTablePatient();
 
     ui->lineEdit->setPlaceholderText("ex: 01020304");
     ui->lineEdit_2->setPlaceholderText("ex: Jean");
@@ -26,11 +26,32 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit_5->setPlaceholderText("ex: JJ/MM/AAAA");
     ui->statusBar->showMessage("Bienvenue Admin ! Vous êtes connecté");
 
+    //Test allocation de tableau pour liste de patient or du model
+
+    //Création de Patients test
+    Patient patient1("01/03/04","Nom1" ,"Prenom1", "a", "Tours", "37200", "", "", "01/03/04", "01:00", 1,"Tom Hille", "");
+    patient1.setNumId(1);
+    Patient patient2("01/03/04","Nom2" ,"Prenom2", "a", "Tours", "37200", "", "", "02/03/04", "01:00", 1,"Tom Hille","");
+    patient2.setNumId(2);
+    Patient patient3("01/03/04","Nom3" ,"Prenom3", "a", "Tours", "37200", "", "", "03/03/04", "01:00", 1,"Tom Hille","");
+    patient3.setNumId(3);
+    Patient patient4("01/03/04","Nom4" ,"Prenom4", "a", "Tours", "37200", "", "", "04/03/04", "01:00", 1,"Tom Hille","");
+    patient4.setNumId(4);
+
+    QList<Patient>listePatients;
+
+    //test allocation des Patients à listePatients
+    listePatients.push_back(patient1);
+    listePatients.push_back(patient2);
+    listePatients.push_back(patient3);
+    listePatients.push_back(patient4);
+
+    //modelPatient modeltest = new modelPatient(listePatients);
+     modelPatient = new modelTablePatient(this, listePatients);
+
     //PatientTable
     ui->tableView->setModel(modelPatient);
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    //ui->verticalLayout->addWidget(ui->tableView);
-    //this->setLayout(ui->verticalLayout);
     //ui->tableView->horizontalHeader()->setResizeContentsPrecision(QHeaderView::Stretch);
     ui->tableView->show();
 
@@ -66,7 +87,6 @@ MainWindow::~MainWindow()
  * @brief calendar::setStatusBar
  */
 void MainWindow::setStatusBar(const QString &message){
-   ui->statusBar->clearMessage();
    ui->statusBar->showMessage(message) ;
 }
 
@@ -213,5 +233,6 @@ void MainWindow::rechercherPatient(){
 
     if (verifier == true){  // Si le formulaire est correctement rempli
         //Si Vrai on lance la recherche
+        this->setStatusBar("Recherche effectuée");
     }
 }

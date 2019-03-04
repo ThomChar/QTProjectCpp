@@ -319,12 +319,22 @@ void ajoutPatient::ajouterPatient()
 
     //Ajout du Patient à la base de données
         //...
+        //Création du Patient en local
+        Patient newPatient(ui->lineEdit->text().toStdString(),ui->lineEdit_2->text().toStdString(),
+                           ui->lineEdit_3->text().toStdString(),ui->lineEdit_4->text().toStdString(),
+                           ui->lineEdit_5->text().toStdString(),ui->lineEdit_6->text().toStdString(),
+                           ui->lineEdit_10->text().toStdString(),ui->lineEdit_11->text().toStdString(),
+                           ui->lineEdit_7->text().toStdString(), ui->timeEdit->text().toStdString(),
+                           ui->comboBox_2->currentText().toInt(), ui->comboBox->currentText().toStdString(),
+                           ui->textEdit->toPlainText().toStdString());
+        QList<Patient> listePatients;
+
+        //Ajout du Patient en local;
+        listePatients.push_back(newPatient);
 
     //Envoyer l'information d'ajout dans status Bar
 
-    //qobject_cast<MainWindow*>(parent())->setStatusBar("heolllllllool");
-    //MainWindow *coucou = qobject_cast<MainWindow*>(parent());
-    //coucou->setStatusBar("hello");
+    qobject_cast<MainWindow*>(parent())->setStatusBar("Patient "+ui->lineEdit_2->text()+" "+ui->lineEdit_3->text()+" ajouté !");
 
     // Fermeture du formulaire
     this->close();
