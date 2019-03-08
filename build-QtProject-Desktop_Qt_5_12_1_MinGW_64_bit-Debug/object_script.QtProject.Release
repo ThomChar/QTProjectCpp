@@ -8,6 +8,8 @@ release/calendrier.o
 release/modeltablepatient.o
 release/patient.o
 release/personnel.o
+release/modeltreepersonnel.o
+release/qrc_ressources.o
 release/moc_mainwindow.o
 release/moc_login.o
 release/moc_ajoutpatient.o
@@ -15,3 +17,4 @@ release/moc_ajoutpersonnel.o
 release/moc_apropos.o
 release/moc_calendrier.o
 release/moc_modeltablepatient.o
+release/moc_modeltreepersonnel.o

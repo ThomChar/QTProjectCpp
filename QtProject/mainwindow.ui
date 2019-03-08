@@ -38,7 +38,7 @@
          <enum>Qt::LeftToRight</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -270,8 +270,8 @@
                       <string/>
                      </property>
                      <property name="icon">
-                      <iconset>
-                       <normaloff>ressources/calender_icon.png</normaloff>ressources/calender_icon.png</iconset>
+                      <iconset resource="ressources/ressources.qrc">
+                       <normaloff>:/calender_icon.png</normaloff>:/calender_icon.png</iconset>
                      </property>
                      <property name="autoRaise">
                       <bool>true</bool>
@@ -356,8 +356,8 @@
                       <string/>
                      </property>
                      <property name="icon">
-                      <iconset>
-                       <normaloff>ressources/calender_icon.png</normaloff>ressources/calender_icon.png</iconset>
+                      <iconset resource="ressources/ressources.qrc">
+                       <normaloff>:/calender_icon.png</normaloff>:/calender_icon.png</iconset>
                      </property>
                      <property name="autoRaise">
                       <bool>true</bool>
@@ -626,8 +626,8 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionQuitter">
    <property name="icon">
-    <iconset>
-     <normaloff>ressources/quitter_icon.png</normaloff>ressources/quitter_icon.png</iconset>
+    <iconset resource="ressources/ressources.qrc">
+     <normaloff>:/quitter_icon.png</normaloff>:/quitter_icon.png</iconset>
    </property>
    <property name="text">
     <string>Quitter</string>
@@ -635,8 +635,8 @@
   </action>
   <action name="actionPatient">
    <property name="icon">
-    <iconset>
-     <normaloff>ressources/Patient_icon2.png</normaloff>ressources/Patient_icon2.png</iconset>
+    <iconset resource="ressources/ressources.qrc">
+     <normaloff>:/Patient_icon.png</normaloff>:/Patient_icon.png</iconset>
    </property>
    <property name="text">
     <string>Patient</string>
@@ -644,8 +644,8 @@
   </action>
   <action name="actionPersonnel_de_soins">
    <property name="icon">
-    <iconset>
-     <normaloff>ressources/Personnel2_icon.jpg</normaloff>ressources/Personnel2_icon.jpg</iconset>
+    <iconset resource="ressources/ressources.qrc">
+     <normaloff>:/Personnel_icon.jpg</normaloff>:/Personnel_icon.jpg</iconset>
    </property>
    <property name="text">
     <string>Personnel de soins</string>
@@ -658,6 +658,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="ressources/ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -3,6 +3,7 @@
 #include "ajoutpatient.h"
 #include "ajoutpersonnel.h"
 #include "apropos.h"
+#include "personnel.h"
 #include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -38,13 +39,23 @@ MainWindow::MainWindow(QWidget *parent) :
     Patient patient4("01/03/04","Nom4" ,"Prenom4", "a", "Tours", "37200", "", "", "04/03/04", "01:00", 1,"Tom Hille","");
     patient4.setNumId(4);
 
+    Personnel personnel1("01/03/04", "nom", "prenom", "adresse", "ville", "codepostal", "numTelephone", "email",
+                                   "typeMedecin", "login", "password");
+    Personnel personnel2("01/03/04", "nom", "prenom", "adresse", "ville", "codepostal", "numTelephone", "email",
+                                   "typeMedecin", "login", "password");
+
+
     QList<Patient>listePatients;
+    QList<Personnel>listePersonnel;
 
     //test allocation des Patients à listePatients
     listePatients.push_back(patient1);
     listePatients.push_back(patient2);
     listePatients.push_back(patient3);
     listePatients.push_back(patient4);
+
+    listePersonnel.push_back(personnel1);
+    listePersonnel.push_back(personnel2);
 
     //modelPatient modeltest = new modelPatient(listePatients);
      modelPatient = new modelTablePatient(this, listePatients);

@@ -101,17 +101,17 @@ public:
         actionQuitter = new QAction(MainWindow);
         actionQuitter->setObjectName(QString::fromUtf8("actionQuitter"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8("ressources/quitter_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8(":/quitter_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionQuitter->setIcon(icon);
         actionPatient = new QAction(MainWindow);
         actionPatient->setObjectName(QString::fromUtf8("actionPatient"));
         QIcon icon1;
-        icon1.addFile(QString::fromUtf8("ressources/Patient_icon2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QString::fromUtf8(":/Patient_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionPatient->setIcon(icon1);
         actionPersonnel_de_soins = new QAction(MainWindow);
         actionPersonnel_de_soins->setObjectName(QString::fromUtf8("actionPersonnel_de_soins"));
         QIcon icon2;
-        icon2.addFile(QString::fromUtf8("ressources/Personnel2_icon.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QString::fromUtf8(":/Personnel_icon.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         actionPersonnel_de_soins->setIcon(icon2);
         actionA_propos = new QAction(MainWindow);
         actionA_propos->setObjectName(QString::fromUtf8("actionA_propos"));
@@ -260,7 +260,7 @@ public:
         toolButton = new QToolButton(widget);
         toolButton->setObjectName(QString::fromUtf8("toolButton"));
         QIcon icon3;
-        icon3.addFile(QString::fromUtf8("ressources/calender_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QString::fromUtf8(":/calender_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton->setIcon(icon3);
         toolButton->setAutoRaise(true);
 
@@ -436,7 +436,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
         pushButton->setDefault(true);
 
 

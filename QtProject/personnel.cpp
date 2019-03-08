@@ -30,6 +30,12 @@ string Personnel::getDateCreation(){
 void Personnel::setDateCreation(string dateCreation){
     this->dateCreation = dateCreation;
 }
+int Personnel::getNumId(){
+    return this->numId;
+}
+void Personnel::setNumId(int numId){
+    this->numId = numId;
+}
 string Personnel::getNom(){
     return this->nom;
 }

@@ -7,6 +7,7 @@
 #include "ajoutpersonnel.h"
 #include "apropos.h"
 #include "modeltablepatient.h"
+#include "personnel.h"
 
 namespace Ui {
 class MainWindow;

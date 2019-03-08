@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>calender_icon.png</file>
+        <file>logoPolytechTours.png</file>
+        <file>Patient_icon.png</file>
+        <file>Personnel_icon.jpg</file>
+        <file>quitter_icon.png</file>
+    </qresource>
+</RCC>

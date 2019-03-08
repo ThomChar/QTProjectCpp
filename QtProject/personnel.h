@@ -13,6 +13,8 @@ public:
     ~Personnel();
     string getDateCreation();
     void setDateCreation(string dateCreation);
+    int getNumId();
+    void setNumId(int numId);
     string getNom();
     void setNom(string nom);
     string getPrenom();
@@ -35,6 +37,7 @@ public:
     void setPassword(string password);
 private :
     string dateCreation;
+    int numId;
     string nom;
     string prenom;
     string adresse;

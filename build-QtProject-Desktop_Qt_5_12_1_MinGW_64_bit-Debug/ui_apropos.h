@@ -31,7 +31,7 @@ public:
         label = new QLabel(aPropos);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(10, 20, 381, 111));
-        label->setPixmap(QPixmap(QString::fromUtf8("ressources/logoPolytechTours.png")));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/logoPolytechTours.png")));
         label->setScaledContents(true);
         label_2 = new QLabel(aPropos);
         label_2->setObjectName(QString::fromUtf8("label_2"));

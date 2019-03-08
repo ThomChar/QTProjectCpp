@@ -207,7 +207,7 @@ public:
         toolButton->setObjectName(QString::fromUtf8("toolButton"));
         toolButton->setGeometry(QRect(330, 360, 31, 21));
         QIcon icon;
-        icon.addFile(QString::fromUtf8("ressources/calender_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8(":/calender_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton->setIcon(icon);
         toolButton->setAutoRaise(true);
         toolButton_2 = new QToolButton(ajoutPatient);

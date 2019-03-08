@@ -34,7 +34,8 @@ SOURCES += \
     calendrier.cpp \
     modeltablepatient.cpp \
     patient.cpp \
-    personnel.cpp
+    personnel.cpp \
+    modeltreepersonnel.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -45,7 +46,8 @@ HEADERS += \
     calendrier.h \
     modeltablepatient.h \
     patient.h \
-    personnel.h
+    personnel.h \
+    modeltreepersonnel.h
 
 FORMS += \
         mainwindow.ui \
@@ -59,3 +61,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    ressources/ressources.qrc
