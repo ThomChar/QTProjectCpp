@@ -289,6 +289,10 @@ release/moc_mainwindow.cpp: ../QtProject/mainwindow.h \
 		../QtProject/patient.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/QString \
 		../QtProject/personnel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/QStandardItemModel \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		../QtProject/modelTreePersonnel.h \
+		../QtProject/Personnel.h \
 		release/moc_predefs.h \
 		C:/Qt/5.12.1/mingw73_64/bin/moc.exe
 	C:\Qt\5.12.1\mingw73_64\bin\moc.exe $(DEFINES) --include E:/cours/DI4/S8/c++/projet/git/QTProjectCpp/build-QtProject-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/5.12.1/mingw73_64/mkspecs/win32-g++ -IE:/cours/DI4/S8/c++/projet/git/QTProjectCpp/QtProject -IC:/Qt/5.12.1/mingw73_64/include -IC:/Qt/5.12.1/mingw73_64/include/QtWidgets -IC:/Qt/5.12.1/mingw73_64/include/QtGui -IC:/Qt/5.12.1/mingw73_64/include/QtANGLE -IC:/Qt/5.12.1/mingw73_64/include/QtCore -I. -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/logiciels/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\QtProject\mainwindow.h -o release\moc_mainwindow.cpp
@@ -416,6 +420,10 @@ release/moc_login.cpp: ../QtProject/login.h \
 		../QtProject/patient.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/QString \
 		../QtProject/personnel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/QStandardItemModel \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		../QtProject/modelTreePersonnel.h \
+		../QtProject/Personnel.h \
 		release/moc_predefs.h \
 		C:/Qt/5.12.1/mingw73_64/bin/moc.exe
 	C:\Qt\5.12.1\mingw73_64\bin\moc.exe $(DEFINES) --include E:/cours/DI4/S8/c++/projet/git/QTProjectCpp/build-QtProject-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/5.12.1/mingw73_64/mkspecs/win32-g++ -IE:/cours/DI4/S8/c++/projet/git/QTProjectCpp/QtProject -IC:/Qt/5.12.1/mingw73_64/include -IC:/Qt/5.12.1/mingw73_64/include/QtWidgets -IC:/Qt/5.12.1/mingw73_64/include/QtGui -IC:/Qt/5.12.1/mingw73_64/include/QtANGLE -IC:/Qt/5.12.1/mingw73_64/include/QtCore -I. -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/logiciels/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\QtProject\login.h -o release\moc_login.cpp
@@ -940,10 +948,9 @@ release/moc_modeltablepatient.cpp: ../QtProject/modeltablepatient.h \
 	C:\Qt\5.12.1\mingw73_64\bin\moc.exe $(DEFINES) --include E:/cours/DI4/S8/c++/projet/git/QTProjectCpp/build-QtProject-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/5.12.1/mingw73_64/mkspecs/win32-g++ -IE:/cours/DI4/S8/c++/projet/git/QTProjectCpp/QtProject -IC:/Qt/5.12.1/mingw73_64/include -IC:/Qt/5.12.1/mingw73_64/include/QtWidgets -IC:/Qt/5.12.1/mingw73_64/include/QtGui -IC:/Qt/5.12.1/mingw73_64/include/QtANGLE -IC:/Qt/5.12.1/mingw73_64/include/QtCore -I. -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/logiciels/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\QtProject\modeltablepatient.h -o release\moc_modeltablepatient.cpp
 
 release/moc_modeltreepersonnel.cpp: ../QtProject/modeltreepersonnel.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/QAbstractItemModel \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qvariant.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qatomic.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/QStandardItemModel \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qtguiglobal.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qglobal.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qconfig.h \
@@ -955,15 +962,19 @@ release/moc_modeltreepersonnel.cpp: ../QtProject/modeltreepersonnel.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qsysinfo.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qlogging.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qflags.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qglobalstatic.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qmutex.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qnumeric.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qversiontagging.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qatomic.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qbasicatomic.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qatomic_bootstrap.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qgenericatomic.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qatomic_cxx11.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qatomic_msvc.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qglobalstatic.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qmutex.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qnumeric.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qversiontagging.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qtgui-config.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qvariant.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qbytearray.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qrefcount.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qnamespace.h \
@@ -1005,6 +1016,29 @@ release/moc_modeltreepersonnel.cpp: ../QtProject/modeltreepersonnel.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qcontiguouscache.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qsharedpointer.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qbrush.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qcolor.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qrgb.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qrgba64.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qmatrix.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qpolygon.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qrect.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qmargins.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qsize.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qregion.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qdatastream.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qline.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qtransform.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qpainterpath.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qimage.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qpaintdevice.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qpixelformat.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qpixmap.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qfont.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qicon.h \
+		../QtProject/Personnel.h \
 		release/moc_predefs.h \
 		C:/Qt/5.12.1/mingw73_64/bin/moc.exe
 	C:\Qt\5.12.1\mingw73_64\bin\moc.exe $(DEFINES) --include E:/cours/DI4/S8/c++/projet/git/QTProjectCpp/build-QtProject-Desktop_Qt_5_12_1_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/5.12.1/mingw73_64/mkspecs/win32-g++ -IE:/cours/DI4/S8/c++/projet/git/QTProjectCpp/QtProject -IC:/Qt/5.12.1/mingw73_64/include -IC:/Qt/5.12.1/mingw73_64/include/QtWidgets -IC:/Qt/5.12.1/mingw73_64/include/QtGui -IC:/Qt/5.12.1/mingw73_64/include/QtANGLE -IC:/Qt/5.12.1/mingw73_64/include/QtCore -I. -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/logiciels/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/logiciels/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\QtProject\modeltreepersonnel.h -o release\moc_modeltreepersonnel.cpp
@@ -1174,6 +1208,10 @@ release/main.o: ../QtProject/main.cpp ../QtProject/mainwindow.h \
 		../QtProject/patient.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/QString \
 		../QtProject/personnel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/QStandardItemModel \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		../QtProject/modelTreePersonnel.h \
+		../QtProject/Personnel.h \
 		../QtProject/login.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/QApplication \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qapplication.h \
@@ -1306,6 +1344,10 @@ release/mainwindow.o: ../QtProject/mainwindow.cpp ../QtProject/mainwindow.h \
 		../QtProject/patient.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/QString \
 		../QtProject/personnel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/QStandardItemModel \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		../QtProject/modelTreePersonnel.h \
+		../QtProject/Personnel.h \
 		ui_mainwindow.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/QVariant \
 		C:/Qt/5.12.1/mingw73_64/include/QtGui/QIcon \
@@ -1368,13 +1410,12 @@ release/mainwindow.o: ../QtProject/mainwindow.cpp ../QtProject/mainwindow.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qtoolbutton.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/QTreeView \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qtreeview.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/QTreeWidget \
-		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qtreewidget.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qtreewidgetitemiterator.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/QWidget \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/QMessageBox \
-		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qmessagebox.h
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/QAbstractItemModel \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/QStandardItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\QtProject\mainwindow.cpp
 
 release/login.o: ../QtProject/login.cpp ../QtProject/login.h \
@@ -1500,6 +1541,10 @@ release/login.o: ../QtProject/login.cpp ../QtProject/login.h \
 		../QtProject/patient.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/QString \
 		../QtProject/personnel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/QStandardItemModel \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		../QtProject/modelTreePersonnel.h \
+		../QtProject/Personnel.h \
 		ui_login.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/QVariant \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/QApplication \
@@ -1690,6 +1735,10 @@ release/ajoutpatient.o: ../QtProject/ajoutpatient.cpp ../QtProject/ajoutpatient.
 		../QtProject/patient.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/QString \
 		../QtProject/personnel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/QStandardItemModel \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		../QtProject/modelTreePersonnel.h \
+		../QtProject/Personnel.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\ajoutpatient.o ..\QtProject\ajoutpatient.cpp
@@ -1853,6 +1902,10 @@ release/ajoutpersonnel.o: ../QtProject/ajoutpersonnel.cpp ../QtProject/ajoutpers
 		../QtProject/patient.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/QString \
 		../QtProject/personnel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/QStandardItemModel \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		../QtProject/modelTreePersonnel.h \
+		../QtProject/Personnel.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\ajoutpersonnel.o ..\QtProject\ajoutpersonnel.cpp
@@ -2233,10 +2286,9 @@ release/personnel.o: ../QtProject/personnel.cpp ../QtProject/personnel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\personnel.o ..\QtProject\personnel.cpp
 
 release/modeltreepersonnel.o: ../QtProject/modeltreepersonnel.cpp ../QtProject/modeltreepersonnel.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/QAbstractItemModel \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qvariant.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qatomic.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/QStandardItemModel \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qtguiglobal.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qglobal.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qconfig.h \
@@ -2248,15 +2300,19 @@ release/modeltreepersonnel.o: ../QtProject/modeltreepersonnel.cpp ../QtProject/m
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qsysinfo.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qlogging.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qflags.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qglobalstatic.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qmutex.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qnumeric.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qversiontagging.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qatomic.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qbasicatomic.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qatomic_bootstrap.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qgenericatomic.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qatomic_cxx11.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qatomic_msvc.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qglobalstatic.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qmutex.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qnumeric.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qversiontagging.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qtgui-config.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qvariant.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qbytearray.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qrefcount.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qnamespace.h \
@@ -2297,7 +2353,64 @@ release/modeltreepersonnel.o: ../QtProject/modeltreepersonnel.cpp ../QtProject/m
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qset.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qcontiguouscache.h \
 		C:/Qt/5.12.1/mingw73_64/include/QtCore/qsharedpointer.h \
-		C:/Qt/5.12.1/mingw73_64/include/QtCore/qsharedpointer_impl.h
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qbrush.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qcolor.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qrgb.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qrgba64.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qmatrix.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qpolygon.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qrect.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qmargins.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qsize.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qregion.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qdatastream.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qline.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qtransform.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qpainterpath.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qimage.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qpaintdevice.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qpixelformat.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qpixmap.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qfont.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qicon.h \
+		../QtProject/Personnel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/QAbstractItemModel \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/QTreeView \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qtreeview.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qwidget.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qpalette.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qfontmetrics.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qfontinfo.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qsizepolicy.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qcursor.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qkeysequence.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qevent.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qurl.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qurlquery.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qfile.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qfiledevice.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qvector2d.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qtouchdevice.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qitemselectionmodel.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qstyleoption.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qabstractspinbox.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtGui/qvalidator.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtCore/qregularexpression.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qslider.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qabstractslider.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qstyle.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qtabbar.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qtabwidget.h \
+		C:/Qt/5.12.1/mingw73_64/include/QtWidgets/qrubberband.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\modeltreepersonnel.o ..\QtProject\modeltreepersonnel.cpp
 
 release/qrc_ressources.o: release/qrc_ressources.cpp 

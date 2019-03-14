@@ -40,7 +40,7 @@
         <property name="currentIndex">
          <number>1</number>
         </property>
-        <widget class="QWidget" name="tab">
+        <widget class="QWidget" name="rechercheDePatient">
          <attribute name="title">
           <string>Recherche de Patient</string>
          </attribute>
@@ -452,128 +452,52 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tab_2">
+        <widget class="QWidget" name="Planification">
          <attribute name="title">
           <string>Planification</string>
          </attribute>
-         <widget class="QLabel" name="label">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>10</y>
-            <width>141</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Personnels Actifs :</string>
-          </property>
-         </widget>
-         <widget class="Line" name="line_2">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>30</y>
-            <width>801</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-         <widget class="QTreeView" name="treeView">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>50</y>
-            <width>801</width>
-            <height>361</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QTreeWidget" name="treeWidget">
-          <property name="geometry">
-           <rect>
-            <x>110</x>
-            <y>110</y>
-            <width>691</width>
-            <height>281</height>
-           </rect>
-          </property>
-          <column>
-           <property name="text">
-            <string>Personnel de soin</string>
-           </property>
-          </column>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <property name="text">
-            <string>médecin A</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Jean Michel</string>
+           <widget class="QLabel" name="label">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
             </property>
-           </item>
-           <item>
             <property name="text">
-             <string>Jean Sérien</string>
+             <string>Personnels Actifs :</string>
             </property>
-           </item>
+           </widget>
           </item>
           <item>
-           <property name="text">
-            <string>médecin B</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Sarah Croche</string>
+           <widget class="Line" name="line_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
-           </item>
+           </widget>
           </item>
           <item>
-           <property name="text">
-            <string>radiologue</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Pacome Toulemonde</string>
+           <widget class="QTreeView" name="treeView">
+            <property name="enabled">
+             <bool>true</bool>
             </property>
-           </item>
-          </item>
-          <item>
-           <property name="text">
-            <string>inﬁrmière</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Nouveau sous-élément</string>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
             </property>
-           </item>
+            <property name="dragEnabled">
+             <bool>false</bool>
+            </property>
+            <property name="textElideMode">
+             <enum>Qt::ElideLeft</enum>
+            </property>
+            <property name="sortingEnabled">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
-          <item>
-           <property name="text">
-            <string>kinésithérapeute</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>psychologue</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>informaticien</string>
-           </property>
-          </item>
-         </widget>
+         </layout>
         </widget>
        </widget>
       </item>

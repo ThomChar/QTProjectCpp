@@ -8,6 +8,8 @@
 #include "apropos.h"
 #include "modeltablepatient.h"
 #include "personnel.h"
+#include <QStandardItemModel>
+#include "modelTreePersonnel.h"
 
 namespace Ui {
 class MainWindow;
@@ -45,6 +47,7 @@ private:
     ajoutPersonnel *personnnelWindow;
     aPropos *aProposWindow;
     modelTablePatient *modelPatient;
+    modelTreePersonnel *model;
 };
 
 #endif // MAINWINDOW_H
