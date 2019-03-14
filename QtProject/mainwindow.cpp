@@ -80,7 +80,7 @@ MainWindow::MainWindow(QWidget *parent) :
     model->setTree();
     QStandardItem *parentItem = model->invisibleRootItem();
 
-    model->setHeaderData(0, Qt::Horizontal, "Personnel de soin");
+    model->setHeaderData(0, Qt::Horizontal, "Personnels de santé");
     ui->treeView->setModel(model);
 
     //Evennements

@@ -79,11 +79,15 @@ public:
     QFrame *line;
     QHBoxLayout *horizontalLayout_10;
     QTableView *tableView;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *updateButton;
+    QPushButton *deleteButton;
     QWidget *Planification;
     QVBoxLayout *verticalLayout_2;
-    QLabel *label;
-    QFrame *line_2;
     QTreeView *treeView;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *updateButtonPersonnel;
+    QPushButton *deleteButtonPersonnel;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuAjouter;
@@ -364,6 +368,22 @@ public:
 
         verticalLayout_11->addLayout(horizontalLayout_10);
 
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        updateButton = new QPushButton(rechercheDePatient);
+        updateButton->setObjectName(QString::fromUtf8("updateButton"));
+
+        horizontalLayout->addWidget(updateButton);
+
+        deleteButton = new QPushButton(rechercheDePatient);
+        deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
+
+        horizontalLayout->addWidget(deleteButton);
+
+
+        verticalLayout_11->addLayout(horizontalLayout);
+
         tabWidget->addTab(rechercheDePatient, QString());
         Planification = new QWidget();
         Planification->setObjectName(QString::fromUtf8("Planification"));
@@ -371,23 +391,6 @@ public:
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label = new QLabel(Planification);
-        label->setObjectName(QString::fromUtf8("label"));
-        QFont font3;
-        font3.setPointSize(10);
-        font3.setBold(false);
-        font3.setWeight(50);
-        label->setFont(font3);
-
-        verticalLayout_2->addWidget(label);
-
-        line_2 = new QFrame(Planification);
-        line_2->setObjectName(QString::fromUtf8("line_2"));
-        line_2->setFrameShape(QFrame::HLine);
-        line_2->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_2->addWidget(line_2);
-
         treeView = new QTreeView(Planification);
         treeView->setObjectName(QString::fromUtf8("treeView"));
         treeView->setEnabled(true);
@@ -397,6 +400,22 @@ public:
         treeView->setSortingEnabled(false);
 
         verticalLayout_2->addWidget(treeView);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        updateButtonPersonnel = new QPushButton(Planification);
+        updateButtonPersonnel->setObjectName(QString::fromUtf8("updateButtonPersonnel"));
+
+        horizontalLayout_2->addWidget(updateButtonPersonnel);
+
+        deleteButtonPersonnel = new QPushButton(Planification);
+        deleteButtonPersonnel->setObjectName(QString::fromUtf8("deleteButtonPersonnel"));
+
+        horizontalLayout_2->addWidget(deleteButtonPersonnel);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
 
         tabWidget->addTab(Planification, QString());
 
@@ -464,8 +483,11 @@ public:
         lineEdit_5->setText(QString());
         toolButton_2->setText(QString());
         pushButton->setText(QApplication::translate("MainWindow", "Rechercher", nullptr));
+        updateButton->setText(QApplication::translate("MainWindow", "Modifier", nullptr));
+        deleteButton->setText(QApplication::translate("MainWindow", "Supprimer", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(rechercheDePatient), QApplication::translate("MainWindow", "Recherche de Patient", nullptr));
-        label->setText(QApplication::translate("MainWindow", "Personnels Actifs :", nullptr));
+        updateButtonPersonnel->setText(QApplication::translate("MainWindow", "Modifier", nullptr));
+        deleteButtonPersonnel->setText(QApplication::translate("MainWindow", "Supprimer", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Planification), QApplication::translate("MainWindow", "Planification", nullptr));
         menuFile->setTitle(QApplication::translate("MainWindow", "Fichier", nullptr));
         menuAjouter->setTitle(QApplication::translate("MainWindow", "Ajouter", nullptr));
