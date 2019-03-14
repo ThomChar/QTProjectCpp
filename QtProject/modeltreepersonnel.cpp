@@ -1,103 +1,47 @@
-/*
 #include "modeltreepersonnel.h"
 #include <QAbstractItemModel>
 #include <QTreeView>
+//#include <QObject>
+#include <QTreeView>
 
-modelTreePersonnel::modelTreePersonnel(const QString &data, QObject *parent) : QAbstractItemModel(parent) {
-    QList<QVariant> rootData;
-    rootData << "Title" << "Summary";
-    rootItem = new TreeItem(rootData);
-    setupModelData(data.split(QString("\n")), rootItem);
-}
-
-modelTreePersonnel::~modelTreePersonnel()
+modelTreePersonnel::modelTreePersonnel(QObject *parent, QList<QString> typesRessources, QList<Personnel> listePersonnel) : QStandardItemModel(parent)
 {
-    delete rootItem;
+    this->listePersonnel = listePersonnel;
+    this->typesRessources = typesRessources;
 }
 
-QModelIndex modelTreePersonnel::index(int row, int column, const QModelIndex &parent)
-            const
+void modelTreePersonnel::setTree()
 {
-    if (!hasIndex(row, column, parent))
-        return QModelIndex();
+    // vider le modèle
+    this->clear();
 
-    TreeItem *parentItem;
+    // ajouter les types de ressources
+    for(int indiceTypeRessource = 0; indiceTypeRessource < typesRessources.size(); indiceTypeRessource++)
+    {
+        QStandardItem * item = new QStandardItem( typesRessources[indiceTypeRessource]);
+        this->appendRow(item);
+    }
 
-    if (!parent.isValid())
-        parentItem = rootItem;
-    else
-        parentItem = static_cast<TreeItem*>(parent.internalPointer());
+    // ajouter le personnel
+    for(int indicePersonnel = 0; indicePersonnel < listePersonnel.size(); indicePersonnel++)
+    {
+        Personnel personnel = listePersonnel[indicePersonnel];
+        QString name = QString::fromStdString(personnel.getNom() + " " + personnel.getPrenom());
+        QStandardItem * item = new QStandardItem(name);
 
-    TreeItem *childItem = parentItem->child(row);
-    if (childItem)
-        return createIndex(row, column, childItem);
-    else
-        return QModelIndex();
+        // on retrouve la fonction de l'employé
+        QList<QStandardItem *> children = this->findItems(QString::fromStdString(personnel.getTypeMedecin()));
+
+        if(!children.isEmpty())
+        {
+            QStandardItem * typeRessource = children.first();
+
+            // on ajoute l'employé dans la branche de sa fonction
+            if(typeRessource != nullptr)
+                typeRessource->appendRow(item);
+            else {
+                this->appendRow(item);
+            }
+        }
+    }
 }
-
-QModelIndex modelTreePersonnel::parent(const QModelIndex &index) const
-{
-    if (!index.isValid())
-        return QModelIndex();
-
-    TreeItem *childItem = static_cast<TreeItem*>(index.internalPointer());
-    TreeItem *parentItem = childItem->parentItem();
-
-    if (parentItem == rootItem)
-        return QModelIndex();
-
-    return createIndex(parentItem->row(), 0, parentItem);
-}
-
-int modelTreePersonnel::rowCount(const QModelIndex &parent) const
-{
-    TreeItem *parentItem;
-    if (parent.column() > 0)
-        return 0;
-
-    if (!parent.isValid())
-        parentItem = rootItem;
-    else
-        parentItem = static_cast<TreeItem*>(parent.internalPointer());
-
-    return parentItem->childCount();
-}
-
-int modelTreePersonnel::columnCount(const QModelIndex &parent) const
-{
-    if (parent.isValid())
-        return static_cast<TreeItem*>(parent.internalPointer())->columnCount();
-    else
-        return rootItem->columnCount();
-}
-
-QVariant modelTreePersonnel::data(const QModelIndex &index, int role) const
-{
-    if (!index.isValid())
-        return QVariant();
-
-    if (role != Qt::DisplayRole)
-        return QVariant();
-
-    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
-
-    return item->data(index.column());
-}
-
-Qt::ItemFlags modelTreePersonnel::flags(const QModelIndex &index) const
-{
-    if (!index.isValid())
-        return 0;
-
-    return QAbstractItemModel::flags(index);
-}
-
-QVariant modelTreePersonnel::headerData(int section, Qt::Orientation orientation,
-                               int role) const
-{
-    if (orientation == Qt::Horizontal && role == Qt::DisplayRole)
-        return rootItem->data(section);
-
-    return QVariant();
-}
-*/
