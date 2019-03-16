@@ -1,32 +1,19 @@
-/*
 #ifndef MODELTREEPERSONNEL_H
 #define MODELTREEPERSONNEL_H
-#include <QAbstractItemModel>
-#include <QTreeView>
-#include <TreeItem>
+#include <QStandardItemModel>
+#include "personnel.h"
 
-class modelTreePersonnel : public QAbstractItemModel
+class modelTreePersonnel : public QStandardItemModel
 {
     Q_OBJECT
+
+    private :
+        QList<Personnel> listePersonnel;
+        QList<QString> typesRessources;
+
     public:
-        explicit modelTreePersonnel(const QString &data, QObject *parent = 0);
-        //~modelTreePersonnel();
-
-        QVariant data(const QModelIndex &index, int role) const override;
-        Qt::ItemFlags flags(const QModelIndex &index) const override;
-        QVariant headerData(int section, Qt::Orientation orientation,
-                            int role = Qt::DisplayRole) const override;
-        QModelIndex index(int row, int column,
-                          const QModelIndex &parent = QModelIndex()) const override;
-        QModelIndex parent(const QModelIndex &index) const override;
-        int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-        int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-
-    private:
-        void setupModelData(const QStringList &lines, TreeItem *parent);
-
-        TreeItem *rootItem;
+        modelTreePersonnel(QObject *parent, QList<QString> typesRessources, QList<Personnel> listePersonnel);
+        void setTree();
 };
 
 #endif // MODELTREEPERSONNEL_H
-*/

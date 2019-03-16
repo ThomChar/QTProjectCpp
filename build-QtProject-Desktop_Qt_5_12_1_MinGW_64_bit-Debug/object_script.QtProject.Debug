@@ -25,6 +25,7 @@ debug/moc_ajoutpersonnel.o
 debug/moc_apropos.o
 debug/moc_calendrier.o
 debug/moc_modeltablepatient.o
+debug/moc_modeltreepersonnel.o
 debug/moc_supprimerpatient.o
 debug/moc_modifierpatient.o
 debug/moc_supprimerpersonnel.o

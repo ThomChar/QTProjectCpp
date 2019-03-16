@@ -4,9 +4,14 @@
 #include "ajoutpersonnel.h"
 #include "apropos.h"
 #include "personnel.h"
+#include "modelTreePersonnel.h"
 #include <QMessageBox>
 #include <QDebug>
 #include <iostream>
+#include <QAbstractItemModel>
+#include <QStandardItem>
+#include <QString>
+
 
 MainWindow::MainWindow(/*QWidget *parent,*/ QSqlDatabase db, QString login) :
     //QMainWindow(parent),
@@ -44,10 +49,11 @@ MainWindow::MainWindow(/*QWidget *parent,*/ QSqlDatabase db, QString login) :
     Patient patient4("01/03/04","Nom4" ,"Prenom4", "a", "Tours", "37200", "", "", "04/03/04", "01:00", 1,"Tom Hille","");
     patient4.setNumId(4);
 
-    Personnel personnel1("01/03/04", "nom", "prenom", "adresse", "ville", "codepostal", "numTelephone", "email",
-                                   "typeMedecin", "login", "password");
-    Personnel personnel2("01/03/04", "nom", "prenom", "adresse", "ville", "codepostal", "numTelephone", "email",
-                                   "typeMedecin", "login", "password");
+    Personnel personnel1("01/03/04", "Alai", "Parfait", "adresse", "ville", "codepostal", "numTelephone", "email",
+                                   "MedecinB", "login", "password");
+    Personnel personnel2("01/03/04", "Deni", "Chon", "adresse", "ville", "codepostal", "numTelephone", "email",
+                                   "MedecinB", "login", "password");
+
 
 
     //QList<Patient>listePatients = baseDonnee->getListePatients(baseDonnee->getDB());
@@ -55,6 +61,23 @@ MainWindow::MainWindow(/*QWidget *parent,*/ QSqlDatabase db, QString login) :
 
     //QList<Personnel> listePersonnel = baseDonnee->getListePersonnel(baseDonnee->getDB());
     //qDebug() << listePersonnel.size();
+
+    QList<Patient>listePatients;
+    QList<Personnel>listePersonnels;
+    QList<QString> listeTypes;
+
+    //test allocation des Patients à listePatients
+    listePatients.push_back(patient1);
+    listePatients.push_back(patient2);
+    listePatients.push_back(patient3);
+    listePatients.push_back(patient4);
+
+    listePersonnels.push_back(personnel1);
+    listePersonnels.push_back(personnel2);
+
+    listeTypes.push_back(QString("MedecinA"));
+    listeTypes.push_back(QString("MedecinB"));
+    listeTypes.push_back(QString("MedecinC"));
 
     //modelPatient modeltest = new modelPatient(listePatients);
     modelPatient = new modelTablePatient(this, baseDonnee->getListePatients(db));
@@ -68,6 +91,14 @@ MainWindow::MainWindow(/*QWidget *parent,*/ QSqlDatabase db, QString login) :
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //ui->tableView->horizontalHeader()->setResizeContentsPrecision(QHeaderView::Stretch);
     ui->tableView->show();
+
+    //QStandardItemModel model;
+    model = new modelTreePersonnel(this, listeTypes, listePersonnels);
+    model->setTree();
+    QStandardItem *parentItem = model->invisibleRootItem();
+
+    model->setHeaderData(0, Qt::Horizontal, "Personnels de santé");
+    ui->treeView->setModel(model);
 
     //Evennements
     //evenement pour afficher calendrier 1

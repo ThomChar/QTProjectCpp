@@ -25,6 +25,7 @@ release/moc_ajoutpersonnel.o
 release/moc_apropos.o
 release/moc_calendrier.o
 release/moc_modeltablepatient.o
+release/moc_modeltreepersonnel.o
 release/moc_supprimerpatient.o
 release/moc_modifierpatient.o
 release/moc_supprimerpersonnel.o

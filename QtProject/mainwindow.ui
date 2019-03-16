@@ -40,7 +40,7 @@
         <property name="currentIndex">
          <number>0</number>
         </property>
-        <widget class="QWidget" name="tab">
+        <widget class="QWidget" name="rechercheDePatient">
          <attribute name="title">
           <string>Recherche de Patient</string>
          </attribute>
@@ -477,130 +477,69 @@
             </item>
            </layout>
           </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QPushButton" name="updateButton">
+              <property name="text">
+               <string>Modifier</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="deleteButton">
+              <property name="text">
+               <string>Supprimer</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tab_2">
+        <widget class="QWidget" name="Planification">
          <attribute name="title">
           <string>Planification</string>
          </attribute>
-         <widget class="QLabel" name="label">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>10</y>
-            <width>141</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Personnels Actifs :</string>
-          </property>
-         </widget>
-         <widget class="Line" name="line_2">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>30</y>
-            <width>801</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-         <widget class="QTreeView" name="treeView">
-          <property name="geometry">
-           <rect>
-            <x>50</x>
-            <y>50</y>
-            <width>801</width>
-            <height>361</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QTreeWidget" name="treeWidget">
-          <property name="geometry">
-           <rect>
-            <x>110</x>
-            <y>110</y>
-            <width>691</width>
-            <height>281</height>
-           </rect>
-          </property>
-          <column>
-           <property name="text">
-            <string>Personnel de soin</string>
-           </property>
-          </column>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <property name="text">
-            <string>médecin A</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Jean Michel</string>
+           <widget class="QTreeView" name="treeView">
+            <property name="enabled">
+             <bool>true</bool>
             </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Jean Sérien</string>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
             </property>
-           </item>
-          </item>
-          <item>
-           <property name="text">
-            <string>médecin B</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Sarah Croche</string>
+            <property name="dragEnabled">
+             <bool>false</bool>
             </property>
-           </item>
-          </item>
-          <item>
-           <property name="text">
-            <string>radiologue</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Pacome Toulemonde</string>
+            <property name="textElideMode">
+             <enum>Qt::ElideLeft</enum>
             </property>
-           </item>
-          </item>
-          <item>
-           <property name="text">
-            <string>inﬁrmière</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Nouveau sous-élément</string>
+            <property name="sortingEnabled">
+             <bool>false</bool>
             </property>
-           </item>
+           </widget>
           </item>
           <item>
-           <property name="text">
-            <string>kinésithérapeute</string>
-           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QPushButton" name="updateButtonPersonnel">
+              <property name="text">
+               <string>Modifier</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="deleteButtonPersonnel">
+              <property name="text">
+               <string>Supprimer</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
-          <item>
-           <property name="text">
-            <string>psychologue</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>informaticien</string>
-           </property>
-          </item>
-         </widget>
+         </layout>
         </widget>
        </widget>
       </item>

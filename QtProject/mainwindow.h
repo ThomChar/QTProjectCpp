@@ -13,6 +13,8 @@
 #include "requetebd.h"
 #include "modeltablepatient.h"
 #include "personnel.h"
+#include <QStandardItemModel>
+#include "modelTreePersonnel.h"
 
 namespace Ui {
 class MainWindow;
@@ -63,7 +65,7 @@ private:
     RequeteBD *baseDonnee;
     QSqlDatabase requestDataBase;
     modelTablePatient *modelPatient;
-
+    modelTreePersonnel *model;
 };
 
 #endif // MAINWINDOW_H

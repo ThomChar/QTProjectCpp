@@ -29,7 +29,6 @@
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QTreeView>
-#include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -46,7 +45,7 @@ public:
     QVBoxLayout *verticalLayout_9;
     QVBoxLayout *verticalLayout_10;
     QTabWidget *tabWidget;
-    QWidget *tab;
+    QWidget *rechercheDePatient;
     QVBoxLayout *verticalLayout_11;
     QWidget *widget;
     QVBoxLayout *verticalLayout_18;
@@ -82,11 +81,15 @@ public:
     QFrame *line;
     QHBoxLayout *horizontalLayout_10;
     QTableView *tableView;
-    QWidget *tab_2;
-    QLabel *label;
-    QFrame *line_2;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *updateButton;
+    QPushButton *deleteButton;
+    QWidget *Planification;
+    QVBoxLayout *verticalLayout_2;
     QTreeView *treeView;
-    QTreeWidget *treeWidget;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *updateButtonPersonnel;
+    QPushButton *deleteButtonPersonnel;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuAjouter;
@@ -137,13 +140,13 @@ public:
         tabWidget->setFont(font);
         tabWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
         tabWidget->setLayoutDirection(Qt::LeftToRight);
-        tab = new QWidget();
-        tab->setObjectName(QString::fromUtf8("tab"));
-        verticalLayout_11 = new QVBoxLayout(tab);
+        rechercheDePatient = new QWidget();
+        rechercheDePatient->setObjectName(QString::fromUtf8("rechercheDePatient"));
+        verticalLayout_11 = new QVBoxLayout(rechercheDePatient);
         verticalLayout_11->setSpacing(6);
         verticalLayout_11->setContentsMargins(11, 11, 11, 11);
         verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
-        widget = new QWidget(tab);
+        widget = new QWidget(rechercheDePatient);
         widget->setObjectName(QString::fromUtf8("widget"));
         widget->setMinimumSize(QSize(0, 120));
         widget->setMaximumSize(QSize(1000, 16777215));
@@ -355,7 +358,7 @@ public:
 
         verticalLayout_11->addWidget(widget);
 
-        line = new QFrame(tab);
+        line = new QFrame(rechercheDePatient);
         line->setObjectName(QString::fromUtf8("line"));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
@@ -366,7 +369,7 @@ public:
         horizontalLayout_10->setSpacing(6);
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         horizontalLayout_10->setContentsMargins(-1, -1, -1, 0);
-        tableView = new QTableView(tab);
+        tableView = new QTableView(rechercheDePatient);
         tableView->setObjectName(QString::fromUtf8("tableView"));
         tableView->setEnabled(true);
         tableView->setMaximumSize(QSize(8010, 2810));
@@ -380,41 +383,56 @@ public:
 
         verticalLayout_11->addLayout(horizontalLayout_10);
 
-        tabWidget->addTab(tab, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QString::fromUtf8("tab_2"));
-        label = new QLabel(tab_2);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(10, 10, 141, 21));
-        QFont font3;
-        font3.setPointSize(10);
-        font3.setBold(false);
-        font3.setWeight(50);
-        label->setFont(font3);
-        line_2 = new QFrame(tab_2);
-        line_2->setObjectName(QString::fromUtf8("line_2"));
-        line_2->setGeometry(QRect(10, 30, 801, 16));
-        line_2->setFrameShape(QFrame::HLine);
-        line_2->setFrameShadow(QFrame::Sunken);
-        treeView = new QTreeView(tab_2);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        updateButton = new QPushButton(rechercheDePatient);
+        updateButton->setObjectName(QString::fromUtf8("updateButton"));
+
+        horizontalLayout->addWidget(updateButton);
+
+        deleteButton = new QPushButton(rechercheDePatient);
+        deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
+
+        horizontalLayout->addWidget(deleteButton);
+
+
+        verticalLayout_11->addLayout(horizontalLayout);
+
+        tabWidget->addTab(rechercheDePatient, QString());
+        Planification = new QWidget();
+        Planification->setObjectName(QString::fromUtf8("Planification"));
+        verticalLayout_2 = new QVBoxLayout(Planification);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        treeView = new QTreeView(Planification);
         treeView->setObjectName(QString::fromUtf8("treeView"));
-        treeView->setGeometry(QRect(50, 50, 801, 361));
-        treeWidget = new QTreeWidget(tab_2);
-        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem(treeWidget);
-        new QTreeWidgetItem(__qtreewidgetitem);
-        new QTreeWidgetItem(__qtreewidgetitem);
-        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem(treeWidget);
-        new QTreeWidgetItem(__qtreewidgetitem1);
-        QTreeWidgetItem *__qtreewidgetitem2 = new QTreeWidgetItem(treeWidget);
-        new QTreeWidgetItem(__qtreewidgetitem2);
-        QTreeWidgetItem *__qtreewidgetitem3 = new QTreeWidgetItem(treeWidget);
-        new QTreeWidgetItem(__qtreewidgetitem3);
-        new QTreeWidgetItem(treeWidget);
-        new QTreeWidgetItem(treeWidget);
-        new QTreeWidgetItem(treeWidget);
-        treeWidget->setObjectName(QString::fromUtf8("treeWidget"));
-        treeWidget->setGeometry(QRect(110, 110, 691, 281));
-        tabWidget->addTab(tab_2, QString());
+        treeView->setEnabled(true);
+        treeView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        treeView->setDragEnabled(false);
+        treeView->setTextElideMode(Qt::ElideLeft);
+        treeView->setSortingEnabled(false);
+
+        verticalLayout_2->addWidget(treeView);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        updateButtonPersonnel = new QPushButton(Planification);
+        updateButtonPersonnel->setObjectName(QString::fromUtf8("updateButtonPersonnel"));
+
+        horizontalLayout_2->addWidget(updateButtonPersonnel);
+
+        deleteButtonPersonnel = new QPushButton(Planification);
+        deleteButtonPersonnel->setObjectName(QString::fromUtf8("deleteButtonPersonnel"));
+
+        horizontalLayout_2->addWidget(deleteButtonPersonnel);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
+
+        tabWidget->addTab(Planification, QString());
 
         verticalLayout_10->addWidget(tabWidget);
 
@@ -482,40 +500,12 @@ public:
         pushButton->setText(QApplication::translate("MainWindow", "Rechercher", nullptr));
         pushButton_2->setText(QApplication::translate("MainWindow", "Supprimer", nullptr));
         pushButton_3->setText(QApplication::translate("MainWindow", "Modifier", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Recherche de Patient", nullptr));
-        label->setText(QApplication::translate("MainWindow", "Personnels Actifs :", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem = treeWidget->headerItem();
-        ___qtreewidgetitem->setText(0, QApplication::translate("MainWindow", "Personnel de soin", nullptr));
-
-        const bool __sortingEnabled = treeWidget->isSortingEnabled();
-        treeWidget->setSortingEnabled(false);
-        QTreeWidgetItem *___qtreewidgetitem1 = treeWidget->topLevelItem(0);
-        ___qtreewidgetitem1->setText(0, QApplication::translate("MainWindow", "m\303\251decin A", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem2 = ___qtreewidgetitem1->child(0);
-        ___qtreewidgetitem2->setText(0, QApplication::translate("MainWindow", "Jean Michel", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem3 = ___qtreewidgetitem1->child(1);
-        ___qtreewidgetitem3->setText(0, QApplication::translate("MainWindow", "Jean S\303\251rien", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem4 = treeWidget->topLevelItem(1);
-        ___qtreewidgetitem4->setText(0, QApplication::translate("MainWindow", "m\303\251decin B", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem5 = ___qtreewidgetitem4->child(0);
-        ___qtreewidgetitem5->setText(0, QApplication::translate("MainWindow", "Sarah Croche", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem6 = treeWidget->topLevelItem(2);
-        ___qtreewidgetitem6->setText(0, QApplication::translate("MainWindow", "radiologue", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem7 = ___qtreewidgetitem6->child(0);
-        ___qtreewidgetitem7->setText(0, QApplication::translate("MainWindow", "Pacome Toulemonde", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem8 = treeWidget->topLevelItem(3);
-        ___qtreewidgetitem8->setText(0, QApplication::translate("MainWindow", "in\357\254\201rmi\303\250re", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem9 = ___qtreewidgetitem8->child(0);
-        ___qtreewidgetitem9->setText(0, QApplication::translate("MainWindow", "Nouveau sous-\303\251l\303\251ment", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem10 = treeWidget->topLevelItem(4);
-        ___qtreewidgetitem10->setText(0, QApplication::translate("MainWindow", "kin\303\251sith\303\251rapeute", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem11 = treeWidget->topLevelItem(5);
-        ___qtreewidgetitem11->setText(0, QApplication::translate("MainWindow", "psychologue", nullptr));
-        QTreeWidgetItem *___qtreewidgetitem12 = treeWidget->topLevelItem(6);
-        ___qtreewidgetitem12->setText(0, QApplication::translate("MainWindow", "informaticien", nullptr));
-        treeWidget->setSortingEnabled(__sortingEnabled);
-
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Planification", nullptr));
+        updateButton->setText(QApplication::translate("MainWindow", "Modifier", nullptr));
+        deleteButton->setText(QApplication::translate("MainWindow", "Supprimer", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(rechercheDePatient), QApplication::translate("MainWindow", "Recherche de Patient", nullptr));
+        updateButtonPersonnel->setText(QApplication::translate("MainWindow", "Modifier", nullptr));
+        deleteButtonPersonnel->setText(QApplication::translate("MainWindow", "Supprimer", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(Planification), QApplication::translate("MainWindow", "Planification", nullptr));
         menuFile->setTitle(QApplication::translate("MainWindow", "Fichier", nullptr));
         menuAjouter->setTitle(QApplication::translate("MainWindow", "Ajouter", nullptr));
         menu->setTitle(QApplication::translate("MainWindow", "?", nullptr));
