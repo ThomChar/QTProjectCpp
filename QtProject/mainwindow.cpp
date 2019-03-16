@@ -5,9 +5,11 @@
 #include "apropos.h"
 #include "personnel.h"
 #include <QMessageBox>
+#include <QDebug>
+#include <iostream>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+MainWindow::MainWindow(/*QWidget *parent,*/ QSqlDatabase db, QString login) :
+    //QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -15,9 +17,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     calendrier = new Calendrier();
     calendrier_2 = new Calendrier();
-    patientWindow = new ajoutPatient(this);
+    //patientWindow = new ajoutPatient(this);
     personnnelWindow = new ajoutPersonnel(this);
     aProposWindow = new aPropos();
+    baseDonnee = new RequeteBD(db);
+
+    requestDataBase = db;
     //modelPatient = new modelTablePatient();
 
     ui->lineEdit->setPlaceholderText("ex: 01020304");
@@ -25,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit_3->setPlaceholderText("ex: Marc");
     ui->lineEdit_4->setPlaceholderText("ex: JJ/MM/AAAA");
     ui->lineEdit_5->setPlaceholderText("ex: JJ/MM/AAAA");
-    ui->statusBar->showMessage("Bienvenue Admin ! Vous êtes connecté");
+    ui->statusBar->showMessage("Bienvenue " + tr(login.toStdString().c_str()) + " ! Vous êtes connecté");
 
     //Test allocation de tableau pour liste de patient or du model
 
@@ -45,23 +50,21 @@ MainWindow::MainWindow(QWidget *parent) :
                                    "typeMedecin", "login", "password");
 
 
-    QList<Patient>listePatients;
-    QList<Personnel>listePersonnel;
+    //QList<Patient>listePatients = baseDonnee->getListePatients(baseDonnee->getDB());
+    //qDebug() << listePatients.size();
 
-    //test allocation des Patients à listePatients
-    listePatients.push_back(patient1);
-    listePatients.push_back(patient2);
-    listePatients.push_back(patient3);
-    listePatients.push_back(patient4);
-
-    listePersonnel.push_back(personnel1);
-    listePersonnel.push_back(personnel2);
+    //QList<Personnel> listePersonnel = baseDonnee->getListePersonnel(baseDonnee->getDB());
+    //qDebug() << listePersonnel.size();
 
     //modelPatient modeltest = new modelPatient(listePatients);
-     modelPatient = new modelTablePatient(this, listePatients);
+    modelPatient = new modelTablePatient(this, baseDonnee->getListePatients(db));
 
     //PatientTable
     ui->tableView->setModel(modelPatient);
+    QItemSelectionModel *select =  ui->tableView->selectionModel();
+    select->hasSelection(); //check if has selection
+    select->selectedRows();// return selected row(s)
+    select->selectedColumns(); // return selected column(s)
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //ui->tableView->horizontalHeader()->setResizeContentsPrecision(QHeaderView::Stretch);
     ui->tableView->show();
@@ -75,6 +78,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->actionQuitter, SIGNAL(triggered()),this,SLOT(close()));
     //evenement pour  afficher formulaire ajouterPatient
     QObject::connect(ui->actionPatient, SIGNAL(triggered()),this, SLOT(ajouterPatient()));
+    //evenement pour afficher formulaire supprimer un patient
+    QObject::connect(ui->pushButton_2, SIGNAL(clicked()),this, SLOT(supprimerPatient()));
+    //evenement pour afficher modifier formulaire un patient
+    QObject::connect(ui->pushButton_3, SIGNAL(clicked()),this, SLOT(modifPatient()));
     //evenement pour afficher formulaire ajouterPersonnel
     QObject::connect(ui->actionPersonnel_de_soins, SIGNAL(triggered()),this, SLOT(ajouterPersonnel()));
     //evenement pour afficher page apropos
@@ -85,6 +92,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(calendrier_2->findChild<QWidget *>("pushButton"), SIGNAL(clicked()),this, SLOT(afficherDateSelect_2()));
     //evenement pour effectuer la recherche selon les critères
     QObject::connect(ui->tabWidget->findChild<QWidget *>("pushButton"), SIGNAL(clicked()),this, SLOT(rechercherPatient()));
+
 
 }
 
@@ -99,6 +107,15 @@ MainWindow::~MainWindow()
  */
 void MainWindow::setStatusBar(const QString &message){
    ui->statusBar->showMessage(message) ;
+}
+
+RequeteBD* MainWindow::getBD(){
+    return this->baseDonnee;
+}
+
+void MainWindow::resetTablePatientModel(QSqlDatabase db){
+    this->modelPatient = new modelTablePatient(this, baseDonnee->getListePatients(db));
+    ui->tableView->setModel(this->modelPatient);
 }
 
 // afficher calendrier (bloquant)
@@ -122,12 +139,70 @@ void MainWindow::afficherDateSelect_2(){
 
 // afficher formulaire ajouterPatient (bloquant)
 void MainWindow::ajouterPatient(){
+    patientWindow = new ajoutPatient(this);
     patientWindow->exec();  // force l'affichage de la fenetre en mode modal, fenetre bloquante
+}
+
+void MainWindow::modifPatient(){
+    bool selected = ui->tableView->currentIndex().isValid();// return selected row(s)
+
+    if(selected){
+        /*Patient selectedPatient(baseDonnee->getPatient(baseDonnee->getDB(),ui->tableView->selectionModel()->selectedIndexes()[0].data().toInt()));
+        string he = baseDonnee->getPatient(baseDonnee->getDB(),ui->tableView->selectionModel()->selectedIndexes()[0].data().toInt()).getNom();
+        qDebug() << QString::fromStdString(baseDonnee->getPatient(baseDonnee->getDB(),ui->tableView->selectionModel()->selectedIndexes()[0].data().toInt()).getNom());
+        qDebug() << QString::fromStdString(he);
+        qDebug() << ui->tableView->selectionModel()->selectedIndexes()[0].data().toString().toInt();*/
+        int idPatient =  ui->tableView->selectionModel()->selectedIndexes()[0].data().toString().toInt();
+        modPatWindow = new modifierPatient(this, idPatient);
+        modPatWindow->exec();
+
+    }else {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Modification Patient");
+        msgBox.setText("Veuillez selectionner un Patient avant de modifier");
+        msgBox.exec();
+    }
+}
+
+
+void MainWindow::supprimerPatient(){
+
+    //bool verifier = ui->tableView->selectionModel()->hasSelection();//check if has selection
+    //ui->tableView->selectionModel()->selectedColumns(); // return selected column(s)
+    //int test = ui->tableView->selectionModel()->selectedRows().at(0).row();
+    /*for (int i = 0; i < ui->tableView->selectionModel()->selectedIndexes().size(); i++){
+            qDebug() << ui->tableView->selectionModel()->selectedIndexes()[i].data().toString();
+    }*/
+
+    bool selected = ui->tableView->currentIndex().isValid();// return selected row(s)
+
+    if(selected){
+        QString idPatient =  ui->tableView->selectionModel()->selectedIndexes()[0].data().toString();
+        QString nomPatient =  ui->tableView->selectionModel()->selectedIndexes()[1].data().toString();
+        QString prenomPatient =  ui->tableView->selectionModel()->selectedIndexes()[2].data().toString();
+
+        supPatWindow = new SupprimerPatient(this, idPatient.toInt(), nomPatient, prenomPatient);
+        supPatWindow->exec();
+
+    }else {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Supprimer Patient");
+        msgBox.setText("Veuillez selectionner un Patient avant de supprimer");
+        msgBox.exec();
+    }
 }
 
 // afficher formulaire ajouterPersonnel (bloquant)
 void MainWindow::ajouterPersonnel(){
     personnnelWindow->exec();    // force l'affichage de la fenetre en mode modal, fenetre bloquante
+}
+
+void MainWindow::supprimerPersonnel(){
+    supPerWindow = new SupprimerPersonnel(this,0,"","");//en attendant implémentation supprimer personnel
+
+}
+void MainWindow::modifierPersonnel(){
+    modPerWindow = new ModifierPersonnel(this);//en attendant implémentation supprimer personnel
 }
 
 // afficher page apropos (on pourrait mettre  bloquant par soucis de ne pas surcharger la vue)
@@ -246,4 +321,7 @@ void MainWindow::rechercherPatient(){
         //Si Vrai on lance la recherche
         this->setStatusBar("Recherche effectuée");
     }
+
 }
+
+

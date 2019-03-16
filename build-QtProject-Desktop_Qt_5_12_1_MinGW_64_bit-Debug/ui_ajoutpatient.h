@@ -18,8 +18,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTextEdit>
-#include <QtWidgets/QTimeEdit>
 #include <QtWidgets/QToolButton>
 
 QT_BEGIN_NAMESPACE
@@ -62,8 +62,8 @@ public:
     QComboBox *comboBox;
     QToolButton *toolButton;
     QToolButton *toolButton_2;
-    QTimeEdit *timeEdit;
     QComboBox *comboBox_2;
+    QSpinBox *spinBox;
 
     void setupUi(QDialog *ajoutPatient)
     {
@@ -200,7 +200,6 @@ public:
         label_16->setFont(font1);
         comboBox = new QComboBox(ajoutPatient);
         comboBox->addItem(QString());
-        comboBox->addItem(QString());
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         comboBox->setGeometry(QRect(120, 440, 251, 22));
         toolButton = new QToolButton(ajoutPatient);
@@ -215,9 +214,6 @@ public:
         toolButton_2->setGeometry(QRect(330, 70, 31, 21));
         toolButton_2->setIcon(icon);
         toolButton_2->setAutoRaise(true);
-        timeEdit = new QTimeEdit(ajoutPatient);
-        timeEdit->setObjectName(QString::fromUtf8("timeEdit"));
-        timeEdit->setGeometry(QRect(120, 400, 141, 22));
         comboBox_2 = new QComboBox(ajoutPatient);
         comboBox_2->addItem(QString());
         comboBox_2->addItem(QString());
@@ -226,6 +222,9 @@ public:
         comboBox_2->addItem(QString());
         comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
         comboBox_2->setGeometry(QRect(370, 400, 171, 22));
+        spinBox = new QSpinBox(ajoutPatient);
+        spinBox->setObjectName(QString::fromUtf8("spinBox"));
+        spinBox->setGeometry(QRect(120, 400, 141, 22));
 
         retranslateUi(ajoutPatient);
 
@@ -267,7 +266,6 @@ public:
         pushButton_2->setText(QApplication::translate("ajoutPatient", "Annuler", nullptr));
         label_16->setText(QApplication::translate("ajoutPatient", "Personnel li\303\251", nullptr));
         comboBox->setItemText(0, QApplication::translate("ajoutPatient", "ex: Anne Marie", nullptr));
-        comboBox->setItemText(1, QApplication::translate("ajoutPatient", "exemple", nullptr));
 
         toolButton->setText(QString());
         toolButton_2->setText(QString());

@@ -30,18 +30,13 @@ int modelTablePatient::rowCount(const QModelIndex & /*parent*/) const
 
 int modelTablePatient::columnCount(const QModelIndex & /*parent*/) const
 {
-    return 6;// return 6; /* nom, prénom, date de rendez-vous, numéro d’identiﬁcation, lien modifier, bouton supprimer*/
+    return 4;// return 6; /* nom, prénom, date de rendez-vous, numéro d’identiﬁcation, lien modifier, bouton supprimer*/
 }
 
 QVariant modelTablePatient::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     int col = index.column();
-
-    /*if (role == Qt::DisplayRole)
-       return QString("Row%1, Column%2")
-                   .arg(index.row() + 1)
-                   .arg(index.column() +1);*/
     if (role == Qt::DisplayRole){
     switch (col) {
             case 0:
@@ -105,10 +100,10 @@ QVariant modelTablePatient::headerData(int section, Qt::Orientation orientation,
             return QString("Prenom");
         case 3:
             return QString("Date RDV");
-        case 4:
+        /*case 4:
             return QString("Modifier");
         case 5:
-            return QString("Supprimer");
+            return QString("Supprimer");*/
         }
     }
     return QVariant();

@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+QT += sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = QtProject
@@ -35,7 +35,15 @@ SOURCES += \
     modeltablepatient.cpp \
     patient.cpp \
     personnel.cpp \
-    modeltreepersonnel.cpp
+    modeltreepersonnel.cpp \
+    c_init_bd.cpp \
+    requetebd.cpp \
+    consult.cpp \
+    supprimerpatient.cpp \
+    modifierpatient.cpp \
+    compte.cpp \
+    supprimerpersonnel.cpp \
+    modifierpersonnel.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -47,7 +55,15 @@ HEADERS += \
     modeltablepatient.h \
     patient.h \
     personnel.h \
-    modeltreepersonnel.h
+    modeltreepersonnel.h \
+    c_init_bd.h \
+    requetebd.h \
+    consult.h \
+    supprimerpatient.h \
+    modifierpatient.h \
+    compte.h \
+    supprimerpersonnel.h \
+    modifierpersonnel.h
 
 FORMS += \
         mainwindow.ui \
@@ -55,7 +71,11 @@ FORMS += \
     ajoutpatient.ui \
     ajoutpersonnel.ui \
     apropos.ui \
-    calendrier.ui
+    calendrier.ui \
+    supprimerpatient.ui \
+    modifierpatient.ui \
+    supprimerpersonnel.ui \
+    modifierpersonnel.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -64,3 +84,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     ressources/ressources.qrc
+
+DISTFILES +=

@@ -77,6 +77,8 @@ public:
     QSpacerItem *horizontalSpacer_4;
     QVBoxLayout *verticalLayout_16;
     QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
     QFrame *line;
     QHBoxLayout *horizontalLayout_10;
     QTableView *tableView;
@@ -96,7 +98,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(870, 608);
+        MainWindow->resize(870, 620);
         MainWindow->setAutoFillBackground(false);
         actionQuitter = new QAction(MainWindow);
         actionQuitter->setObjectName(QString::fromUtf8("actionQuitter"));
@@ -332,6 +334,18 @@ public:
 
         verticalLayout_16->addWidget(pushButton);
 
+        pushButton_2 = new QPushButton(widget);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setFont(font2);
+
+        verticalLayout_16->addWidget(pushButton_2);
+
+        pushButton_3 = new QPushButton(widget);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setFont(font2);
+
+        verticalLayout_16->addWidget(pushButton_3);
+
 
         recherhce_dates->addLayout(verticalLayout_16);
 
@@ -356,7 +370,8 @@ public:
         tableView->setObjectName(QString::fromUtf8("tableView"));
         tableView->setEnabled(true);
         tableView->setMaximumSize(QSize(8010, 2810));
-        tableView->setSelectionMode(QAbstractItemView::NoSelection);
+        tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         tableView->setGridStyle(Qt::SolidLine);
         tableView->setSortingEnabled(false);
 
@@ -436,7 +451,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
         pushButton->setDefault(true);
 
 
@@ -465,6 +480,8 @@ public:
         lineEdit_5->setText(QString());
         toolButton_2->setText(QString());
         pushButton->setText(QApplication::translate("MainWindow", "Rechercher", nullptr));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Supprimer", nullptr));
+        pushButton_3->setText(QApplication::translate("MainWindow", "Modifier", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Recherche de Patient", nullptr));
         label->setText(QApplication::translate("MainWindow", "Personnels Actifs :", nullptr));
         QTreeWidgetItem *___qtreewidgetitem = treeWidget->headerItem();

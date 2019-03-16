@@ -343,17 +343,34 @@ void ajoutPersonnel::ajouterPersonnel()
     if (verifier == true){  // Si le formulaire est correctement rempli
 
         //Création du Patient en local
-       /* Personnel newPersonnel(ui->lineEdit->text().toStdString(),ui->lineEdit_2->text().toStdString(),
+        Personnel newPersonnel(ui->lineEdit->text().toStdString(),ui->lineEdit_2->text().toStdString(),
                            ui->lineEdit_3->text().toStdString(),ui->lineEdit_4->text().toStdString(),
                            ui->lineEdit_5->text().toStdString(),ui->lineEdit_6->text().toStdString(),
                            ui->lineEdit_10->text().toStdString(),ui->lineEdit_11->text().toStdString(),
                            ui->comboBox_2->currentText().toStdString(),ui->lineEdit_8->text().toStdString(),
                            ui->lineEdit_9->text().toStdString());
-        QList<Personnel> listePersonnels;*/
+        //QList<Personnel> listePersonnels;*/
 
         //Ajout du PErsonnel en local;
         //listePersonnels.push_back(newPersonnel);
 
+        //Obtenir la liste des personnels de la BD
+        QList<Personnel> listePersonnels = qobject_cast<MainWindow*>(parent())->getBD()->getListePersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
+        //Définir Id du personnel
+        newPersonnel.setNumId(listePersonnels.last().getNumId()+1);
+        //Savoir si le personnel possède un compte
+        QList<Compte> listeCompte =  qobject_cast<MainWindow*>(parent())->getBD()->getListeComptes(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
+        int idCompte = 0;
+        if(ui->comboBox_2->currentText()=="informaticien"){
+            idCompte = listeCompte.last().getIdCompte()+1;
+        }
+        //Trouver idType correspondant au label entré
+        int idType =0;
+        //idType = qobject_cast<MainWindow*>(parent())->getBD()->getIdType(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),newPersonnel.getTypeMedecin().c_str());
+        //Ajoute le personnel à la BD
+         qobject_cast<MainWindow*>(parent())->getBD()->addPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),newPersonnel,idType,idCompte);
+        //Redefini le model de BD
+         qobject_cast<MainWindow*>(parent())->resetTablePatientModel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
     //Mise à jour de la status Bar
 
     qobject_cast<MainWindow*>(parent())->setStatusBar("Personnel "+ui->lineEdit_2->text()+" "+ui->lineEdit_3->text()+" ajouté !");

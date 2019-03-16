@@ -9,7 +9,10 @@ class Patient
 {
 public:
     Patient();
+    Patient(Patient* patient);
     Patient(string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+            string dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires);
+    Patient(int numId, string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
             string dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires);
     ~Patient();
     string getDateCreation();
@@ -40,6 +43,8 @@ public:
     void setMedecin(string medecin);
     string getCommentaires();
     void setCommentaires(string commentaires);
+    /*int getIdConsult();
+    void setIdConsult(int idConsult);*/
 private:
     string dateCreation;
     int numId;
@@ -55,6 +60,7 @@ private:
     int priorite;
     string medecin;
     string commentaires;
+    //int idConsult;
 };
 
 #endif // PATIENT_H

@@ -2,6 +2,7 @@
 #define AJOUTPATIENT_H
 
 #include <QDialog>
+#include <QSqlDatabase>
 #include "calendrier.h"
 
 namespace Ui {
@@ -13,7 +14,7 @@ class ajoutPatient : public QDialog
     Q_OBJECT
 
 public:
-    explicit ajoutPatient(QWidget *parent = nullptr);
+    explicit ajoutPatient(QWidget *parent);
     ~ajoutPatient();
     bool verifierDate(QString date);
     bool verifierNomPropre(QString nomPropre);
@@ -35,6 +36,7 @@ private slots:
 
 private:
     Ui::ajoutPatient *ui;
+
     //methodes de verifications à ajouter
     Calendrier *calendrier;
     Calendrier *calendrier_2;

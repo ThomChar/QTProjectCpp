@@ -20,6 +20,22 @@ Personnel::Personnel(string dateCreation, string nom, string prenom, string adre
     this-> password = password;
 }
 
+Personnel::Personnel(int numId, string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+                 string typeMedecin, string login, string password){
+    this->numId = numId;
+    this->dateCreation = dateCreation;
+    this->nom = nom;
+    this->prenom = prenom;
+    this->adresse = adresse;
+    this-> ville = ville;
+    this->codepostal = codepostal;
+    this-> numTelephone= numTelephone;
+    this->email = email;
+    this->typeMedecin = typeMedecin;
+    this->login =  login;
+    this-> password = password;
+}
+
 Personnel::~Personnel(){
 
 }

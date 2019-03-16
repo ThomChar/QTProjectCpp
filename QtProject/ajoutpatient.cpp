@@ -1,7 +1,10 @@
 #include "ajoutpatient.h"
 #include "ui_ajoutpatient.h"
 #include "mainwindow.h"
+#include "patient.h"
 #include <QMessageBox>
+#include <QDebug>
+#include <iostream>
 
 ajoutPatient::ajoutPatient(QWidget *parent) :
     QDialog(parent),
@@ -10,7 +13,7 @@ ajoutPatient::ajoutPatient(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("Ajout Patient");
     this->setFixedSize( this->size());
-    //this->setAttribute(Qt::WA_DeleteOnClose);
+    this->setAttribute(Qt::WA_DeleteOnClose);
     calendrier = new Calendrier(this);
     calendrier_2 = new Calendrier(this);
 
@@ -21,16 +24,22 @@ ajoutPatient::ajoutPatient(QWidget *parent) :
     ui->lineEdit_5->setPlaceholderText("ex: Tours");
     ui->lineEdit_6->setPlaceholderText("ex: 37200");
     ui->lineEdit_7->setPlaceholderText("ex: JJ/MM/AAAA");
-    ui->timeEdit->setTime(QTime(1, 0));
+    ui->spinBox->setValue(1);
     ui->comboBox_2->setCurrentIndex(0);
     ui->lineEdit_10->setPlaceholderText("ex: 0701020304");
     ui->lineEdit_11->setPlaceholderText("ex: jean.marc@email.fr");
+
+    //Affectation de la combo box à la lsiet des personnels
+    QList<Personnel> listePersonnel = qobject_cast<MainWindow*>(parent)->getBD()->getListePersonnel(qobject_cast<MainWindow*>(parent)->getBD()->getDB());
+    for(int i=0;i<listePersonnel.size();i++){
+    ui->comboBox->addItem(QString::fromStdString(listePersonnel[i].getNom()+" "+listePersonnel[i].getPrenom()));
+    }
 
     //Evennements
     //evenements pour afficher calendrier
     QObject::connect(ui->toolButton, SIGNAL(clicked()),this, SLOT(afficherCalendrier()));
     QObject::connect(ui->toolButton_2, SIGNAL(clicked()),this, SLOT(afficherCalendrier_2()));
-    //evenement pour quitter application
+    //evenement pour quitter le formulaire
     QObject::connect(ui->pushButton_2, SIGNAL(clicked()),this,SLOT(annuler()));
     //evenement pour  afficher formulaire ajouterPatient
     QObject::connect(ui->pushButton, SIGNAL(clicked()),this, SLOT(ajouterPatient()));
@@ -78,7 +87,7 @@ void ajoutPatient::annuler()
     this->close();
 
     // Réaffectation des champs du formulaire à vide
-    ui->lineEdit->setText("");
+    /*ui->lineEdit->setText("");
     ui->lineEdit_2->setText("");
     ui->lineEdit_3->setText("");
     ui->lineEdit_4->setText("");
@@ -90,7 +99,7 @@ void ajoutPatient::annuler()
     ui->lineEdit_10->setText("");
     ui->lineEdit_11->setText("");
     ui->textEdit->setText("");
-    ui->comboBox->setCurrentIndex(0);
+    ui->comboBox->setCurrentIndex(0);*/
 }
 
 /** Methode permettant de controler le format d'une date (verification simple pour commencer, on pourrait faire attention -> jours/mois)
@@ -160,7 +169,7 @@ bool ajoutPatient::verifierCodePostale(QString cdepostal){
 }
 bool ajoutPatient::verifierDureeConsult(QString dureeConsult){
     bool valide = true;
-    QRegExp rx("[0-9][0-9]:[0-9][0-9]");
+    QRegExp rx("[0-9]*");
     if(!rx.exactMatch(dureeConsult) || dureeConsult == ""){
         valide = false;
     }
@@ -273,7 +282,7 @@ void ajoutPatient::ajouterPatient()
                        "(JJ/MM/AAAA)<br></p>");
         msgBox.exec();
         verifier= false;
-    }else if (!verifierDureeConsult(ui->timeEdit->text())){
+    }else if (!verifierDureeConsult(ui->spinBox->text())){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"
@@ -324,23 +333,27 @@ void ajoutPatient::ajouterPatient()
                            ui->lineEdit_3->text().toStdString(),ui->lineEdit_4->text().toStdString(),
                            ui->lineEdit_5->text().toStdString(),ui->lineEdit_6->text().toStdString(),
                            ui->lineEdit_10->text().toStdString(),ui->lineEdit_11->text().toStdString(),
-                           ui->lineEdit_7->text().toStdString(), ui->timeEdit->text().toStdString(),
+                           ui->lineEdit_7->text().toStdString(), ui->spinBox->text().toStdString(),
                            ui->comboBox_2->currentText().toInt(), ui->comboBox->currentText().toStdString(),
                            ui->textEdit->toPlainText().toStdString());
-        QList<Patient> listePatients;
 
-        //Ajout du Patient en local;
-        listePatients.push_back(newPatient);
+        //Obtenir la liste des patients de la BD
+        QList<Patient> listePatients = qobject_cast<MainWindow*>(parent())->getBD()->getListePatients(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
+        //Définir Id du patient
+        newPatient.setNumId(listePatients.last().getNumId()+1);
+        //Ajoute le patient à la BD
+         qobject_cast<MainWindow*>(parent())->getBD()->addPatient(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),newPatient);
+        //Redefini le model de BD
+         qobject_cast<MainWindow*>(parent())->resetTablePatientModel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
 
     //Envoyer l'information d'ajout dans status Bar
-
     qobject_cast<MainWindow*>(parent())->setStatusBar("Patient "+ui->lineEdit_2->text()+" "+ui->lineEdit_3->text()+" ajouté !");
 
     // Fermeture du formulaire
     this->close();
 
     // Réaffectation des champs du formulaire à vide
-    ui->lineEdit->setText("");
+    /*ui->lineEdit->setText("");
     ui->lineEdit_2->setText("");
     ui->lineEdit_3->setText("");
     ui->lineEdit_4->setText("");
@@ -352,6 +365,6 @@ void ajoutPatient::ajouterPatient()
     ui->lineEdit_10->setText("");
     ui->lineEdit_11->setText("");
     ui->textEdit->setText("");
-    ui->comboBox->setCurrentIndex(0);
+    ui->comboBox->setCurrentIndex(0);*/
     }
 }

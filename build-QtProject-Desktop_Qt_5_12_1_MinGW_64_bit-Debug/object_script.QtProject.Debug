@@ -9,6 +9,14 @@ debug/modeltablepatient.o
 debug/patient.o
 debug/personnel.o
 debug/modeltreepersonnel.o
+debug/c_init_bd.o
+debug/requetebd.o
+debug/consult.o
+debug/supprimerpatient.o
+debug/modifierpatient.o
+debug/compte.o
+debug/supprimerpersonnel.o
+debug/modifierpersonnel.o
 debug/qrc_ressources.o
 debug/moc_mainwindow.o
 debug/moc_login.o
@@ -17,4 +25,7 @@ debug/moc_ajoutpersonnel.o
 debug/moc_apropos.o
 debug/moc_calendrier.o
 debug/moc_modeltablepatient.o
-debug/moc_modeltreepersonnel.o
+debug/moc_supprimerpatient.o
+debug/moc_modifierpatient.o
+debug/moc_supprimerpersonnel.o
+debug/moc_modifierpersonnel.o

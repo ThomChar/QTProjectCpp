@@ -2,6 +2,7 @@
 #define MODELTABLEPATIENT_H
 #include <QAbstractTableModel>
 #include <patient.h>
+#include <requetebd.h>
 
 class modelTablePatient: public QAbstractTableModel
 {

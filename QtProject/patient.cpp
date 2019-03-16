@@ -5,10 +5,46 @@ Patient::Patient()
 {
 }
 
+Patient::Patient(Patient* patient){
+    Patient currentPatient;
+    this->numId = patient->getNumId();
+    this->dateCreation = patient->getDateCreation();
+    this->nom = patient->getNom();
+    this->prenom = patient->getPrenom();
+    this->adresse = patient->getAdresse();
+    this->ville = patient->getVille();
+    this->codepostal = patient->getCodePostal();
+    this->numTelephone = patient->getNumTelephone();
+    this->email = patient->getEmail();
+    this->dateConsultation = patient->getDateConsultation();
+    this->medecin = patient->getMedecin();
+    this->priorite = patient->getPriorite();
+    this->dureeConsultation = patient->getDureeConsultation();
+    this->commentaires = patient->getCommentaires();
+}
+
 Patient::Patient(string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
                  string dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires){
     this->dateCreation = dateCreation;
     this->numId = 0.0;
+    this->nom = nom;
+    this->prenom = prenom;
+    this->adresse = adresse;
+    this-> ville = ville;
+    this->codepostal = codepostal;
+    this-> numTelephone= numTelephone;
+    this->email = email;
+    this->dateConsultation = dateConsultation;
+    this->dureeConsultation =  dureeConsultation;
+    this-> priorite = priorite;
+    this->medecin = medecin;
+    this->commentaires = commentaires;
+}
+
+Patient::Patient(int numId, string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+                 string dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires){
+    this->dateCreation = dateCreation;
+    this->numId = numId;
     this->nom = nom;
     this->prenom = prenom;
     this->adresse = adresse;
@@ -112,3 +148,9 @@ string Patient::getCommentaires(){
 void Patient::setCommentaires(string commentaires){
     this->commentaires = commentaires;
 }
+/*int Patient::getIdConsult(){
+    return this->idConsult;
+}
+void Patient::setIdConsult(int idConsult){
+    this->idConsult = idConsult;
+}*/

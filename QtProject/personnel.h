@@ -10,6 +10,8 @@ public:
     Personnel();
     Personnel(string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
                      string typeMedecin, string login, string password);
+    Personnel(int numId, string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+                     string typeMedecin, string login, string password);
     ~Personnel();
     string getDateCreation();
     void setDateCreation(string dateCreation);

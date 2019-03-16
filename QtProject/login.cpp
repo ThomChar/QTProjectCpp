@@ -1,9 +1,10 @@
 #include "login.h"
 #include "ui_login.h"
 #include "mainwindow.h"
+#include "requetebd.h"
 #include <QMessageBox>
 
-login::login(QWidget *parent) :
+/*login::login(QWidget *parent, QSqlDatabase db) :
     QDialog(parent),
     ui(new Ui::login)
 {
@@ -17,8 +18,24 @@ login::login(QWidget *parent) :
     QObject::connect(ui->pushButton_2, SIGNAL(clicked()),this,SLOT(close()));
     //evenement pour connecter
     QObject::connect(ui->pushButton, SIGNAL(clicked()),this, SLOT(connection()));
-}
+}*/
 
+login::login(/*QWidget *parent,*/QSqlDatabase db):
+    /*QDialog(parent),*/
+    ui(new Ui::login)
+{
+    ui->setupUi(this);
+    this->database = db;
+    //w = new MainWindow(/*this,*/ this->database ,login);
+    this->setWindowTitle("Authentification");
+    this->setFixedSize( this->size());
+
+    //connection
+    //evenement pour annuler
+    QObject::connect(ui->pushButton_2, SIGNAL(clicked()),this,SLOT(close()));
+    //evenement pour connecter
+    QObject::connect(ui->pushButton, SIGNAL(clicked()),this, SLOT(connection()));
+}
 
 login::~login()
 {
@@ -36,10 +53,15 @@ void login::connection()
     password = ui->lineEdit_2->text();
 
     // verifications
-    if(verificationLogin(login, password)){ // à relier avec la fonction pour controler l'identifiant user
+    if(this->requetebd->verificationLogin(this->database, login, password)){
+            this->close();
+            w = new MainWindow(/*this,*/ this->database ,login);
+            w->setWindowTitle("Gestion Patient");
+            w->show();
+    /*if(verificationLogin(login, password)){ // à relier avec la fonction pour controler l'identifiant user
         this->close();
         w->setWindowTitle("Gestion Patient");
-        w->show();
+        w->show();*/
     }
     else {
         ui->lineEdit -> setText(login);

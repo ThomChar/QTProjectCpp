@@ -9,6 +9,14 @@ release/modeltablepatient.o
 release/patient.o
 release/personnel.o
 release/modeltreepersonnel.o
+release/c_init_bd.o
+release/requetebd.o
+release/consult.o
+release/supprimerpatient.o
+release/modifierpatient.o
+release/compte.o
+release/supprimerpersonnel.o
+release/modifierpersonnel.o
 release/qrc_ressources.o
 release/moc_mainwindow.o
 release/moc_login.o
@@ -17,4 +25,7 @@ release/moc_ajoutpersonnel.o
 release/moc_apropos.o
 release/moc_calendrier.o
 release/moc_modeltablepatient.o
-release/moc_modeltreepersonnel.o
+release/moc_supprimerpatient.o
+release/moc_modifierpatient.o
+release/moc_supprimerpersonnel.o
+release/moc_modifierpersonnel.o
