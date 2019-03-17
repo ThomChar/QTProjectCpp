@@ -53,30 +53,30 @@ public:
     QHBoxLayout *recherche;
     QHBoxLayout *numPatient;
     QLabel *label_5;
-    QLineEdit *lineEdit;
+    QLineEdit *idPatient_r;
     QSpacerItem *horizontalSpacer;
-    QHBoxLayout *prenomPatient;
-    QLabel *label_3;
-    QLineEdit *lineEdit_2;
-    QSpacerItem *horizontalSpacer_3;
     QHBoxLayout *nomPatient;
+    QLabel *label_3;
+    QLineEdit *nomPatient_r;
+    QSpacerItem *horizontalSpacer_3;
+    QHBoxLayout *prenomPatient;
     QLabel *label_4;
-    QLineEdit *lineEdit_3;
+    QLineEdit *prenomPatient_r;
     QHBoxLayout *recherhce_dates;
     QVBoxLayout *date_aprs_le;
     QLabel *label_2;
     QHBoxLayout *champs_date_apres_le;
-    QLineEdit *lineEdit_4;
+    QLineEdit *dateDebut_r;
     QToolButton *toolButton;
     QSpacerItem *horizontalSpacer_5;
     QVBoxLayout *date_avant_le;
     QLabel *label_6;
     QHBoxLayout *champ_date_avant_le;
-    QLineEdit *lineEdit_5;
+    QLineEdit *dateFin_r;
     QToolButton *toolButton_2;
     QSpacerItem *horizontalSpacer_4;
     QVBoxLayout *verticalLayout_16;
-    QPushButton *pushButton;
+    QPushButton *searchButton;
     QFrame *line;
     QHBoxLayout *horizontalLayout_10;
     QTableView *tableView;
@@ -180,13 +180,13 @@ public:
 
         numPatient->addWidget(label_5);
 
-        lineEdit = new QLineEdit(widget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setMaximumSize(QSize(16777215, 16777215));
-        lineEdit->setFont(font1);
-        lineEdit->setClearButtonEnabled(true);
+        idPatient_r = new QLineEdit(widget);
+        idPatient_r->setObjectName(QString::fromUtf8("idPatient_r"));
+        idPatient_r->setMaximumSize(QSize(16777215, 16777215));
+        idPatient_r->setFont(font1);
+        idPatient_r->setClearButtonEnabled(true);
 
-        numPatient->addWidget(lineEdit);
+        numPatient->addWidget(idPatient_r);
 
 
         recherche->addLayout(numPatient);
@@ -195,49 +195,49 @@ public:
 
         recherche->addItem(horizontalSpacer);
 
-        prenomPatient = new QHBoxLayout();
-        prenomPatient->setSpacing(6);
-        prenomPatient->setObjectName(QString::fromUtf8("prenomPatient"));
-        prenomPatient->setContentsMargins(-1, -1, -1, 0);
+        nomPatient = new QHBoxLayout();
+        nomPatient->setSpacing(6);
+        nomPatient->setObjectName(QString::fromUtf8("nomPatient"));
+        nomPatient->setContentsMargins(-1, -1, -1, 0);
         label_3 = new QLabel(widget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setFont(font1);
 
-        prenomPatient->addWidget(label_3);
+        nomPatient->addWidget(label_3);
 
-        lineEdit_2 = new QLineEdit(widget);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setFont(font1);
-        lineEdit_2->setClearButtonEnabled(true);
+        nomPatient_r = new QLineEdit(widget);
+        nomPatient_r->setObjectName(QString::fromUtf8("nomPatient_r"));
+        nomPatient_r->setFont(font1);
+        nomPatient_r->setClearButtonEnabled(true);
 
-        prenomPatient->addWidget(lineEdit_2);
+        nomPatient->addWidget(nomPatient_r);
 
 
-        recherche->addLayout(prenomPatient);
+        recherche->addLayout(nomPatient);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         recherche->addItem(horizontalSpacer_3);
 
-        nomPatient = new QHBoxLayout();
-        nomPatient->setSpacing(6);
-        nomPatient->setObjectName(QString::fromUtf8("nomPatient"));
-        nomPatient->setContentsMargins(-1, -1, -1, 0);
+        prenomPatient = new QHBoxLayout();
+        prenomPatient->setSpacing(6);
+        prenomPatient->setObjectName(QString::fromUtf8("prenomPatient"));
+        prenomPatient->setContentsMargins(-1, -1, -1, 0);
         label_4 = new QLabel(widget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setFont(font1);
 
-        nomPatient->addWidget(label_4);
+        prenomPatient->addWidget(label_4);
 
-        lineEdit_3 = new QLineEdit(widget);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        lineEdit_3->setFont(font1);
-        lineEdit_3->setClearButtonEnabled(true);
+        prenomPatient_r = new QLineEdit(widget);
+        prenomPatient_r->setObjectName(QString::fromUtf8("prenomPatient_r"));
+        prenomPatient_r->setFont(font1);
+        prenomPatient_r->setClearButtonEnabled(true);
 
-        nomPatient->addWidget(lineEdit_3);
+        prenomPatient->addWidget(prenomPatient_r);
 
 
-        recherche->addLayout(nomPatient);
+        recherche->addLayout(prenomPatient);
 
 
         verticalLayout_18->addLayout(recherche);
@@ -260,17 +260,17 @@ public:
         champs_date_apres_le->setSpacing(6);
         champs_date_apres_le->setObjectName(QString::fromUtf8("champs_date_apres_le"));
         champs_date_apres_le->setContentsMargins(-1, -1, -1, 0);
-        lineEdit_4 = new QLineEdit(widget);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-        lineEdit_4->setFont(font1);
-        lineEdit_4->setMouseTracking(true);
-        lineEdit_4->setContextMenuPolicy(Qt::DefaultContextMenu);
-        lineEdit_4->setDragEnabled(false);
-        lineEdit_4->setReadOnly(false);
-        lineEdit_4->setCursorMoveStyle(Qt::VisualMoveStyle);
-        lineEdit_4->setClearButtonEnabled(true);
+        dateDebut_r = new QLineEdit(widget);
+        dateDebut_r->setObjectName(QString::fromUtf8("dateDebut_r"));
+        dateDebut_r->setFont(font1);
+        dateDebut_r->setMouseTracking(true);
+        dateDebut_r->setContextMenuPolicy(Qt::DefaultContextMenu);
+        dateDebut_r->setDragEnabled(false);
+        dateDebut_r->setReadOnly(false);
+        dateDebut_r->setCursorMoveStyle(Qt::VisualMoveStyle);
+        dateDebut_r->setClearButtonEnabled(true);
 
-        champs_date_apres_le->addWidget(lineEdit_4);
+        champs_date_apres_le->addWidget(dateDebut_r);
 
         toolButton = new QToolButton(widget);
         toolButton->setObjectName(QString::fromUtf8("toolButton"));
@@ -305,17 +305,17 @@ public:
         champ_date_avant_le->setSpacing(6);
         champ_date_avant_le->setObjectName(QString::fromUtf8("champ_date_avant_le"));
         champ_date_avant_le->setContentsMargins(-1, -1, -1, 0);
-        lineEdit_5 = new QLineEdit(widget);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
-        lineEdit_5->setFont(font1);
-        lineEdit_5->setMouseTracking(true);
-        lineEdit_5->setContextMenuPolicy(Qt::DefaultContextMenu);
-        lineEdit_5->setDragEnabled(false);
-        lineEdit_5->setReadOnly(false);
-        lineEdit_5->setCursorMoveStyle(Qt::VisualMoveStyle);
-        lineEdit_5->setClearButtonEnabled(true);
+        dateFin_r = new QLineEdit(widget);
+        dateFin_r->setObjectName(QString::fromUtf8("dateFin_r"));
+        dateFin_r->setFont(font1);
+        dateFin_r->setMouseTracking(true);
+        dateFin_r->setContextMenuPolicy(Qt::DefaultContextMenu);
+        dateFin_r->setDragEnabled(false);
+        dateFin_r->setReadOnly(false);
+        dateFin_r->setCursorMoveStyle(Qt::VisualMoveStyle);
+        dateFin_r->setClearButtonEnabled(true);
 
-        champ_date_avant_le->addWidget(lineEdit_5);
+        champ_date_avant_le->addWidget(dateFin_r);
 
         toolButton_2 = new QToolButton(widget);
         toolButton_2->setObjectName(QString::fromUtf8("toolButton_2"));
@@ -338,14 +338,14 @@ public:
         verticalLayout_16->setSpacing(6);
         verticalLayout_16->setObjectName(QString::fromUtf8("verticalLayout_16"));
         verticalLayout_16->setContentsMargins(-1, 24, 0, -1);
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        searchButton = new QPushButton(widget);
+        searchButton->setObjectName(QString::fromUtf8("searchButton"));
         QFont font2;
         font2.setPointSize(10);
-        pushButton->setFont(font2);
-        pushButton->setAutoDefault(false);
+        searchButton->setFont(font2);
+        searchButton->setAutoDefault(false);
 
-        verticalLayout_16->addWidget(pushButton);
+        verticalLayout_16->addWidget(searchButton);
 
 
         recherhce_dates->addLayout(verticalLayout_16);
@@ -468,7 +468,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 878, 21));
+        menuBar->setGeometry(QRect(0, 0, 878, 26));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuAjouter = new QMenu(menuFile);
@@ -498,7 +498,7 @@ public:
         retranslateUi(MainWindow);
 
         tabWidget->setCurrentIndex(0);
-        pushButton->setDefault(true);
+        searchButton->setDefault(true);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -513,20 +513,20 @@ public:
         actionA_propos->setText(QApplication::translate("MainWindow", "A propos", nullptr));
         actionG_rer_Types_Personnel->setText(QApplication::translate("MainWindow", "G\303\251rer Types Personnel", nullptr));
         label_5->setText(QApplication::translate("MainWindow", "Num. ID", nullptr));
-        lineEdit->setText(QString());
+        idPatient_r->setText(QString());
         label_3->setText(QApplication::translate("MainWindow", "Nom du Patient", nullptr));
-        lineEdit_2->setText(QString());
+        nomPatient_r->setText(QString());
         label_4->setText(QApplication::translate("MainWindow", "Prenom du Patient", nullptr));
-        lineEdit_3->setText(QString());
+        prenomPatient_r->setText(QString());
         label_2->setText(QApplication::translate("MainWindow", "Date de RDV (apr\303\250s le)", nullptr));
-        lineEdit_4->setInputMask(QString());
-        lineEdit_4->setText(QString());
+        dateDebut_r->setInputMask(QString());
+        dateDebut_r->setText(QString());
         toolButton->setText(QString());
         label_6->setText(QApplication::translate("MainWindow", "Date de RDV (avant le)", nullptr));
-        lineEdit_5->setInputMask(QString());
-        lineEdit_5->setText(QString());
+        dateFin_r->setInputMask(QString());
+        dateFin_r->setText(QString());
         toolButton_2->setText(QString());
-        pushButton->setText(QApplication::translate("MainWindow", "Rechercher", nullptr));
+        searchButton->setText(QApplication::translate("MainWindow", "Rechercher", nullptr));
         pushButton_3->setText(QApplication::translate("MainWindow", "Modifier", nullptr));
         pushButton_2->setText(QApplication::translate("MainWindow", "Supprimer", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(rechercheDePatient), QApplication::translate("MainWindow", "Recherche de Patient", nullptr));

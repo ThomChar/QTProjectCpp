@@ -32,6 +32,7 @@ public:
     ~MainWindow();
     RequeteBD* getBD();
     void resetTablePatientModel(QSqlDatabase db);
+    void resetTablePatientModel_filter(QSqlDatabase db);
     void resetTreePersonnelModel(QSqlDatabase db);
     void resetTableTypesPersModel(QSqlDatabase db);
     void setStatusBar(const QString &message);
@@ -54,7 +55,7 @@ private slots:
     //affichage
     void afficherDateSelect();
     void afficherDateSelect_2();
-    void rechercherPatient();
+    void rechercherPatients();
 
 private:
     Ui::MainWindow *ui;

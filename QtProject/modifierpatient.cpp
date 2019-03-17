@@ -195,7 +195,7 @@ bool modifierPatient::verifierDate(QString date){
 }
 bool modifierPatient::verifierNomPropre(QString nomPropre){
     bool valide = true;
-    QRegExp rx("[A-Z][a-z]*");
+    QRegExp rx("[À-ŸA-Z]{1}[à-ÿa-z]{0,39}");
     if(!rx.exactMatch(nomPropre)){
         valide = false;
     }

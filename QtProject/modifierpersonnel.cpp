@@ -228,7 +228,7 @@ bool ModifierPersonnel::verifierAdresse(QString adresse){
 }
 bool ModifierPersonnel::verifierVille(QString ville){
     bool valide = true;
-    QRegExp rx("[A-Z][a-z]*");
+    QRegExp rx("[À-ŸA-Z]{1}[à-ÿa-z]{0,39}");
     if(!rx.exactMatch(ville) && ville !=""){
         valide = false;
     }

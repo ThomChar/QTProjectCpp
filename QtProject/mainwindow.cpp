@@ -4,7 +4,6 @@
 #include "ajoutpersonnel.h"
 #include "apropos.h"
 #include "personnel.h"
-#include "modelTreePersonnel.h"
 #include <QMessageBox>
 #include <QDebug>
 #include <iostream>
@@ -13,72 +12,37 @@
 #include <QString>
 
 
-MainWindow::MainWindow(/*QWidget *parent,*/ QSqlDatabase db, QString login) :
-    //QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QSqlDatabase db, QString login) : ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     this->setWindowTitle("Accueil");
 
     calendrier = new Calendrier();
     calendrier_2 = new Calendrier();
-    //patientWindow = new ajoutPatient(this);
-    //personnnelWindow = new ajoutPersonnel(this);
     aProposWindow = new aPropos();
     baseDonnee = new RequeteBD(db);
     requestDataBase = db;
 
-    ui->lineEdit->setPlaceholderText("ex: 01020304");
-    ui->lineEdit_2->setPlaceholderText("ex: Jean");
-    ui->lineEdit_3->setPlaceholderText("ex: Marc");
-    ui->lineEdit_4->setPlaceholderText("ex: JJ/MM/AAAA");
-    ui->lineEdit_5->setPlaceholderText("ex: JJ/MM/AAAA");
+    // Exemples de remplissage pour le filtre des patients
+    ui->idPatient_r->setPlaceholderText("ex: 01020304");
+    ui->prenomPatient_r->setPlaceholderText("ex: Maxime");
+    ui->nomPatient_r->setPlaceholderText("ex: Dupont");
+    ui->dateDebut_r->setPlaceholderText("ex: JJ/MM/AAAA");
+    ui->dateFin_r->setPlaceholderText("ex: JJ/MM/AAAA");
+
+    // StatusBar : Bienvenue
     ui->statusBar->showMessage("Bienvenue " + tr(login.toStdString().c_str()) + " ! Vous êtes connecté");
 
-    //Test allocation de tableau pour liste de patient or du model
-
-    //Création de Patients test
-   /* Patient patient1("01/03/04","Nom1" ,"Prenom1", "a", "Tours", "37200", "", "", "01/03/04", "01:00", 1,"Tom Hille", "");
-    patient1.setNumId(1);
-    Patient patient2("01/03/04","Nom2" ,"Prenom2", "a", "Tours", "37200", "", "", "02/03/04", "01:00", 1,"Tom Hille","");
-    patient2.setNumId(2);
-    Patient patient3("01/03/04","Nom3" ,"Prenom3", "a", "Tours", "37200", "", "", "03/03/04", "01:00", 1,"Tom Hille","");
-    patient3.setNumId(3);
-    Patient patient4("01/03/04","Nom4" ,"Prenom4", "a", "Tours", "37200", "", "", "04/03/04", "01:00", 1,"Tom Hille","");
-    patient4.setNumId(4);
-
-    Personnel personnel1("01/03/04", "Alai", "Parfait", "adresse", "ville", "codepostal", "numTelephone", "email",
-                                   "MedecinB", "login", "password");
-    Personnel personnel2("01/03/04", "Deni", "Chon", "adresse", "ville", "codepostal", "numTelephone", "email",
-                                   "MedecinB", "login", "password");*/
-
-
-
-    //QList<Patient>listePatients = baseDonnee->getListePatients(baseDonnee->getDB());
-    //qDebug() << listePatients.size();
-
-    //QList<Personnel> listePersonnel = baseDonnee->getListePersonnel(baseDonnee->getDB());
-    //qDebug() << listePersonnel.size();
-
-    /*QList<Personnel>listePersonnels =baseDonnee->getListePersonnel(baseDonnee->getDB());
-    QList<QString> listeTypes = baseDonnee->getLabelsTypePersonnel(baseDonnee->getDB());*/
-
-    //PatientTable
+    // le tableau de Patients
     modelPatient = new modelTablePatient(this, baseDonnee->getListePatients(db));
     ui->tableView->setModel(modelPatient);
-    /*QItemSelectionModel *select =  ui->tableView->selectionModel();
-    QItemSelectionModel *select1 =  ui->treeView->selectionModel();
-    select->hasSelection(); //check if has selection
-    select->selectedRows();// return selected row(s)
-    select->selectedColumns(); // return selected column(s)*/
+
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    //ui->tableView->horizontalHeader()->setResizeContentsPrecision(QHeaderView::Stretch);
     ui->tableView->show();
 
-    //Personnel Tree model;
+    // Le treeview de Personnels
     modelPersonnel = new modelTreePersonnel(this, baseDonnee->getLabelsTypePersonnel(baseDonnee->getDB()), baseDonnee->getListePersonnel(baseDonnee->getDB()));
     modelPersonnel->setTree();
-   // QStandardItem *parentItem = modelPersonnel->invisibleRootItem();
     modelPersonnel->setHeaderData(0, Qt::Horizontal, "Personnels de santé");
     ui->treeView->setModel(modelPersonnel);
 
@@ -110,9 +74,7 @@ MainWindow::MainWindow(/*QWidget *parent,*/ QSqlDatabase db, QString login) :
     //evenement pour afficher date selectionnee dans tab recherche
     QObject::connect(calendrier_2->findChild<QWidget *>("pushButton"), SIGNAL(clicked()),this, SLOT(afficherDateSelect_2()));
     //evenement pour effectuer la recherche selon les critères
-    QObject::connect(ui->tabWidget->findChild<QWidget *>("pushButton"), SIGNAL(clicked()),this, SLOT(rechercherPatient()));
-
-
+    QObject::connect(ui->tabWidget->findChild<QWidget *>("searchButton"), SIGNAL(clicked()),this, SLOT(rechercherPatients()));
 }
 
 MainWindow::~MainWindow()
@@ -137,7 +99,6 @@ void  MainWindow::resetTablePatientModel(QSqlDatabase db){
     ui->tableView->setModel(this->modelPatient);
 }
 void MainWindow::resetTreePersonnelModel(QSqlDatabase db){
-    //qDebug()<< baseDonnee->getListePersonnel(db).last().getNom().c_str();
     this->modelPersonnel = new modelTreePersonnel(this, baseDonnee->getLabelsTypePersonnel(db), baseDonnee->getListePersonnel(db));
     modelPersonnel->setTree();
     modelPersonnel->setHeaderData(0, Qt::Horizontal, "Personnels de santé");
@@ -156,7 +117,7 @@ void MainWindow::afficherCalendrier(){
 
 // afficher calendrier (bloquant)
 void MainWindow::afficherDateSelect(){
-    ui->lineEdit_4 -> setText(calendrier->getCalendrier()->selectedDate().toString("dd/MM/yyyy"));
+    ui->dateDebut_r-> setText(calendrier->getCalendrier()->selectedDate().toString("dd/MM/yyyy"));
 }
 // afficher calendrier 2 (bloquant)
 void MainWindow::afficherCalendrier_2(){
@@ -165,7 +126,7 @@ void MainWindow::afficherCalendrier_2(){
 
 // afficher calendrier 2 (bloquant)
 void MainWindow::afficherDateSelect_2(){
-    ui->lineEdit_5 -> setText(calendrier_2->getCalendrier()->selectedDate().toString("dd/MM/yyyy"));
+    ui->dateFin_r -> setText(calendrier_2->getCalendrier()->selectedDate().toString("dd/MM/yyyy"));
 }
 
 // afficher formulaire ajouterPatient (bloquant)
@@ -178,11 +139,6 @@ void MainWindow::modifPatient(){
     bool selected = ui->tableView->currentIndex().isValid();// return selected row(s)
 
     if(selected){
-        /*Patient selectedPatient(baseDonnee->getPatient(baseDonnee->getDB(),ui->tableView->selectionModel()->selectedIndexes()[0].data().toInt()));
-        string he = baseDonnee->getPatient(baseDonnee->getDB(),ui->tableView->selectionModel()->selectedIndexes()[0].data().toInt()).getNom();
-        qDebug() << QString::fromStdString(baseDonnee->getPatient(baseDonnee->getDB(),ui->tableView->selectionModel()->selectedIndexes()[0].data().toInt()).getNom());
-        qDebug() << QString::fromStdString(he);
-        qDebug() << ui->tableView->selectionModel()->selectedIndexes()[0].data().toString().toInt();*/
         int idPatient =  ui->tableView->selectionModel()->selectedIndexes()[0].data().toString().toInt();
         modPatWindow = new modifierPatient(this, idPatient);
         modPatWindow->exec();
@@ -197,14 +153,6 @@ void MainWindow::modifPatient(){
 
 
 void MainWindow::supprimerPatient(){
-
-    //bool verifier = ui->tableView->selectionModel()->hasSelection();//check if has selection
-    //ui->tableView->selectionModel()->selectedColumns(); // return selected column(s)
-    //int test = ui->tableView->selectionModel()->selectedRows().at(0).row();
-    /*for (int i = 0; i < ui->tableView->selectionModel()->selectedIndexes().size(); i++){
-            qDebug() << ui->tableView->selectionModel()->selectedIndexes()[i].data().toString();
-    }*/
-
     bool selected = ui->tableView->currentIndex().isValid();// return selected row(s)
 
     if(selected){
@@ -232,33 +180,63 @@ void MainWindow::ajouterPersonnel(){
 void MainWindow::supprimerPersonnel(){
     bool selected = ui->treeView->currentIndex().isValid();// return selected row(s)
 
-    if(selected){
+    try
+    {
+        if(selected == 0)
+            throw 1; // aucun élément de selectionné
+
         QString nomPrenomPatient =  ui->treeView->selectionModel()->selectedIndexes()[0].data().toString();
 
+        // on vérifie que la selection n'est pas sur un type de personnel
+        auto enfant = modelPersonnel->findItems(nomPrenomPatient, Qt::MatchWrap | Qt::MatchExactly, 0);
+
+        if(!enfant.isEmpty())
+            throw 1; // ce n'est pas un personnel qui est selectionné
+
+        // suppression
         supPerWindow = new SupprimerPersonnel(this, nomPrenomPatient);
         supPerWindow->exec();
 
-    }else {
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Supprimer Personnel");
-        msgBox.setText("Veuillez selectionner un Personnel avant de supprimer");
-        msgBox.exec();
+    }
+    catch (int e)
+    {
+        if(e == 1) {
+            QMessageBox msgBox;
+            msgBox.setWindowTitle("Supprimer Personnel");
+            msgBox.setText("Veuillez selectionner un Personnel avant de supprimer");
+            msgBox.exec();
+        }
     }
 }
 void MainWindow::modifierPersonnel(){
     bool selected = ui->treeView->currentIndex().isValid();// return selected row(s)
 
-    if(selected){
+    try
+    {
+        if(selected == 0)
+            throw 1; // aucun élément de selectionné
+
         QString nomPrenomPatient =  ui->treeView->selectionModel()->selectedIndexes()[0].data().toString();
 
+        // on vérifie que la selection n'est pas sur un type de personnel
+        auto enfant = modelPersonnel->findItems(nomPrenomPatient, Qt::MatchWrap | Qt::MatchExactly, 0);
+
+        if(!enfant.isEmpty())
+            throw 1; // ce n'est pas un personnel qui est selectionné
+
+        // modification
         modPerWindow = new ModifierPersonnel(this, nomPrenomPatient);
         modPerWindow->exec();
 
-    }else {
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Modifier Personnel");
-        msgBox.setText("Veuillez selectionner un Personnel avant de supprimer");
-        msgBox.exec();
+    }
+    catch (int e)
+    {
+        if(e == 1) {
+            QMessageBox msgBox;
+            msgBox.setWindowTitle("Modifier Personnel");
+            msgBox.setText("Veuillez selectionner un Personnel avant de supprimer");
+            msgBox.exec();
+        }
     }
 }
 
@@ -318,8 +296,8 @@ bool MainWindow::verifierDate(QString date){
 
 bool MainWindow::verifierNomPropre(QString nomPropre){
     bool valide = true;
-    QRegExp rx("[A-Z][a-z]*");
-    if(!rx.exactMatch(nomPropre) && nomPropre != ""){
+    QRegExp rx("[À-ŸA-Zà-ÿa-z]*");
+    if(!rx.exactMatch(nomPropre)){
         valide = false;
     }
     return valide;
@@ -334,11 +312,11 @@ bool MainWindow::verifierNumID(QString numId){
     return valide;
 }
 
-void MainWindow::rechercherPatient(){
+void MainWindow::rechercherPatients(){
     bool verifier = true;
 
     //Verifications
-    if (!verifierNumID(ui->lineEdit->text())){
+    if (!verifierNumID(ui->idPatient_r->text())){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"
@@ -346,7 +324,7 @@ void MainWindow::rechercherPatient(){
                        "(uniquement des chiffres ou laisser libre)</p>");
         msgBox.exec();
         verifier= false;
-    }else if (!verifierNomPropre(ui->lineEdit_2->text())){
+    }else if (!verifierNomPropre(ui->nomPatient_r->text())){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"
@@ -354,7 +332,7 @@ void MainWindow::rechercherPatient(){
                        "(1 Majuscule + minuscules ou laisser vide)<br></p>");
         msgBox.exec();
         verifier= false;
-    }else if (!verifierNomPropre(ui->lineEdit_3->text())){
+    }else if (!verifierNomPropre(ui->prenomPatient_r->text())){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"
@@ -362,7 +340,7 @@ void MainWindow::rechercherPatient(){
                        "(1 Majuscule + minuscules ou laisser vide)<br></p>");
         msgBox.exec();
         verifier= false;
-    }else if (!verifierDate(ui->lineEdit_4->text())){
+    }else if (!verifierDate(ui->dateDebut_r->text())){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"
@@ -370,7 +348,7 @@ void MainWindow::rechercherPatient(){
                        "(JJ/MM/AAAA ou laisser vide)</p>");
         msgBox.exec();
         verifier= false;
-    }else if (!verifierDate(ui->lineEdit_5->text())){
+    }else if (!verifierDate(ui->dateFin_r->text())){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"
@@ -381,8 +359,18 @@ void MainWindow::rechercherPatient(){
     }
 
     if (verifier == true){  // Si le formulaire est correctement rempli
-        //Si Vrai on lance la recherche
+
+        modelPatient = new modelTablePatient(this, baseDonnee->getListePatientsFilter(requestDataBase,
+                                                                                      ui->idPatient_r->text(),
+                                                                                      ui->nomPatient_r->text(),
+                                                                                      ui->prenomPatient_r->text(),
+                                                                                      ui->dateDebut_r->text(),
+                                                                                      ui->dateFin_r->text()));
+        ui->tableView->setModel(modelPatient);
+
         this->setStatusBar("Recherche effectuée");
+    } else {
+        this->setStatusBar("Impossible de faire la recherche avec les paramètres renseignés.");
     }
 
 }

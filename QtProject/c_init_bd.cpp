@@ -146,7 +146,7 @@ bool c_init_bd::Creation_BD()
                           "SELECT '1' AS 'idPatient','01/06/2013' AS 'dateCreation', 'Ricardo' AS 'nom', 'Jacques' AS 'prenom', '3 rue des justices' AS 'adresse', 'Tours' AS 'ville', '37200' AS 'cp', '247558963' AS 'tel', 'email1@gmail.com' AS 'email', '01/06/2013' AS 'dateConsultation', 90 AS 'dureeConsultation', '2' AS 'priorite', 'Dépressif' AS 'commentaire'"
                                   "UNION SELECT 2, '01/06/2013', 'Pirouette', 'Stéphanie', '15 rue des dames', 'Paris' ,37390,247542942, 'email2@gmail.com', '01/06/2013', 50, 2, 'Chanceaux'"
                                   "UNION SELECT 3, '01/06/2013', 'Puisser', 'Albert', '15 rue des chevaux','Paris', 37250,247642892,'email3@gmail.com', '01/06/2013', 45, 3, 'Verigné'"
-                                  "UNION SELECT 4, '01/06/2013', 'Tujais', 'Téo', '15 rue de l''arbre', 'Monts', 37450, 247845889,'email4@gmail.com', '01/06/2013', 20, 4, ''"
+                                  "UNION SELECT 4, '17/03/2019', 'Tujais', 'Téo', '15 rue de l''arbre', 'Monts', 37450, 247845889,'email4@gmail.com', '17/03/2019', 20, 4, ''"
                                   "UNION SELECT 5, '01/06/2013', 'Kistran', 'Flavien', '89 impasse des rangs', 'Mettray', 37620, 247895623,'email5@gmail.com', '01/06/2013', 80, 1, 'En forme.'"
                                   "UNION SELECT 6, '01/06/2013', 'Qing', 'Xue', '14 rue Jean Jaures', 'Tours', 37200, 247555588,'email6@gmail.com', '01/06/2013', 60, 3, 'Aucun.'");
         if(!b_test)

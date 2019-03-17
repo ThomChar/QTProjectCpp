@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[15];
-    char stringdata0[245];
+    char stringdata0[246];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,7 +45,7 @@ QT_MOC_LITERAL(10, 151, 19), // "gererTypesPersonnel"
 QT_MOC_LITERAL(11, 171, 15), // "afficherAPropos"
 QT_MOC_LITERAL(12, 187, 18), // "afficherDateSelect"
 QT_MOC_LITERAL(13, 206, 20), // "afficherDateSelect_2"
-QT_MOC_LITERAL(14, 227, 17) // "rechercherPatient"
+QT_MOC_LITERAL(14, 227, 18) // "rechercherPatients"
 
     },
     "MainWindow\0ajouterPatient\0\0supprimerPatient\0"
@@ -54,7 +54,7 @@ QT_MOC_LITERAL(14, 227, 17) // "rechercherPatient"
     "supprimerPersonnel\0modifierPersonnel\0"
     "gererTypesPersonnel\0afficherAPropos\0"
     "afficherDateSelect\0afficherDateSelect_2\0"
-    "rechercherPatient"
+    "rechercherPatients"
 };
 #undef QT_MOC_LITERAL
 
@@ -122,7 +122,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 9: _t->afficherAPropos(); break;
         case 10: _t->afficherDateSelect(); break;
         case 11: _t->afficherDateSelect_2(); break;
-        case 12: _t->rechercherPatient(); break;
+        case 12: _t->rechercherPatients(); break;
         default: ;
         }
     }

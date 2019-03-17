@@ -6,7 +6,6 @@
 #include "requetebd.h"
 #include "patient.h"
 #include "compte.h"
-#include "typePersonnel.h"
 
 RequeteBD::RequeteBD(QSqlDatabase db)
 {
@@ -340,6 +339,91 @@ QList<Patient> RequeteBD::getListePatients(QSqlDatabase db){
        };
 
        return listePatients;
+}
+
+/**
+ * Requete permettant d'obtenir la liste des Patients de la base de donnée correspndant au filtre
+ * @brief RequeteBD::getListePatientsFilter
+ * @param db
+ */
+QList<Patient> RequeteBD::getListePatientsFilter(QSqlDatabase db, QString idPatient, QString nomPatient, QString prenomPatient, QString dateDebut, QString dateFin){
+//AND dateConsultation BETWEEN
+    QString querys = "SELECT * FROM TPatient WHERE idPatient LIKE :idPatient_r AND nom LIKE :nom_r AND prenom LIKE :prenom_r";
+    QList<Patient> listePatients;
+
+    // la date
+    if(dateDebut != "" && dateFin != "")
+    {
+        querys+= " AND dateConsultation BETWEEN :dateDebut AND :dateFin";
+    }
+    else {
+        if(dateDebut != "") {
+            querys+= " AND dateConsultation >= :dateDebut";
+        }
+        if(dateFin != "") {
+            querys+= " AND dateConsultation <= :dateFin";
+        }
+    }
+
+    QSqlQuery SqlQuery = QSqlQuery( db );
+    SqlQuery.prepare(querys);
+
+    SqlQuery.bindValue(":idPatient_r", idPatient +"%");
+    SqlQuery.bindValue(":nom_r", nomPatient +"%");
+    SqlQuery.bindValue(":prenom_r", prenomPatient +"%");
+    // la date
+    if(dateDebut != "" && dateFin != "")
+    {
+        SqlQuery.bindValue(":dateDebut", dateDebut);
+        SqlQuery.bindValue(":dateFin", dateFin);
+    }
+    else {
+        if(dateDebut != "") {
+            SqlQuery.bindValue(":dateDebut", dateDebut);
+        }
+        if(dateFin != "") {
+            SqlQuery.bindValue(":dateFin", dateFin);
+        }
+    }
+    SqlQuery.exec();
+
+    while (SqlQuery.next())
+    {
+        int field_idx   = SqlQuery.record().indexOf("idPatient");
+        int field_idx2   = SqlQuery.record().indexOf("dateCreation");
+        int field_idx3   = SqlQuery.record().indexOf("nom");
+        int field_idx4   = SqlQuery.record().indexOf("prenom");
+        int field_idx5   = SqlQuery.record().indexOf("adresse");
+        int field_idx6   = SqlQuery.record().indexOf("ville");
+        int field_idx7   = SqlQuery.record().indexOf("cp");
+        int field_idx8   = SqlQuery.record().indexOf("tel");
+        int field_idx9   = SqlQuery.record().indexOf("email");
+        int field_idx10   = SqlQuery.record().indexOf("dateConsultation");
+        int field_idx11   = SqlQuery.record().indexOf("dureeConsultation");
+        int field_idx12   = SqlQuery.record().indexOf("priorite");
+        int field_idx13   = SqlQuery.record().indexOf("commentaire");
+        int idPatient = SqlQuery.record().value(field_idx).toInt();
+        QString dateCreation = SqlQuery.record().value(field_idx2).toString();
+        QString nom = SqlQuery.record().value(field_idx3).toString();
+        QString prenom = SqlQuery.record().value(field_idx4).toString();
+        QString adresse = SqlQuery.record().value(field_idx5).toString();
+        QString ville = SqlQuery.record().value(field_idx6).toString();
+        QString cp = SqlQuery.record().value(field_idx7).toString();
+        QString tel = SqlQuery.record().value(field_idx8).toString();
+        QString email = SqlQuery.record().value(field_idx9).toString();
+        QString dateConsultation = SqlQuery.record().value(field_idx10).toString();
+        QString dureeConsultation = SqlQuery.record().value(field_idx11).toString();
+        int priorite = SqlQuery.record().value(field_idx12).toInt();
+        QString commentaire = SqlQuery.record().value(field_idx13).toString();
+
+        QString medecin = getNomPrenomPersonnelConsult(db,idPatient);
+        Patient patient(idPatient ,dateCreation.toStdString(), nom.toStdString(), prenom.toStdString(), adresse.toStdString(), ville.toStdString(), cp.toStdString(), tel.toStdString(), email.toStdString(), dateConsultation.toStdString(), dureeConsultation.toStdString(), priorite,medecin.toStdString(), commentaire.toStdString());
+        //Patient patient(idPatient ,dateCreation.toStdString(), nom.toStdString(), prenom.toStdString(), adresse.toStdString(), ville.toStdString(), cp.toStdString(), tel.toStdString(), email.toStdString(), dateConsultation.toStdString(), dureeConsultation.toStdString(), priorite,medecin.toStdString(), commentaire.toStdString());
+        //qDebug() << idPatient << ", " << dateCreation << ", " << nom << ", " << prenom << ", "<< adresse << ", " << ville << ", " << cp << ", "<< tel << ", " << email << ", " << dateConsultation << ", " << dureeConsultation << ", " << priorite << ", " << dateConsultation << ", " << commentaire ;
+        listePatients.push_back(patient);
+    };
+
+    return listePatients;
 }
 
 QList<Consult> RequeteBD::getListeConsults(QSqlDatabase db){
