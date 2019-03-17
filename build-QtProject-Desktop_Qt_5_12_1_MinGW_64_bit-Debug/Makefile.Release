@@ -4482,6 +4482,7 @@ release/gestiontypemedecin.o: ../QtProject/gestiontypemedecin.cpp D:/logiciels/Q
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/qfiledevice.h \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qvector2d.h \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qtouchdevice.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/QDebug \
 		../QtProject/gestiontypemedecin.h \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QDialog \
 		../QtProject/modeltabletypemedecin.h \
@@ -4745,7 +4746,64 @@ release/modifiertypepersonnel.o: ../QtProject/modifiertypepersonnel.cpp ../QtPro
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/qfiledevice.h \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qvector2d.h \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qtouchdevice.h \
-		ui_modifiertypepersonnel.h
+		ui_modifiertypepersonnel.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/QVariant \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QApplication \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qapplication.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/qcoreapplication.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/qeventloop.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qguiapplication.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qinputmethod.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QFrame \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qframe.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QLabel \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qlabel.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QLineEdit \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qlineedit.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qtextcursor.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qtextformat.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qpen.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qtextoption.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QPushButton \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qpushbutton.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qicon.h \
+		../QtProject/mainwindow.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QMainWindow \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qmainwindow.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qtabwidget.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/QStandardItemModel \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		../QtProject/calendrier.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QCalendarWidget \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qcalendarwidget.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/qdatetime.h \
+		../QtProject/ajoutpatient.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtSql/QSqlDatabase \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtSql/qsqldatabase.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtSql/qtsqlglobal.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtSql/qtsql-config.h \
+		../QtProject/supprimerpatient.h \
+		../QtProject/modifierpatient.h \
+		../QtProject/patient.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/QString \
+		../QtProject/ajoutpersonnel.h \
+		../QtProject/supprimerpersonnel.h \
+		../QtProject/modifierpersonnel.h \
+		../QtProject/personnel.h \
+		../QtProject/apropos.h \
+		../QtProject/requetebd.h \
+		../QtProject/consult.h \
+		../QtProject/compte.h \
+		../QtProject/typepersonnel.h \
+		../QtProject/modeltablepatient.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/QAbstractTableModel \
+		../QtProject/gestiontypemedecin.h \
+		../QtProject/modeltabletypemedecin.h \
+		../QtProject/supprimertypepersonnel.h \
+		../QtProject/modeltreepersonnel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\modifiertypepersonnel.o ..\QtProject\modifiertypepersonnel.cpp
 
 release/supprimertypepersonnel.o: ../QtProject/supprimertypepersonnel.cpp ../QtProject/supprimertypepersonnel.h \
@@ -4854,11 +4912,25 @@ release/supprimertypepersonnel.o: ../QtProject/supprimertypepersonnel.cpp ../QtP
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qvector2d.h \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qtouchdevice.h \
 		ui_supprimertypepersonnel.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/QVariant \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QApplication \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qapplication.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/qcoreapplication.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/qeventloop.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qguiapplication.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qinputmethod.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QLabel \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qlabel.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qframe.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QPushButton \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qpushbutton.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qicon.h \
 		../QtProject/mainwindow.h \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/QMainWindow \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qmainwindow.h \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtWidgets/qtabwidget.h \
-		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qicon.h \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/QStandardItemModel \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtGui/qstandarditemmodel.h \
 		D:/logiciels/QT/5.12.1/mingw73_64/include/QtCore/qabstractitemmodel.h \
