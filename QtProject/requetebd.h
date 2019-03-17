@@ -18,7 +18,7 @@ public:
     bool verificationLogin(QSqlDatabase db, QString login, QString password);
     void addPatient(QSqlDatabase db, Patient patient);
     void removePatient(QSqlDatabase db, int numId);
-    void modifierPatient(QSqlDatabase db, Patient patient/*,int pastIdPersonnel*/);
+    void modifierPatient(QSqlDatabase db, Patient patient/*,QList<int>pastIdListesMedecins*/);
     void addPersonnel(QSqlDatabase db, Personnel personnel, int idType, int idCompte);
     void removePersonnel(QSqlDatabase db, int idRessource, int idCompte);
     void modifierPersonnel(QSqlDatabase db, Personnel personnel, int idType, int idCompte);
@@ -27,6 +27,9 @@ public:
     void ajouterTypePersonnel(QSqlDatabase db, typePersonnel type);
     void modifierTypePersonnel(QSqlDatabase db, typePersonnel type);//
     void supprimerTypePersonnel(QSqlDatabase db,int idType);//
+    void ajouterConsult(QSqlDatabase db, Consult consult);
+    void supprimerConsult(QSqlDatabase db, int idConsult);
+    int getIdConsult(QSqlDatabase db,int idPatient, int idPersonnel);
     bool getListePersType(QSqlDatabase db,int idType);
     int getIdPersonnel(QSqlDatabase db, string nomPrenom);
     int getIdCompte(QSqlDatabase db, int idRessource);
@@ -43,6 +46,8 @@ public:
     QList<Personnel> getListePersonnel(QSqlDatabase db);
     QList<typePersonnel> getListeTypePersonnels(QSqlDatabase db);
     QList<QString> getLabelsTypePersonnel(QSqlDatabase db);
+    QList<int> getIdRessourcesPatient(QSqlDatabase db, int idPatient);
+
 };
 
 #endif // REQUETEBD_H

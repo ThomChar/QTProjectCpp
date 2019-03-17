@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QSqlDatabase>
 #include "calendrier.h"
+#include "personnel.h"
+#include "modeltreepersonnel.h"
 
 namespace Ui {
 class ajoutPatient;
@@ -25,6 +27,7 @@ public:
     bool verifierNumTel(QString numTel);
     bool verifierEmail(QString email);
     bool verifierMedecin(QString medecin);
+    bool verifierlisteMedecins(QList<Personnel>listePersonnel);
 
 private slots:
     void afficherDateSelect();
@@ -33,13 +36,20 @@ private slots:
     void annuler();
     void afficherCalendrier();
     void afficherCalendrier_2();
+    void ajouterPersonnelTraitant();
+    void supprimerPersonnelTraitant();
 
 private:
     Ui::ajoutPatient *ui;
 
-    //methodes de verifications à ajouter
     Calendrier *calendrier;
     Calendrier *calendrier_2;
+    modelTreePersonnel *modelPersonnelBD;
+    modelTreePersonnel *modelPersonnelTraitant;
+    QList<QString> listeTypePersonnel;
+    QList<Personnel> listePersonnelBD;
+    QList<Personnel> listePersonnelTraitant;
+    QList<Personnel> listePersonnel;
 
 };
 

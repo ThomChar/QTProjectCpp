@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>554</width>
-    <height>675</height>
+    <height>824</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>510</y>
+     <y>660</y>
      <width>531</width>
      <height>111</height>
     </rect>
@@ -464,8 +464,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>382</x>
-     <y>640</y>
+     <x>380</x>
+     <y>790</y>
      <width>161</width>
      <height>28</height>
     </rect>
@@ -504,7 +504,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>470</y>
+     <y>610</y>
      <width>531</width>
      <height>20</height>
     </rect>
@@ -512,21 +512,6 @@
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
-  </widget>
-  <widget class="QComboBox" name="comboBox">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>440</y>
-     <width>251</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>ex: Anne Marie</string>
-    </property>
-   </item>
   </widget>
   <widget class="QLabel" name="label_14">
    <property name="geometry">
@@ -550,7 +535,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>490</y>
+     <y>630</y>
      <width>161</width>
      <height>16</height>
     </rect>
@@ -568,7 +553,7 @@
    <property name="geometry">
     <rect>
      <x>210</x>
-     <y>640</y>
+     <y>790</y>
      <width>161</width>
      <height>28</height>
     </rect>
@@ -615,7 +600,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Personnel lié</string>
+    <string>Personnel(s) lié(s)</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="spinBox">
@@ -625,6 +610,60 @@
      <y>400</y>
      <width>141</width>
      <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="leftArrow_toolButton">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>520</y>
+     <width>31</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>...</string>
+   </property>
+   <property name="icon">
+    <iconset resource="ressources/ressources.qrc">
+     <normaloff>:/leftArrow_icon.png</normaloff>:/leftArrow_icon.png</iconset>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="rightArrow_toolButton">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>490</y>
+     <width>31</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>...</string>
+   </property>
+   <property name="icon">
+    <iconset resource="ressources/ressources.qrc">
+     <normaloff>:/rightArrow_icon.png</normaloff>:/rightArrow_icon.png</iconset>
+   </property>
+  </widget>
+  <widget class="QTreeView" name="PersonnelBD_treeView">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>470</y>
+     <width>201</width>
+     <height>141</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTreeView" name="PersonnelTraitant_treeView">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>470</y>
+     <width>201</width>
+     <height>141</height>
     </rect>
    </property>
   </widget>

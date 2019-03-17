@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "calendrier.h"
 #include "patient.h"
+#include "modeltreepersonnel.h"
 
 namespace Ui {
 class modifierPatient;
@@ -25,6 +26,7 @@ public:
     bool verifierNumTel(QString numTel);
     bool verifierEmail(QString email);
     bool verifierMedecin(QString medecin);
+    bool verifierlisteMedecins(QList<Personnel>listePersonnel);
 
 private slots:
     void afficherDateSelect();
@@ -33,6 +35,8 @@ private slots:
     void annuler();
     void afficherCalendrier();
     void afficherCalendrier_2();
+    void ajouterPersonnelTraitant();
+    void supprimerPersonnelTraitant();
 
 private:
      Ui::modifierPatient *ui;
@@ -40,6 +44,13 @@ private:
     Calendrier *calendrier_2;
     Patient currentPatient;
     int pastIdPersonnel;
+    int idPatient;
+    modelTreePersonnel *modelPersonnelBD;
+    modelTreePersonnel *modelPersonnelTraitant;
+    QList<QString> listeTypePersonnel;
+    QList<Personnel> listePersonnelBD;
+    QList<Personnel> listePersonnelTraitant;
+    QList<Personnel> listePersonnel;
 
 };
 
