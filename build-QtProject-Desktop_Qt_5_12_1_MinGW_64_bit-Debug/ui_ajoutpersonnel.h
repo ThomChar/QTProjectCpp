@@ -58,6 +58,9 @@ public:
     QComboBox *comboBox_2;
     QToolButton *toolButton;
     QFrame *line_3;
+    QLabel *addType_label;
+    QLineEdit *addType_edit;
+    QToolButton *addType_toolButton;
 
     void setupUi(QDialog *ajoutPersonnel)
     {
@@ -184,15 +187,8 @@ public:
         label_11->setFont(font);
         comboBox_2 = new QComboBox(ajoutPersonnel);
         comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
         comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-        comboBox_2->setGeometry(QRect(80, 350, 251, 22));
+        comboBox_2->setGeometry(QRect(80, 350, 181, 22));
         toolButton = new QToolButton(ajoutPersonnel);
         toolButton->setObjectName(QString::fromUtf8("toolButton"));
         toolButton->setGeometry(QRect(330, 60, 31, 21));
@@ -205,6 +201,19 @@ public:
         line_3->setGeometry(QRect(10, 440, 531, 20));
         line_3->setFrameShape(QFrame::HLine);
         line_3->setFrameShadow(QFrame::Sunken);
+        addType_label = new QLabel(ajoutPersonnel);
+        addType_label->setObjectName(QString::fromUtf8("addType_label"));
+        addType_label->setGeometry(QRect(280, 350, 81, 16));
+        addType_label->setFont(font);
+        addType_edit = new QLineEdit(ajoutPersonnel);
+        addType_edit->setObjectName(QString::fromUtf8("addType_edit"));
+        addType_edit->setGeometry(QRect(370, 350, 131, 22));
+        addType_toolButton = new QToolButton(ajoutPersonnel);
+        addType_toolButton->setObjectName(QString::fromUtf8("addType_toolButton"));
+        addType_toolButton->setGeometry(QRect(510, 350, 27, 22));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/add_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addType_toolButton->setIcon(icon1);
 
         retranslateUi(ajoutPersonnel);
 
@@ -245,15 +254,10 @@ public:
         label_13->setText(QApplication::translate("ajoutPersonnel", "Tel.(Facul)", nullptr));
         label_11->setText(QApplication::translate("ajoutPersonnel", "Pour informaticien :", nullptr));
         comboBox_2->setItemText(0, QApplication::translate("ajoutPersonnel", "ex: m\303\251decin A", nullptr));
-        comboBox_2->setItemText(1, QApplication::translate("ajoutPersonnel", "m\303\251decin A", nullptr));
-        comboBox_2->setItemText(2, QApplication::translate("ajoutPersonnel", "m\303\251decin B", nullptr));
-        comboBox_2->setItemText(3, QApplication::translate("ajoutPersonnel", "radiologue", nullptr));
-        comboBox_2->setItemText(4, QApplication::translate("ajoutPersonnel", "infirmi\303\250re", nullptr));
-        comboBox_2->setItemText(5, QApplication::translate("ajoutPersonnel", "kin\303\251sith\303\251rapeute", nullptr));
-        comboBox_2->setItemText(6, QApplication::translate("ajoutPersonnel", "psychologue", nullptr));
-        comboBox_2->setItemText(7, QApplication::translate("ajoutPersonnel", "informaticien", nullptr));
 
         toolButton->setText(QString());
+        addType_label->setText(QApplication::translate("ajoutPersonnel", "Ajouter Type :", nullptr));
+        addType_toolButton->setText(QApplication::translate("ajoutPersonnel", "...", nullptr));
     } // retranslateUi
 
 };

@@ -21,14 +21,14 @@ modifierPatient::modifierPatient(QWidget *parent, int idPatient) :
     this->currentPatient = qobject_cast<MainWindow*>(parent)->getBD()->getPatient(qobject_cast<MainWindow*>(parent)->getBD()->getDB(),idPatient);
     this->currentPatient.setMedecin(qobject_cast<MainWindow*>(parent)->getBD()->getNomPrenomPersonnelConsult(
                                         qobject_cast<MainWindow*>(parent)->getBD()->getDB(),idPatient).toStdString());
-    qDebug()<<QString::fromStdString("Le medecin est "+this->currentPatient.getMedecin());
+    //qDebug()<<QString::fromStdString("Le medecin est "+this->currentPatient.getMedecin());
     //Récuperation de l'Id medecin avant modification
-    QStringList nomPrenom = QString::fromStdString(currentPatient.getMedecin()).split(" ");
+    /*QStringList nomPrenom = QString::fromStdString(currentPatient.getMedecin()).split(" ");
     string nomP = nomPrenom.value(0).toStdString();
     string prenomP = nomPrenom.value(1).toStdString();
     qDebug()<<QString::fromStdString(nomP);
-    qDebug()<<QString::fromStdString(prenomP);
-    this->pastIdPersonnel = qobject_cast<MainWindow*>(parent)->getBD()->getIdPersonnel(qobject_cast<MainWindow*>(parent)->getBD()->getDB(),nomP,prenomP);
+    qDebug()<<QString::fromStdString(prenomP);*/
+    this->pastIdPersonnel = qobject_cast<MainWindow*>(parent)->getBD()->getIdPersonnel(qobject_cast<MainWindow*>(parent)->getBD()->getDB(),currentPatient.getMedecin());
     //this->currentPatient = patient;
 
     ui->lineEdit->setPlaceholderText("ex: JJ/MM/AAAA");

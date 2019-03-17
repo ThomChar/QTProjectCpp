@@ -1,11 +1,12 @@
-#include "requetebd.h"
-#include "patient.h"
-#include "compte.h"
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QSqlError>
 #include <QDebug>
+#include "requetebd.h"
+#include "patient.h"
+#include "compte.h"
+#include "typePersonnel.h"
 
 RequeteBD::RequeteBD(QSqlDatabase db)
 {
@@ -67,10 +68,10 @@ void RequeteBD::addPatient(QSqlDatabase db, Patient patient){
     SqlQuery.exec();
 
    // Obteir l'ID de la personne ayant effectuée la consultation
-   QStringList nomPrenom = QString::fromStdString(patient.getMedecin()).split(" ");
+   /*QStringList nomPrenom = QString::fromStdString(patient.getMedecin()).split(" ");
    string nom = nomPrenom.value(0).toStdString();
-   string prenom = nomPrenom.value(1).toStdString();
-   int idRessource = getIdPersonnel(db, nom, prenom);
+   string prenom = nomPrenom.value(1).toStdString();*/
+   int idRessource = getIdPersonnel(db, patient.getMedecin());
     //Déterminer idConsult
    //patient.setIdConsult(this->getListeConsults(db).last().getIdConsult()+1);
 
@@ -85,7 +86,7 @@ void RequeteBD::addPatient(QSqlDatabase db, Patient patient){
 
 }
 
-int RequeteBD::getIdPersonnel(QSqlDatabase db, string nom, string prenom){
+int RequeteBD::getIdPersonnel(QSqlDatabase db, string nomPrenom){
     /*QSqlQuery SqlQuery2 = QSqlQuery( db );
     SqlQuery2.prepare( "select idRessource from TRessource"
                       "where nom = :nom and prenom =:prenom");
@@ -94,10 +95,17 @@ int RequeteBD::getIdPersonnel(QSqlDatabase db, string nom, string prenom){
     SqlQuery2.exec();
     int idPersonnel   = SqlQuery2.record().indexOf("idRessource");
     SqlQuery2.record().value(idPersonnel).toInt()*/
-    QList<Personnel> listePersonnels = getListePersonnel(db);
+    /*QList<Personnel> listePersonnels = getListePersonnel(db);
     int idPersonnel = 0;
     for (int i = 0;i<listePersonnels.size();i++){
         if(listePersonnels[i].getNom() == nom and listePersonnels[i].getPrenom() == prenom){
+            idPersonnel = listePersonnels[i].getNumId();
+        }
+    }*/
+    QList<Personnel> listePersonnels = getListePersonnel(db);
+    int idPersonnel = 0;
+    for (int i = 0;i<listePersonnels.size();i++){
+        if(listePersonnels[i].getNom() + " " + listePersonnels[i].getPrenom() == nomPrenom){
             idPersonnel = listePersonnels[i].getNumId();
         }
     }
@@ -162,11 +170,13 @@ QString RequeteBD::getNomPrenomPersonnelConsult(QSqlDatabase db, int idPatient){
  * @param numId
  */
 void RequeteBD::removePatient(QSqlDatabase db, int numId){
+
     //Supprimer les consultations liées au Patient
     QSqlQuery SqlQuery = QSqlQuery( db );
     SqlQuery.prepare("DELETE FROM TConsult WHERE idPatient = :idPatient");
     SqlQuery.bindValue(":idPatient", numId);
     SqlQuery.exec();
+
     //Supprimer le Patient
     QSqlQuery SqlQuery2 = QSqlQuery( db );
     SqlQuery2.prepare("DELETE FROM TPatient WHERE idPatient = :idPatient");
@@ -201,21 +211,21 @@ void RequeteBD::modifierPatient(QSqlDatabase db, Patient patient /*,int pastIdPe
     SqlQuery.exec();
 
     //Modification du medecin ayant effectué la consultation si nécessaire
-    QStringList nomPrenom = QString::fromStdString(patient.getMedecin()).split(" ");
+    /*QStringList nomPrenom = QString::fromStdString(patient.getMedecin()).split(" ");
     string nom = nomPrenom.value(0).toStdString();
-    string prenom = nomPrenom.value(1).toStdString();
-    int idRessource = getIdPersonnel(db, nom, prenom);
+    string prenom = nomPrenom.value(1).toStdString();*/
+    int idRessource = getIdPersonnel(db,patient.getMedecin());
     //qDebug()<<patient.getPriorite();
     //qDebug()<<pastIdPersonnel;
     //qDebug()<<idRessource;
     QSqlQuery SqlQuery3 = QSqlQuery( db );
     SqlQuery3.prepare( "UPDATE TConsult SET idRessource = :idRessource WHERE idPatient = :idPatient ");
-     SqlQuery3.bindValue(":idRessource", idRessource);
+    SqlQuery3.bindValue(":idRessource", idRessource);
      //SqlQuery3.bindValue(":pastIdRessource", pastIdPersonnel);
-     SqlQuery3.bindValue(":idPatient", patient.getNumId());
-     SqlQuery3.exec();
+    SqlQuery3.bindValue(":idPatient", patient.getNumId());
+    SqlQuery3.exec();
 
-     qDebug()<<getNomPrenomPersonnelConsult(db, patient.getNumId());
+     //qDebug()<<getNomPrenomPersonnelConsult(db, patient.getNumId());
 
 }
 
@@ -390,7 +400,7 @@ QList<Compte> RequeteBD::getListeComptes(QSqlDatabase db){
  */
 void RequeteBD::addPersonnel(QSqlDatabase db, Personnel personnel, int idType, int idCompte){
     QSqlQuery SqlQuery = QSqlQuery( db );
-    SqlQuery.prepare( "INSERT INTO TPatient (idRessource ,dateCreation, nom, prenom, adresse, ville, cp, tel, email, dateConsultation, dureeConsultation, priorite, commentaire)"
+    SqlQuery.prepare( "INSERT INTO TRessource (idRessource ,dateCreation, nom, prenom, adresse, ville, cp, tel, email, idType)"
                       "VALUES(:idRessource ,:dateCreation, :nom, :prenom, :adresse, :ville, :cp, :tel, :email, :idType)");
     SqlQuery.bindValue(":idRessource", personnel.getNumId());
     SqlQuery.bindValue(":dateCreation", personnel.getDateCreation().c_str());
@@ -407,12 +417,12 @@ void RequeteBD::addPersonnel(QSqlDatabase db, Personnel personnel, int idType, i
 
     if(idCompte!=0){
         QSqlQuery SqlQuery2 = QSqlQuery( db );
-        SqlQuery.prepare( "INSERT INTO TCompte (idCompte ,idRessource, login, mdp)"
+        SqlQuery2.prepare( "INSERT INTO TCompte (idCompte ,idRessource, login, mdp)"
                           "VALUES(:idCompte ,:idRessource, :login, :mdp)");
-        SqlQuery.bindValue(":idCompte", idCompte);
-        SqlQuery.bindValue(":idRessource", personnel.getNumId());
-        SqlQuery.bindValue(":login", personnel.getLogin().c_str());
-        SqlQuery.bindValue(":mdp", personnel.getPassword().c_str());
+        SqlQuery2.bindValue(":idCompte", idCompte);
+        SqlQuery2.bindValue(":idRessource", personnel.getNumId());
+        SqlQuery2.bindValue(":login", personnel.getLogin().c_str());
+        SqlQuery2.bindValue(":mdp", personnel.getPassword().c_str());
         SqlQuery2.exec();
     }
 
@@ -425,16 +435,18 @@ void RequeteBD::addPersonnel(QSqlDatabase db, Personnel personnel, int idType, i
  */
 void RequeteBD::removePersonnel(QSqlDatabase db, int idRessource, int idCompte){
 
-    QSqlQuery SqlQuery = QSqlQuery( db );
     QSqlQuery SqlQuery2 = QSqlQuery( db );
+    QSqlQuery SqlQuery3 = QSqlQuery( db );
 
-    SqlQuery.prepare("DELETE FROM 'TPersonnel' WHERE 'idPersonnel' = :idPersonnel");
-    SqlQuery.bindValue(":idPersonnel", idRessource);
-    SqlQuery.exec();
+    supprimerCompte(db,idRessource);
 
-    SqlQuery2.prepare("DELETE FROM 'TCompte' WHERE 'idCompte' = :idCompte");
+    SqlQuery2.prepare("DELETE FROM TCompte WHERE idCompte = :idCompte");
     SqlQuery2.bindValue(":idCompte", idCompte);
     SqlQuery2.exec();
+
+    SqlQuery3.prepare("DELETE FROM TRessource WHERE idRessource = :idRessource");
+    SqlQuery3.bindValue(":idRessource", idRessource);
+    SqlQuery3.exec();
 }
 /**
  * Requete permettant de supprimer un Personnel de la base de donnée
@@ -442,13 +454,11 @@ void RequeteBD::removePersonnel(QSqlDatabase db, int idRessource, int idCompte){
  * @param db
  * @param numId
  */
-void RequeteBD::modifierPersonnel(QSqlDatabase db, Personnel personnel, int idType, int idCompte){
+void RequeteBD::modifierPersonnel(QSqlDatabase db, Personnel personnel, int idType,int idCompte){
     QSqlQuery SqlQuery = QSqlQuery( db );
-    SqlQuery.prepare( "UPDATE TPatient"
-                      "SET (dateCreation = ':dateCreation', nom = ':nom', prenom = ':prenom', adresse = ':adresse', ville = ':ville',"
-                      "cp = ':cp', tel = ':tel', email = ':email', idType = ':idType')"
-                      "WHERE 'idPersonnel' = :idPersonnel");
-    SqlQuery.bindValue(":idPersonnel", personnel.getNumId());
+    SqlQuery.prepare( "UPDATE TRessource SET dateCreation = :dateCreation, nom = :nom, prenom = :prenom, adresse = :adresse, ville = :ville,"
+                      "cp = :cp, tel = :tel, email = :email, idType = :idType WHERE idRessource = :idRessource");
+    SqlQuery.bindValue(":idRessource", personnel.getNumId());
     SqlQuery.bindValue(":dateCreation", personnel.getDateCreation().c_str());
     SqlQuery.bindValue(":nom", personnel.getNom().c_str());
     SqlQuery.bindValue(":prenom", personnel.getPrenom().c_str());
@@ -459,18 +469,73 @@ void RequeteBD::modifierPersonnel(QSqlDatabase db, Personnel personnel, int idTy
     SqlQuery.bindValue(":email", personnel.getEmail().c_str());
     SqlQuery.bindValue(":idType", idType);
 
-    if(idCompte!=0){
+    if(idCompte!=0){ // Savoir si la personne à un compte ou non
     QSqlQuery SqlQuery2 = QSqlQuery( db );
     SqlQuery2.prepare( "UPDATE TCompte"
                       "SET (login = ':login', mdp = ':mdp')"
-                      "WHERE 'idCompte' = :idCompte");
+                      "WHERE 'idRessource' = :idRessource");
 
-    SqlQuery2.bindValue(":idCompte", idCompte);
+    SqlQuery2.bindValue(":idRessource", personnel.getNumId());
     SqlQuery2.bindValue(":login", personnel.getLogin().c_str());
     SqlQuery2.bindValue(":mdp", personnel.getPassword().c_str());
     SqlQuery2.exec();
     }
     SqlQuery.exec();
+}
+
+void RequeteBD::ajouterCompte(QSqlDatabase db, Compte newcompte){
+    QSqlQuery SqlQuery = QSqlQuery( db );
+    SqlQuery.prepare( "INSERT INTO TCompte (idCompte , idRessource, login, mdp)"
+                      "VALUES(:idCompte ,:idRessource, :login, :mdp)");
+    SqlQuery.bindValue(":idCompte", newcompte.getIdCompte());
+    SqlQuery.bindValue(":idRessource", newcompte.getIdRessource());
+    SqlQuery.bindValue(":login", newcompte.getLogin().c_str());
+    SqlQuery.bindValue(":mdp", newcompte.getMdp().c_str());
+    SqlQuery.exec();
+}
+
+void RequeteBD::supprimerCompte(QSqlDatabase db, int idRessource){
+    QSqlQuery SqlQuery = QSqlQuery( db );
+    SqlQuery.prepare("DELETE FROM TConsult WHERE idRessource = :idRessource");
+    SqlQuery.bindValue(":idRessource", idRessource);
+    SqlQuery.exec();
+}
+
+void RequeteBD::ajouterTypePersonnel(QSqlDatabase db, typePersonnel typePersonnel){
+    QSqlQuery SqlQuery = QSqlQuery( db );
+    SqlQuery.prepare( "INSERT INTO TType (idType , label)"
+                      "VALUES(:idType ,:label)");
+    SqlQuery.bindValue(":idType", typePersonnel.getIdType());
+    SqlQuery.bindValue(":label", typePersonnel.getLabel().c_str());
+    SqlQuery.exec();
+}
+
+void RequeteBD::modifierTypePersonnel(QSqlDatabase db, typePersonnel type){
+    QSqlQuery SqlQuery = QSqlQuery( db );
+    SqlQuery.prepare( "UPDATE TType SET label = :label WHERE idType = :idType");
+    SqlQuery.bindValue(":idType", type.getIdType());
+    SqlQuery.bindValue(":label", type.getLabel().c_str());
+    SqlQuery.exec();
+}
+
+void RequeteBD::supprimerTypePersonnel(QSqlDatabase db,int idType){
+    QSqlQuery SqlQuery = QSqlQuery( db );
+    SqlQuery.prepare("DELETE FROM TType WHERE idType = :idType");
+    SqlQuery.bindValue(":idType", idType);
+    SqlQuery.exec();
+}
+
+bool RequeteBD::getListePersType(QSqlDatabase db,int idType){
+    bool listePersonnelEstVide = true;
+
+    QList<Personnel> listePersonnel = getListePersonnel(db);
+    for (int i=0;i < listePersonnel.size(); i++){
+        if(getIdType(db,QString::fromStdString(listePersonnel[i].getTypeMedecin())) == idType){
+            listePersonnelEstVide = false;
+        }
+    }
+
+    return listePersonnelEstVide;
 }
 /**
  * Requete permettant d'obtenir un Personnel de la base de donnée
@@ -478,8 +543,8 @@ void RequeteBD::modifierPersonnel(QSqlDatabase db, Personnel personnel, int idTy
  * @param db
  * @param numId
  */
-Personnel RequeteBD::getPersonnel(QSqlDatabase db, int numId){
-    QSqlQuery SqlQuery = QSqlQuery( db );
+Personnel RequeteBD::getPersonnel(QSqlDatabase db, int idPersonnel){
+    /*QSqlQuery SqlQuery = QSqlQuery( db );
     SqlQuery.prepare("SELECT * FROM TRessource TR"
                      "NATURAL JOIN Ttype TT"
                      "LEFT JOIN Tcompte TC ON TC.idRessource = TR.idRessource"
@@ -510,29 +575,66 @@ Personnel RequeteBD::getPersonnel(QSqlDatabase db, int numId){
     QString email = SqlQuery.record().value(field_idx9).toString();
     QString typeMedecin = SqlQuery.record().value(field_idx10).toString();
     QString login = SqlQuery.record().value(field_idx11).toString();
-    QString mdp = SqlQuery.record().value(field_idx12).toString();
-    Personnel personnel(idPersonnel,dateCreation.toStdString(), nom.toStdString(), prenom.toStdString(), adresse.toStdString(), ville.toStdString(), cp.toStdString(), tel.toStdString(), email.toStdString(),typeMedecin.toStdString(),login.toStdString(),mdp.toStdString());
-    return personnel;
+    QString mdp = SqlQuery.record().value(field_idx12).toString();*/
+    //Personnel personnel(idPersonnel,dateCreation.toStdString(), nom.toStdString(), prenom.toStdString(), adresse.toStdString(), ville.toStdString(), cp.toStdString(), tel.toStdString(), email.toStdString(),typeMedecin.toStdString(),login.toStdString(),mdp.toStdString());
+
+    QList<Personnel> listePersonnels = this->getListePersonnel(db);
+    int indicePersonnel = 0;
+    for (int i = 0;i<listePersonnels.size();i++){
+        if(listePersonnels[i].getNumId()== idPersonnel){
+            indicePersonnel = i;
+        }
+    }
+
+    return listePersonnels[indicePersonnel];
 }
 
 int RequeteBD::getIdCompte(QSqlDatabase db, int idRessource){
-    QSqlQuery SqlQuery = QSqlQuery( db );
+    /*QSqlQuery SqlQuery = QSqlQuery( db );
     SqlQuery.prepare("SELECT * FROM TCompte TC where TC.idRessource = :idRessource");
     SqlQuery.bindValue(":idRessource", idRessource);
     SqlQuery.exec();
     int field_idx   = SqlQuery.record().indexOf("idCompte");
-    int idCompte= SqlQuery.record().value(field_idx).toInt();
+    int idCompte= SqlQuery.record().value(field_idx).toInt();*/
+    QList<Compte> listeComptes = getListeComptes(db);
+    int idCompte = 0;
+    for (int i = 0;i<listeComptes.size();i++){
+        if(listeComptes[i].getIdRessource() == idRessource){
+            idCompte = listeComptes[i].getIdCompte();
+        }
+    }
     return idCompte;
 }
 
-int getIdType(QSqlDatabase db, QString typeMedecin){
-    QSqlQuery SqlQuery = QSqlQuery( db );
-    SqlQuery.prepare("SELECT * FROM TType TT where TT.typeMedecin = :typeMedecin");
-    SqlQuery.bindValue(":typeMedecin", typeMedecin);
-    SqlQuery.exec();
-    int field_idx   = SqlQuery.record().indexOf("idType");
-    int idType= SqlQuery.record().value(field_idx).toInt();
+int  RequeteBD::getIdType(QSqlDatabase db, QString typeMedecin){
+    //qDebug()<< typeMedecin;
+    /*QSqlQuery SqlQuery = QSqlQuery( db );
+    SqlQuery.prepare("SELECT * FROM TType TT  WHERE TT.label = :label");
+    SqlQuery.bindValue(":label", typeMedecin);
+    SqlQuery.exec();*/
+    /*int field_idx   = SqlQuery.record().indexOf("idType");
+    int idType= SqlQuery.record().value(field_idx).toInt();*/
+    //qDebug()<< idType;
+    QList<typePersonnel> listetypePersonnels = getListeTypePersonnels(db);
+    int idType = 0;
+    for (int i = 0;i<listetypePersonnels.size();i++){
+        if(listetypePersonnels[i].getLabel() == typeMedecin.toStdString()){
+            idType = listetypePersonnels[i].getIdType();
+        }
+    }
     return idType;
+}
+
+QString RequeteBD::getTypeMedecin(QSqlDatabase db, int idRessource){
+    string typeMedecin;
+
+    QList<Personnel> listePersonnels = getListePersonnel(db);
+    for (int i = 0;i<listePersonnels.size();i++){
+        if(listePersonnels[i].getNumId() == idRessource){
+            typeMedecin = listePersonnels[i].getTypeMedecin();
+        }
+    }
+    return QString::fromStdString(typeMedecin);
 }
 
 /**
@@ -581,4 +683,54 @@ QList<Personnel> RequeteBD::getListePersonnel(QSqlDatabase db){
 
     return listePersonnels;
 }
+
+/**
+ * Requete permettant d'afficher tout les Types de Personnel de la base de donnée
+ * @brief RequeteBD::getListeTypePersonnels
+ * @param db
+ */
+QList<typePersonnel> RequeteBD::getListeTypePersonnels(QSqlDatabase db){
+    QString querys = "SELECT * FROM TType";
+    QList<typePersonnel> listeTypePersonnels;
+       QSqlQuery SqlQuery = QSqlQuery( db );
+       SqlQuery.exec( querys );
+
+       while (SqlQuery.next())
+       {
+           int field_idx   = SqlQuery.record().indexOf("idType");
+           int field_idx2   = SqlQuery.record().indexOf("label");
+           int idType = SqlQuery.record().value(field_idx).toInt();
+           QString label = SqlQuery.record().value(field_idx2).toString();
+
+           typePersonnel typeMedecin(idType,label.toStdString());
+           //qDebug() << idType << ", " << label;
+           listeTypePersonnels.push_back(typeMedecin);
+
+       };
+
+    return listeTypePersonnels;
+}
+
+/**
+ * Requete permettant d'afficher tout les Types de Personnel de la base de donnée
+ * @brief RequeteBD::getListeTypePersonnels
+ * @param db
+ */
+QList<QString> RequeteBD::getLabelsTypePersonnel(QSqlDatabase db){
+    QString querys = "SELECT * FROM TType";
+    QList<QString> listeLabelsTypePersonnel;
+       QSqlQuery SqlQuery = QSqlQuery( db );
+       SqlQuery.exec( querys );
+
+       while (SqlQuery.next())
+       {
+           int field_idx   = SqlQuery.record().indexOf("label");
+           QString label = SqlQuery.record().value(field_idx).toString();
+           //qDebug() << label;
+           listeLabelsTypePersonnel.push_back(label);
+       };
+
+    return listeLabelsTypePersonnel;
+}
+
 

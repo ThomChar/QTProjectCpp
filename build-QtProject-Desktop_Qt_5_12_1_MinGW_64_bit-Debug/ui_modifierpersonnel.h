@@ -58,6 +58,9 @@ public:
     QLineEdit *lineEdit_3;
     QLineEdit *lineEdit_4;
     QLabel *label_2;
+    QLabel *addType_label;
+    QToolButton *addType_toolButton;
+    QLineEdit *addType_edit;
 
     void setupUi(QDialog *ModifierPersonnel)
     {
@@ -79,15 +82,8 @@ public:
         line_2->setFrameShadow(QFrame::Sunken);
         comboBox_2 = new QComboBox(ModifierPersonnel);
         comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
         comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-        comboBox_2->setGeometry(QRect(80, 360, 251, 22));
+        comboBox_2->setGeometry(QRect(80, 360, 181, 22));
         lineEdit_5 = new QLineEdit(ModifierPersonnel);
         lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
         lineEdit_5->setGeometry(QRect(80, 240, 181, 22));
@@ -205,6 +201,19 @@ public:
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(10, 70, 111, 21));
         label_2->setFont(font);
+        addType_label = new QLabel(ModifierPersonnel);
+        addType_label->setObjectName(QString::fromUtf8("addType_label"));
+        addType_label->setGeometry(QRect(280, 360, 81, 16));
+        addType_label->setFont(font);
+        addType_toolButton = new QToolButton(ModifierPersonnel);
+        addType_toolButton->setObjectName(QString::fromUtf8("addType_toolButton"));
+        addType_toolButton->setGeometry(QRect(510, 360, 27, 22));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/add_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addType_toolButton->setIcon(icon1);
+        addType_edit = new QLineEdit(ModifierPersonnel);
+        addType_edit->setObjectName(QString::fromUtf8("addType_edit"));
+        addType_edit->setGeometry(QRect(370, 360, 131, 22));
 
         retranslateUi(ModifierPersonnel);
 
@@ -219,13 +228,6 @@ public:
         ModifierPersonnel->setWindowTitle(QApplication::translate("ModifierPersonnel", "Dialog", nullptr));
         lineEdit->setText(QString());
         comboBox_2->setItemText(0, QApplication::translate("ModifierPersonnel", "ex: m\303\251decin A", nullptr));
-        comboBox_2->setItemText(1, QApplication::translate("ModifierPersonnel", "m\303\251decin A", nullptr));
-        comboBox_2->setItemText(2, QApplication::translate("ModifierPersonnel", "m\303\251decin B", nullptr));
-        comboBox_2->setItemText(3, QApplication::translate("ModifierPersonnel", "radiologue", nullptr));
-        comboBox_2->setItemText(4, QApplication::translate("ModifierPersonnel", "infirmi\303\250re", nullptr));
-        comboBox_2->setItemText(5, QApplication::translate("ModifierPersonnel", "kin\303\251sith\303\251rapeute", nullptr));
-        comboBox_2->setItemText(6, QApplication::translate("ModifierPersonnel", "psychologue", nullptr));
-        comboBox_2->setItemText(7, QApplication::translate("ModifierPersonnel", "informaticien", nullptr));
 
         lineEdit_5->setText(QString());
         label_4->setText(QApplication::translate("ModifierPersonnel", "Prenom Personnel", nullptr));
@@ -238,7 +240,7 @@ public:
         label_7->setText(QApplication::translate("ModifierPersonnel", "Code Postale", nullptr));
         lineEdit_9->setText(QString());
         label_9->setText(QApplication::translate("ModifierPersonnel", "Type", nullptr));
-        pushButton->setText(QApplication::translate("ModifierPersonnel", "Ajouter", nullptr));
+        pushButton->setText(QApplication::translate("ModifierPersonnel", "Modifier", nullptr));
         label_14->setText(QApplication::translate("ModifierPersonnel", "email (Facul)", nullptr));
         lineEdit_11->setText(QString());
         lineEdit_8->setText(QString());
@@ -254,6 +256,8 @@ public:
         lineEdit_3->setText(QString());
         lineEdit_4->setText(QString());
         label_2->setText(QApplication::translate("ModifierPersonnel", "Date de cr\303\251ation ", nullptr));
+        addType_label->setText(QApplication::translate("ModifierPersonnel", "Ajouter Type :", nullptr));
+        addType_toolButton->setText(QApplication::translate("ModifierPersonnel", "...", nullptr));
     } // retranslateUi
 
 };

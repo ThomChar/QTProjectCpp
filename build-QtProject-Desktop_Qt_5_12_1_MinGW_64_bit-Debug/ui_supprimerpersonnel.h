@@ -30,34 +30,36 @@ public:
     {
         if (SupprimerPersonnel->objectName().isEmpty())
             SupprimerPersonnel->setObjectName(QString::fromUtf8("SupprimerPersonnel"));
-        SupprimerPersonnel->resize(456, 200);
+        SupprimerPersonnel->resize(409, 190);
         label_2 = new QLabel(SupprimerPersonnel);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(70, 70, 311, 31));
+        label_2->setGeometry(QRect(50, 60, 311, 31));
         QFont font;
         font.setPointSize(9);
         label_2->setFont(font);
+        label_2->setAlignment(Qt::AlignCenter);
         label_3 = new QLabel(SupprimerPersonnel);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(130, 100, 181, 31));
+        label_3->setGeometry(QRect(110, 100, 181, 31));
         label_3->setFont(font);
         label_3->setAlignment(Qt::AlignCenter);
         pushButton_2 = new QPushButton(SupprimerPersonnel);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(80, 150, 111, 28));
+        pushButton_2->setGeometry(QRect(50, 150, 111, 28));
         pushButton_2->setFont(font);
         pushButton_2->setAutoDefault(true);
         label = new QLabel(SupprimerPersonnel);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(140, 10, 171, 41));
+        label->setGeometry(QRect(120, 10, 171, 41));
         QFont font1;
         font1.setPointSize(12);
         font1.setBold(false);
         font1.setWeight(50);
         label->setFont(font1);
+        label->setAlignment(Qt::AlignCenter);
         pushButton = new QPushButton(SupprimerPersonnel);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(250, 150, 111, 28));
+        pushButton->setGeometry(QRect(230, 150, 111, 28));
         pushButton->setFont(font);
 
         retranslateUi(SupprimerPersonnel);

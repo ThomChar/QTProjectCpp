@@ -46,14 +46,16 @@ public:
         font1.setBold(false);
         font1.setWeight(50);
         label->setFont(font1);
+        label->setAlignment(Qt::AlignCenter);
         pushButton = new QPushButton(SupprimerPatient);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(230, 150, 111, 28));
         pushButton->setFont(font);
         label_2 = new QLabel(SupprimerPatient);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(50, 70, 311, 31));
+        label_2->setGeometry(QRect(50, 60, 311, 31));
         label_2->setFont(font);
+        label_2->setAlignment(Qt::AlignCenter);
         label_3 = new QLabel(SupprimerPatient);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(110, 100, 181, 31));

@@ -17,6 +17,11 @@ debug/modifierpatient.o
 debug/compte.o
 debug/supprimerpersonnel.o
 debug/modifierpersonnel.o
+debug/typepersonnel.o
+debug/gestiontypemedecin.o
+debug/modeltabletypemedecin.o
+debug/modifiertypepersonnel.o
+debug/supprimertypepersonnel.o
 debug/qrc_ressources.o
 debug/moc_mainwindow.o
 debug/moc_login.o
@@ -30,3 +35,7 @@ debug/moc_supprimerpatient.o
 debug/moc_modifierpatient.o
 debug/moc_supprimerpersonnel.o
 debug/moc_modifierpersonnel.o
+debug/moc_gestiontypemedecin.o
+debug/moc_modeltabletypemedecin.o
+debug/moc_modifiertypepersonnel.o
+debug/moc_supprimertypepersonnel.o

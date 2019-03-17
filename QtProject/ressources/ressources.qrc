@@ -5,5 +5,7 @@
         <file>Patient_icon.png</file>
         <file>Personnel_icon.jpg</file>
         <file>quitter_icon.png</file>
+	<file>add_icon.png</file>
+	<file>typePerson_icon.png</file>
     </qresource>
 </RCC>

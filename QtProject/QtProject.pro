@@ -43,7 +43,12 @@ SOURCES += \
     modifierpatient.cpp \
     compte.cpp \
     supprimerpersonnel.cpp \
-    modifierpersonnel.cpp
+    modifierpersonnel.cpp \
+    typepersonnel.cpp \
+    gestiontypemedecin.cpp \
+    modeltabletypemedecin.cpp \
+    modifiertypepersonnel.cpp \
+    supprimertypepersonnel.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -63,7 +68,12 @@ HEADERS += \
     modifierpatient.h \
     compte.h \
     supprimerpersonnel.h \
-    modifierpersonnel.h
+    modifierpersonnel.h \
+    typepersonnel.h \
+    gestiontypemedecin.h \
+    modeltabletypemedecin.h \
+    modifiertypepersonnel.h \
+    supprimertypepersonnel.h
 
 FORMS += \
         mainwindow.ui \
@@ -75,7 +85,10 @@ FORMS += \
     supprimerpatient.ui \
     modifierpatient.ui \
     supprimerpersonnel.ui \
-    modifierpersonnel.ui
+    modifierpersonnel.ui \
+    gestiontypemedecin.ui \
+    modifiertypepersonnel.ui \
+    supprimertypepersonnel.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

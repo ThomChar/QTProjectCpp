@@ -106,7 +106,7 @@ bool c_init_bd::Creation_BD()
 
         b_test=query.exec("create table TType "
                           "(idType integer primary key, "
-                          "Label varchar(50))");
+                          "label varchar(50))");
         if(!b_test)
         {
             qDebug() << query.lastError().text();
@@ -196,18 +196,18 @@ bool c_init_bd::Creation_BD()
 
 
         b_test=query.exec("INSERT INTO TRessource "
-                          "SELECT '1' AS 'idRessource','01/06/2013' AS 'dateCreation', 'Admin' AS 'nom', 'Admin' AS 'prenom', '3 rue des justices' AS 'adresse', 'Tours' AS 'ville', '37200' AS 'cp', '247558963' AS 'tel', 'email1' AS 'email', '7' AS 'idType'"
-                                  "UNION SELECT 2, '02/06/2013', 'Dubois', 'Jean', '3 rue des justices', 'Tours', '37200', '247558963', 'email2', 1 "
-                                  "UNION SELECT 3, '03/06/2013', 'De La Roche', 'Julie', '3 rue des justices', 'Tours', '37200', '247558963', 'email3', 1 "
-                                  "UNION SELECT 4, '04/06/2013', 'Ducroix', 'Lisa', '3 rue des justices', 'Tours', '37200', '247558963', 'email4', 2 "
-                                  "UNION SELECT 5, '04/06/2013', 'Boulanger', 'Stéphane', '3 rue des justices', 'Tours', '37200', '247558963', 'email5', 3 "
-                                  "UNION SELECT 6, '05/06/2013', 'Bijet', 'Paul', '3 rue des justices', 'Tours', '37200', '247558963', 'email6', 3 "
-                                  "UNION SELECT 7, '05/06/2013', 'durant', 'Mélanie', '3 rue des justices', 'Tours', '37200', '247558963', 'email7', 4 "
-                                  "UNION SELECT 8, '05/06/2013', 'Tortue', 'Adeline', '3 rue des justices', 'Tours', '37200', '247558963', 'email8', 4 "
-                                  "UNION SELECT 9, '05/06/2013', 'guillet', 'Sonia', '3 rue des justices', 'Tours', '37200', '247558963', 'email9', 4 "
-                                  "UNION SELECT 10, '05/06/2013', 'Boulot', 'Marie', '3 rue des justices', 'Tours', '37200', '247558963', 'email10', 4 "
-                                  "UNION SELECT 11, '10/06/2013', 'Titan', 'Geoffrey', '3 rue des justices', 'Tours', '37200', '247558963', 'email11', 5 "
-                                  "UNION SELECT 12, '11/06/2013', 'Dupont', 'Christophe', '3 rue des justices', 'Tours', '37200', '247558963', 'email12', 6");
+                          "SELECT '1' AS 'idRessource','01/06/2013' AS 'dateCreation', 'Admin' AS 'nom', 'Admin' AS 'prenom', '3 rue des justices' AS 'adresse', 'Tours' AS 'ville', '37200' AS 'cp', '247558963' AS 'tel', 'email1@gmail.com' AS 'email', '7' AS 'idType'"
+                                  "UNION SELECT 2, '02/06/2013', 'Dubois', 'Jean', '3 rue des justices', 'Tours', '37200', '247558963', 'email2@gmail.com', 1 "
+                                  "UNION SELECT 3, '03/06/2013', 'De La Roche', 'Julie', '3 rue des justices', 'Tours', '37200', '247558963', 'email3@gmail.com', 1 "
+                                  "UNION SELECT 4, '04/06/2013', 'Ducroix', 'Lisa', '3 rue des justices', 'Tours', '37200', '247558963', 'email4@gmail.com', 2 "
+                                  "UNION SELECT 5, '04/06/2013', 'Boulanger', 'Stéphane', '3 rue des justices', 'Tours', '37200', '247558963', 'email5@gmail.com', 3 "
+                                  "UNION SELECT 6, '05/06/2013', 'Bijet', 'Paul', '3 rue des justices', 'Tours', '37200', '247558963', 'email6@gmail.com', 3 "
+                                  "UNION SELECT 7, '05/06/2013', 'durant', 'Mélanie', '3 rue des justices', 'Tours', '37200', '247558963', 'email7@gmail.com', 4 "
+                                  "UNION SELECT 8, '05/06/2013', 'Tortue', 'Adeline', '3 rue des justices', 'Tours', '37200', '247558963', 'email8@gmail.com', 4 "
+                                  "UNION SELECT 9, '05/06/2013', 'guillet', 'Sonia', '3 rue des justices', 'Tours', '37200', '247558963', 'email9@gmail.com', 4 "
+                                  "UNION SELECT 10, '05/06/2013', 'Boulot', 'Marie', '3 rue des justices', 'Tours', '37200', '247558963', 'email10@gmail.com', 4 "
+                                  "UNION SELECT 11, '10/06/2013', 'Titan', 'Geoffrey', '3 rue des justices', 'Tours', '37200', '247558963', 'email11@gmail.com', 5 "
+                                  "UNION SELECT 12, '11/06/2013', 'Dupont', 'Christophe', '3 rue des justices', 'Tours', '37200', '247558963', 'email12@gmail.com', 6");
         if(!b_test)
         {
             qDebug() << query.lastError().text();

@@ -17,6 +17,11 @@ release/modifierpatient.o
 release/compte.o
 release/supprimerpersonnel.o
 release/modifierpersonnel.o
+release/typepersonnel.o
+release/gestiontypemedecin.o
+release/modeltabletypemedecin.o
+release/modifiertypepersonnel.o
+release/supprimertypepersonnel.o
 release/qrc_ressources.o
 release/moc_mainwindow.o
 release/moc_login.o
@@ -30,3 +35,7 @@ release/moc_supprimerpatient.o
 release/moc_modifierpatient.o
 release/moc_supprimerpersonnel.o
 release/moc_modifierpersonnel.o
+release/moc_gestiontypemedecin.o
+release/moc_modeltabletypemedecin.o
+release/moc_modifiertypepersonnel.o
+release/moc_supprimertypepersonnel.o

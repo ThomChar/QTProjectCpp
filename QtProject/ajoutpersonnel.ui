@@ -499,48 +499,13 @@
     <rect>
      <x>80</x>
      <y>350</y>
-     <width>251</width>
+     <width>181</width>
      <height>22</height>
     </rect>
    </property>
    <item>
     <property name="text">
      <string>ex: médecin A</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>médecin A</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>médecin B</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>radiologue</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>infirmière</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>kinésithérapeute</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>psychologue</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>informaticien</string>
     </property>
    </item>
   </widget>
@@ -575,6 +540,51 @@
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="addType_label">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>350</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Ajouter Type :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="addType_edit">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>350</y>
+     <width>131</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="addType_toolButton">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>350</y>
+     <width>27</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>...</string>
+   </property>
+   <property name="icon">
+    <iconset resource="ressources/ressources.qrc">
+     <normaloff>:/add_icon.png</normaloff>:/add_icon.png</iconset>
    </property>
   </widget>
  </widget>

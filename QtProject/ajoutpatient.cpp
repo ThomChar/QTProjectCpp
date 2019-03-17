@@ -29,7 +29,7 @@ ajoutPatient::ajoutPatient(QWidget *parent) :
     ui->lineEdit_10->setPlaceholderText("ex: 0701020304");
     ui->lineEdit_11->setPlaceholderText("ex: jean.marc@email.fr");
 
-    //Affectation de la combo box à la lsiet des personnels
+    //Affectation de la combo box à la liste des personnels
     QList<Personnel> listePersonnel = qobject_cast<MainWindow*>(parent)->getBD()->getListePersonnel(qobject_cast<MainWindow*>(parent)->getBD()->getDB());
     for(int i=0;i<listePersonnel.size();i++){
     ui->comboBox->addItem(QString::fromStdString(listePersonnel[i].getNom()+" "+listePersonnel[i].getPrenom()));

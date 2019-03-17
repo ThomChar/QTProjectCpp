@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStandardItemModel>
 #include "calendrier.h"
 #include "ajoutpatient.h"
 #include "supprimerpatient.h"
@@ -13,8 +14,9 @@
 #include "requetebd.h"
 #include "modeltablepatient.h"
 #include "personnel.h"
-#include <QStandardItemModel>
-#include "modelTreePersonnel.h"
+#include "gestiontypemedecin.h"
+#include "modeltreepersonnel.h"
+#include "modeltabletypemedecin.h"
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +32,8 @@ public:
     ~MainWindow();
     RequeteBD* getBD();
     void resetTablePatientModel(QSqlDatabase db);
+    void resetTreePersonnelModel(QSqlDatabase db);
+    void resetTableTypesPersModel(QSqlDatabase db);
     void setStatusBar(const QString &message);
     bool verifierDate(QString date);
     bool verifierNomPropre(QString nomPropre);
@@ -44,6 +48,7 @@ private slots:
     void ajouterPersonnel();
     void supprimerPersonnel();
     void modifierPersonnel();
+    void gererTypesPersonnel();
     void afficherAPropos();
 
     //affichage
@@ -61,11 +66,13 @@ private:
     ajoutPersonnel *personnnelWindow;
     SupprimerPersonnel *supPerWindow;
     ModifierPersonnel *modPerWindow;
+    gestionTypeMedecin *gestionTypesPerWindow;
     aPropos *aProposWindow;
     RequeteBD *baseDonnee;
     QSqlDatabase requestDataBase;
     modelTablePatient *modelPatient;
-    modelTreePersonnel *model;
+    modelTreePersonnel *modelPersonnel;
+    modelTableTypeMedecin *modelTypePers;
 };
 
 #endif // MAINWINDOW_H

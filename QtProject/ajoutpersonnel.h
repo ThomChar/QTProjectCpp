@@ -32,6 +32,7 @@ private slots:
     void afficherCalendrier();
     void afficherDateSelect();
     void afficherLogPass();
+    void ajouterTypePersonnel();
 
 private:
     Ui::ajoutPersonnel *ui;

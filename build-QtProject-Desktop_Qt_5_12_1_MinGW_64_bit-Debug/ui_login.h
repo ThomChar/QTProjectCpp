@@ -33,15 +33,16 @@ public:
     {
         if (login->objectName().isEmpty())
             login->setObjectName(QString::fromUtf8("login"));
-        login->resize(469, 289);
+        login->resize(469, 269);
         label = new QLabel(login);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(140, 40, 161, 41));
+        label->setGeometry(QRect(150, 40, 161, 41));
         QFont font;
         font.setPointSize(14);
         font.setBold(false);
         font.setWeight(50);
         label->setFont(font);
+        label->setAlignment(Qt::AlignCenter);
         pushButton = new QPushButton(login);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(250, 180, 111, 28));

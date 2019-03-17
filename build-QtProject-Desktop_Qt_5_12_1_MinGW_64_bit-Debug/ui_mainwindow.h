@@ -41,6 +41,7 @@ public:
     QAction *actionPatient;
     QAction *actionPersonnel_de_soins;
     QAction *actionA_propos;
+    QAction *actionG_rer_Types_Personnel;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_9;
     QVBoxLayout *verticalLayout_10;
@@ -76,20 +77,24 @@ public:
     QSpacerItem *horizontalSpacer_4;
     QVBoxLayout *verticalLayout_16;
     QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
     QFrame *line;
     QHBoxLayout *horizontalLayout_10;
     QTableView *tableView;
     QHBoxLayout *horizontalLayout;
-    QPushButton *updateButton;
-    QPushButton *deleteButton;
+    QSpacerItem *horizontalSpacer_2;
+    QPushButton *pushButton_3;
+    QSpacerItem *horizontalSpacer_6;
+    QPushButton *pushButton_2;
+    QSpacerItem *horizontalSpacer_7;
     QWidget *Planification;
     QVBoxLayout *verticalLayout_2;
     QTreeView *treeView;
     QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer_8;
     QPushButton *updateButtonPersonnel;
+    QSpacerItem *horizontalSpacer_9;
     QPushButton *deleteButtonPersonnel;
+    QSpacerItem *horizontalSpacer_10;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuAjouter;
@@ -101,7 +106,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(870, 620);
+        MainWindow->resize(878, 623);
         MainWindow->setAutoFillBackground(false);
         actionQuitter = new QAction(MainWindow);
         actionQuitter->setObjectName(QString::fromUtf8("actionQuitter"));
@@ -120,6 +125,11 @@ public:
         actionPersonnel_de_soins->setIcon(icon2);
         actionA_propos = new QAction(MainWindow);
         actionA_propos->setObjectName(QString::fromUtf8("actionA_propos"));
+        actionG_rer_Types_Personnel = new QAction(MainWindow);
+        actionG_rer_Types_Personnel->setObjectName(QString::fromUtf8("actionG_rer_Types_Personnel"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/typePerson_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionG_rer_Types_Personnel->setIcon(icon3);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout_9 = new QVBoxLayout(centralWidget);
@@ -264,9 +274,9 @@ public:
 
         toolButton = new QToolButton(widget);
         toolButton->setObjectName(QString::fromUtf8("toolButton"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/calender_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        toolButton->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/calender_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton->setIcon(icon4);
         toolButton->setAutoRaise(true);
 
         champs_date_apres_le->addWidget(toolButton);
@@ -309,7 +319,7 @@ public:
 
         toolButton_2 = new QToolButton(widget);
         toolButton_2->setObjectName(QString::fromUtf8("toolButton_2"));
-        toolButton_2->setIcon(icon3);
+        toolButton_2->setIcon(icon4);
         toolButton_2->setAutoRaise(true);
 
         champ_date_avant_le->addWidget(toolButton_2);
@@ -336,18 +346,6 @@ public:
         pushButton->setAutoDefault(false);
 
         verticalLayout_16->addWidget(pushButton);
-
-        pushButton_2 = new QPushButton(widget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setFont(font2);
-
-        verticalLayout_16->addWidget(pushButton_2);
-
-        pushButton_3 = new QPushButton(widget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setFont(font2);
-
-        verticalLayout_16->addWidget(pushButton_3);
 
 
         recherhce_dates->addLayout(verticalLayout_16);
@@ -384,17 +382,31 @@ public:
         verticalLayout_11->addLayout(horizontalLayout_10);
 
         horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(6);
+        horizontalLayout->setSpacing(10);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        updateButton = new QPushButton(rechercheDePatient);
-        updateButton->setObjectName(QString::fromUtf8("updateButton"));
+        horizontalSpacer_2 = new QSpacerItem(200, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
-        horizontalLayout->addWidget(updateButton);
+        horizontalLayout->addItem(horizontalSpacer_2);
 
-        deleteButton = new QPushButton(rechercheDePatient);
-        deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
+        pushButton_3 = new QPushButton(rechercheDePatient);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setFont(font2);
 
-        horizontalLayout->addWidget(deleteButton);
+        horizontalLayout->addWidget(pushButton_3);
+
+        horizontalSpacer_6 = new QSpacerItem(30, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_6);
+
+        pushButton_2 = new QPushButton(rechercheDePatient);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setFont(font2);
+
+        horizontalLayout->addWidget(pushButton_2);
+
+        horizontalSpacer_7 = new QSpacerItem(200, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_7);
 
 
         verticalLayout_11->addLayout(horizontalLayout);
@@ -419,15 +431,29 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalSpacer_8 = new QSpacerItem(200, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_8);
+
         updateButtonPersonnel = new QPushButton(Planification);
         updateButtonPersonnel->setObjectName(QString::fromUtf8("updateButtonPersonnel"));
+        updateButtonPersonnel->setFont(font2);
 
         horizontalLayout_2->addWidget(updateButtonPersonnel);
 
+        horizontalSpacer_9 = new QSpacerItem(30, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_9);
+
         deleteButtonPersonnel = new QPushButton(Planification);
         deleteButtonPersonnel->setObjectName(QString::fromUtf8("deleteButtonPersonnel"));
+        deleteButtonPersonnel->setFont(font2);
 
         horizontalLayout_2->addWidget(deleteButtonPersonnel);
+
+        horizontalSpacer_10 = new QSpacerItem(200, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_10);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
@@ -442,7 +468,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 870, 26));
+        menuBar->setGeometry(QRect(0, 0, 878, 21));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuAjouter = new QMenu(menuFile);
@@ -460,12 +486,14 @@ public:
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menu->menuAction());
         menuFile->addAction(menuAjouter->menuAction());
+        menuFile->addAction(actionG_rer_Types_Personnel);
         menuFile->addAction(actionQuitter);
         menuAjouter->addAction(actionPatient);
         menuAjouter->addAction(actionPersonnel_de_soins);
         menu->addAction(actionA_propos);
         mainToolBar->addAction(actionPatient);
         mainToolBar->addAction(actionPersonnel_de_soins);
+        mainToolBar->addAction(actionG_rer_Types_Personnel);
 
         retranslateUi(MainWindow);
 
@@ -483,6 +511,7 @@ public:
         actionPatient->setText(QApplication::translate("MainWindow", "Patient", nullptr));
         actionPersonnel_de_soins->setText(QApplication::translate("MainWindow", "Personnel de soins", nullptr));
         actionA_propos->setText(QApplication::translate("MainWindow", "A propos", nullptr));
+        actionG_rer_Types_Personnel->setText(QApplication::translate("MainWindow", "G\303\251rer Types Personnel", nullptr));
         label_5->setText(QApplication::translate("MainWindow", "Num. ID", nullptr));
         lineEdit->setText(QString());
         label_3->setText(QApplication::translate("MainWindow", "Nom du Patient", nullptr));
@@ -498,10 +527,8 @@ public:
         lineEdit_5->setText(QString());
         toolButton_2->setText(QString());
         pushButton->setText(QApplication::translate("MainWindow", "Rechercher", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Supprimer", nullptr));
         pushButton_3->setText(QApplication::translate("MainWindow", "Modifier", nullptr));
-        updateButton->setText(QApplication::translate("MainWindow", "Modifier", nullptr));
-        deleteButton->setText(QApplication::translate("MainWindow", "Supprimer", nullptr));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Supprimer", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(rechercheDePatient), QApplication::translate("MainWindow", "Recherche de Patient", nullptr));
         updateButtonPersonnel->setText(QApplication::translate("MainWindow", "Modifier", nullptr));
         deleteButtonPersonnel->setText(QApplication::translate("MainWindow", "Supprimer", nullptr));
