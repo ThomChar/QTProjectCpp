@@ -1,7 +1,9 @@
 #ifndef PATIENT_H
 #define PATIENT_H
 #include <string>
+#include <QList>
 #include <QString>
+
 
 using namespace std;
 
@@ -14,6 +16,11 @@ public:
             string dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires);
     Patient(int numId, string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
             string dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires);
+    Patient( string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+            string dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires);
+    Patient(int numId, string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+                     string dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires);
+
     ~Patient();
     string getDateCreation();
     void setDateCreation(string dateCreation);
@@ -41,6 +48,8 @@ public:
     void setPriorite(int priorite);
     string getMedecin();
     void setMedecin(string medecin);
+     QList<int> getlistesMedecins();
+    void setlistesMedecins( QList<int> listesMedecins);
     string getCommentaires();
     void setCommentaires(string commentaires);
     /*int getIdConsult();
@@ -58,6 +67,7 @@ private:
     string dateConsultation;
     string dureeConsultation;
     int priorite;
+     QList<int> listesMedecins;
     string medecin;
     string commentaires;
     //int idConsult;

@@ -46,7 +46,7 @@ void modifierTypePersonnel::modificationPersonnel(){
      QList<typePersonnel> listType = qobject_cast<MainWindow*>(parent())->getBD()->getListeTypePersonnels(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
 
     //Redefinir le model de tableTypePersonnel
-     qobject_cast<MainWindow*>(parent())->resetTableTypesPersModel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
+     //qobject_cast<MainWindow*>(parent())->resetTableTypesPersModel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
 
     // Fermeture du formulaire
      this->close();

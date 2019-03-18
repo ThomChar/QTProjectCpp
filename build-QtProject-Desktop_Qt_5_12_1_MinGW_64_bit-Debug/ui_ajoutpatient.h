@@ -15,12 +15,14 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolButton>
+#include <QtWidgets/QTreeView>
 
 QT_BEGIN_NAMESPACE
 
@@ -59,17 +61,20 @@ public:
     QPushButton *pushButton_2;
     QFrame *line_4;
     QLabel *label_16;
-    QComboBox *comboBox;
     QToolButton *toolButton;
     QToolButton *toolButton_2;
     QComboBox *comboBox_2;
     QSpinBox *spinBox;
+    QToolButton *rightArrow_toolButton;
+    QToolButton *leftArrow_toolButton;
+    QTreeView *PersonnelBD_treeView;
+    QTreeView *PersonnelTraitant_treeView;
 
     void setupUi(QDialog *ajoutPatient)
     {
         if (ajoutPatient->objectName().isEmpty())
             ajoutPatient->setObjectName(QString::fromUtf8("ajoutPatient"));
-        ajoutPatient->resize(550, 695);
+        ajoutPatient->resize(550, 824);
         label = new QLabel(ajoutPatient);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(10, 10, 471, 41));
@@ -171,23 +176,23 @@ public:
         lineEdit_11->setGeometry(QRect(370, 280, 171, 22));
         textEdit = new QTextEdit(ajoutPatient);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(10, 510, 531, 111));
+        textEdit->setGeometry(QRect(10, 660, 531, 111));
         label_15 = new QLabel(ajoutPatient);
         label_15->setObjectName(QString::fromUtf8("label_15"));
-        label_15->setGeometry(QRect(10, 490, 161, 16));
+        label_15->setGeometry(QRect(10, 630, 161, 16));
         label_15->setFont(font1);
         line_3 = new QFrame(ajoutPatient);
         line_3->setObjectName(QString::fromUtf8("line_3"));
-        line_3->setGeometry(QRect(10, 470, 531, 20));
+        line_3->setGeometry(QRect(10, 610, 531, 20));
         line_3->setFrameShape(QFrame::HLine);
         line_3->setFrameShadow(QFrame::Sunken);
         pushButton = new QPushButton(ajoutPatient);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(382, 640, 161, 28));
+        pushButton->setGeometry(QRect(380, 790, 161, 28));
         pushButton->setFont(font1);
         pushButton_2 = new QPushButton(ajoutPatient);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(210, 640, 161, 28));
+        pushButton_2->setGeometry(QRect(210, 790, 161, 28));
         pushButton_2->setFont(font1);
         line_4 = new QFrame(ajoutPatient);
         line_4->setObjectName(QString::fromUtf8("line_4"));
@@ -198,10 +203,6 @@ public:
         label_16->setObjectName(QString::fromUtf8("label_16"));
         label_16->setGeometry(QRect(10, 440, 111, 21));
         label_16->setFont(font1);
-        comboBox = new QComboBox(ajoutPatient);
-        comboBox->addItem(QString());
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setGeometry(QRect(120, 440, 251, 22));
         toolButton = new QToolButton(ajoutPatient);
         toolButton->setObjectName(QString::fromUtf8("toolButton"));
         toolButton->setGeometry(QRect(330, 360, 31, 21));
@@ -225,6 +226,24 @@ public:
         spinBox = new QSpinBox(ajoutPatient);
         spinBox->setObjectName(QString::fromUtf8("spinBox"));
         spinBox->setGeometry(QRect(120, 400, 141, 22));
+        rightArrow_toolButton = new QToolButton(ajoutPatient);
+        rightArrow_toolButton->setObjectName(QString::fromUtf8("rightArrow_toolButton"));
+        rightArrow_toolButton->setGeometry(QRect(290, 490, 31, 22));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/rightArrow_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        rightArrow_toolButton->setIcon(icon1);
+        leftArrow_toolButton = new QToolButton(ajoutPatient);
+        leftArrow_toolButton->setObjectName(QString::fromUtf8("leftArrow_toolButton"));
+        leftArrow_toolButton->setGeometry(QRect(290, 520, 31, 22));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/leftArrow_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        leftArrow_toolButton->setIcon(icon2);
+        PersonnelBD_treeView = new QTreeView(ajoutPatient);
+        PersonnelBD_treeView->setObjectName(QString::fromUtf8("PersonnelBD_treeView"));
+        PersonnelBD_treeView->setGeometry(QRect(70, 470, 201, 141));
+        PersonnelTraitant_treeView = new QTreeView(ajoutPatient);
+        PersonnelTraitant_treeView->setObjectName(QString::fromUtf8("PersonnelTraitant_treeView"));
+        PersonnelTraitant_treeView->setGeometry(QRect(340, 470, 201, 141));
 
         retranslateUi(ajoutPatient);
 
@@ -264,9 +283,7 @@ public:
         label_15->setText(QApplication::translate("ajoutPatient", "Commentaires (Facul) :", nullptr));
         pushButton->setText(QApplication::translate("ajoutPatient", "Ajouter", nullptr));
         pushButton_2->setText(QApplication::translate("ajoutPatient", "Annuler", nullptr));
-        label_16->setText(QApplication::translate("ajoutPatient", "Personnel li\303\251", nullptr));
-        comboBox->setItemText(0, QApplication::translate("ajoutPatient", "ex: Anne Marie", nullptr));
-
+        label_16->setText(QApplication::translate("ajoutPatient", "Personnel(s) li\303\251(s)", nullptr));
         toolButton->setText(QString());
         toolButton_2->setText(QString());
         comboBox_2->setItemText(0, QApplication::translate("ajoutPatient", "1", nullptr));
@@ -275,6 +292,8 @@ public:
         comboBox_2->setItemText(3, QApplication::translate("ajoutPatient", "4", nullptr));
         comboBox_2->setItemText(4, QApplication::translate("ajoutPatient", "5", nullptr));
 
+        rightArrow_toolButton->setText(QApplication::translate("ajoutPatient", "...", nullptr));
+        leftArrow_toolButton->setText(QApplication::translate("ajoutPatient", "...", nullptr));
     } // retranslateUi
 
 };

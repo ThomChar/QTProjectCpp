@@ -15,12 +15,14 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolButton>
+#include <QtWidgets/QTreeView>
 
 QT_BEGIN_NAMESPACE
 
@@ -57,22 +59,25 @@ public:
     QPushButton *pushButton;
     QLabel *label_3;
     QFrame *line_3;
-    QComboBox *comboBox;
     QLabel *label_14;
     QLabel *label_15;
     QPushButton *pushButton_2;
     QLabel *label_9;
     QLabel *label_16;
     QSpinBox *spinBox;
+    QToolButton *leftArrow_toolButton;
+    QToolButton *rightArrow_toolButton;
+    QTreeView *PersonnelBD_treeView;
+    QTreeView *PersonnelTraitant_treeView;
 
     void setupUi(QDialog *modifierPatient)
     {
         if (modifierPatient->objectName().isEmpty())
             modifierPatient->setObjectName(QString::fromUtf8("modifierPatient"));
-        modifierPatient->resize(554, 675);
+        modifierPatient->resize(554, 824);
         textEdit = new QTextEdit(modifierPatient);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(10, 510, 531, 111));
+        textEdit->setGeometry(QRect(10, 660, 531, 111));
         label_12 = new QLabel(modifierPatient);
         label_12->setObjectName(QString::fromUtf8("label_12"));
         label_12->setGeometry(QRect(270, 400, 101, 21));
@@ -187,7 +192,7 @@ public:
         lineEdit_4->setGeometry(QRect(80, 200, 461, 22));
         pushButton = new QPushButton(modifierPatient);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(382, 640, 161, 28));
+        pushButton->setGeometry(QRect(380, 790, 161, 28));
         pushButton->setFont(font);
         label_3 = new QLabel(modifierPatient);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -195,24 +200,20 @@ public:
         label_3->setFont(font);
         line_3 = new QFrame(modifierPatient);
         line_3->setObjectName(QString::fromUtf8("line_3"));
-        line_3->setGeometry(QRect(10, 470, 531, 20));
+        line_3->setGeometry(QRect(10, 610, 531, 20));
         line_3->setFrameShape(QFrame::HLine);
         line_3->setFrameShadow(QFrame::Sunken);
-        comboBox = new QComboBox(modifierPatient);
-        comboBox->addItem(QString());
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setGeometry(QRect(120, 440, 251, 22));
         label_14 = new QLabel(modifierPatient);
         label_14->setObjectName(QString::fromUtf8("label_14"));
         label_14->setGeometry(QRect(270, 280, 91, 21));
         label_14->setFont(font);
         label_15 = new QLabel(modifierPatient);
         label_15->setObjectName(QString::fromUtf8("label_15"));
-        label_15->setGeometry(QRect(10, 490, 161, 16));
+        label_15->setGeometry(QRect(10, 630, 161, 16));
         label_15->setFont(font);
         pushButton_2 = new QPushButton(modifierPatient);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(210, 640, 161, 28));
+        pushButton_2->setGeometry(QRect(210, 790, 161, 28));
         pushButton_2->setFont(font);
         label_9 = new QLabel(modifierPatient);
         label_9->setObjectName(QString::fromUtf8("label_9"));
@@ -225,6 +226,24 @@ public:
         spinBox = new QSpinBox(modifierPatient);
         spinBox->setObjectName(QString::fromUtf8("spinBox"));
         spinBox->setGeometry(QRect(120, 400, 141, 22));
+        leftArrow_toolButton = new QToolButton(modifierPatient);
+        leftArrow_toolButton->setObjectName(QString::fromUtf8("leftArrow_toolButton"));
+        leftArrow_toolButton->setGeometry(QRect(290, 520, 31, 22));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/leftArrow_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        leftArrow_toolButton->setIcon(icon1);
+        rightArrow_toolButton = new QToolButton(modifierPatient);
+        rightArrow_toolButton->setObjectName(QString::fromUtf8("rightArrow_toolButton"));
+        rightArrow_toolButton->setGeometry(QRect(290, 490, 31, 22));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/rightArrow_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        rightArrow_toolButton->setIcon(icon2);
+        PersonnelBD_treeView = new QTreeView(modifierPatient);
+        PersonnelBD_treeView->setObjectName(QString::fromUtf8("PersonnelBD_treeView"));
+        PersonnelBD_treeView->setGeometry(QRect(70, 470, 201, 141));
+        PersonnelTraitant_treeView = new QTreeView(modifierPatient);
+        PersonnelTraitant_treeView->setObjectName(QString::fromUtf8("PersonnelTraitant_treeView"));
+        PersonnelTraitant_treeView->setGeometry(QRect(340, 470, 201, 141));
 
         retranslateUi(modifierPatient);
 
@@ -268,13 +287,13 @@ public:
         lineEdit_4->setText(QString());
         pushButton->setText(QApplication::translate("modifierPatient", "Modifier", nullptr));
         label_3->setText(QApplication::translate("modifierPatient", "Nom du Patient", nullptr));
-        comboBox->setItemText(0, QApplication::translate("modifierPatient", "ex: Anne Marie", nullptr));
-
         label_14->setText(QApplication::translate("modifierPatient", "email (Facul)", nullptr));
         label_15->setText(QApplication::translate("modifierPatient", "Commentaires (Facul) :", nullptr));
         pushButton_2->setText(QApplication::translate("modifierPatient", "Annuler", nullptr));
         label_9->setText(QApplication::translate("modifierPatient", "Jour Consul.", nullptr));
-        label_16->setText(QApplication::translate("modifierPatient", "Personnel li\303\251", nullptr));
+        label_16->setText(QApplication::translate("modifierPatient", "Personnel(s) li\303\251(s)", nullptr));
+        leftArrow_toolButton->setText(QApplication::translate("modifierPatient", "...", nullptr));
+        rightArrow_toolButton->setText(QApplication::translate("modifierPatient", "...", nullptr));
     } // retranslateUi
 
 };

@@ -1,5 +1,6 @@
 #include "patient.h"
 #include <QString>
+#include <QList>
 
 Patient::Patient()
 {
@@ -56,6 +57,42 @@ Patient::Patient(int numId, string dateCreation, string nom, string prenom, stri
     this->dureeConsultation =  dureeConsultation;
     this-> priorite = priorite;
     this->medecin = medecin;
+    this->commentaires = commentaires;
+}
+
+Patient::Patient( string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+                 string dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires){
+    this->dateCreation = dateCreation;
+    this->numId = numId;
+    this->nom = nom;
+    this->prenom = prenom;
+    this->adresse = adresse;
+    this-> ville = ville;
+    this->codepostal = codepostal;
+    this-> numTelephone= numTelephone;
+    this->email = email;
+    this->dateConsultation = dateConsultation;
+    this->dureeConsultation =  dureeConsultation;
+    this-> priorite = priorite;
+    this->listesMedecins = listesMedecins;
+    this->commentaires = commentaires;
+}
+
+Patient::Patient(int numId, string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+                 string dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires){
+    this->dateCreation = dateCreation;
+    this->numId = numId;
+    this->nom = nom;
+    this->prenom = prenom;
+    this->adresse = adresse;
+    this-> ville = ville;
+    this->codepostal = codepostal;
+    this-> numTelephone= numTelephone;
+    this->email = email;
+    this->dateConsultation = dateConsultation;
+    this->dureeConsultation =  dureeConsultation;
+    this-> priorite = priorite;
+    this->listesMedecins = listesMedecins;
     this->commentaires = commentaires;
 }
 
@@ -141,6 +178,12 @@ string Patient::getMedecin(){
 }
 void Patient::setMedecin(string medecin){
     this->medecin = medecin;
+}
+QList<int> Patient::getlistesMedecins(){
+    return this->listesMedecins;
+}
+void Patient::setlistesMedecins( QList<int> listesMedecins){
+    this->listesMedecins = listesMedecins;
 }
 string Patient::getCommentaires(){
     return this->commentaires;

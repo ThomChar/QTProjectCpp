@@ -39,7 +39,7 @@ void supprimerTypePersonnel::suppressionTypePersonnel(){
      //qDebug()<<list.size();
 
     //Redefinir le model de tableTypePersonnel
-     qobject_cast<MainWindow*>(parent())->resetTableTypesPersModel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
+     //qobject_cast<MainWindow*>(parent())->resetTableTypesPersModel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
 
     // Fermeture du formulaire
      this->close();
