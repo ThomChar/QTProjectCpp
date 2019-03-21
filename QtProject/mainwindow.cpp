@@ -294,6 +294,40 @@ bool MainWindow::verifierDate(QString date){
     return valide;
 }
 
+/** Methode permettant de controler si une date est après une autre
+ * @brief ajoutPersonnel::verifierDate
+ * @param date
+ * @return
+ */
+bool MainWindow::verifierDates(QString dateBefore, QString dateAfter){
+    bool valide = true;
+    QStringList date1 = dateBefore.split("/");
+    QStringList date2 = dateAfter.split("/");
+
+    int date1_jour = date1[0].toInt();
+    int date1_mois = date1[1].toInt();
+    int date1_annee = date1[2].toInt();
+
+    int date2_jour = date2[0].toInt();
+    int date2_mois = date2[1].toInt();
+    int date2_annee = date2[2].toInt();
+
+    if(date2_annee < date1_annee)
+        valide = false;
+    else if(date2_annee == date1_annee)
+    {
+        if(date2_mois < date1_mois)
+            valide = false;
+        else if(date2_mois == date1_mois)
+        {
+            if(date2_jour < date1_jour)
+                valide = false;
+        }
+    }
+
+    return valide;
+}
+
 bool MainWindow::verifierNomPropre(QString nomPropre){
     bool valide = true;
     QRegExp rx("[À-ŸA-Zà-ÿa-z]*");
@@ -356,9 +390,18 @@ void MainWindow::rechercherPatients(){
                        "(JJ/MM/AAAA ou laisser vide)</p>");
         msgBox.exec();
         verifier= false;
+    } else if((verifier == true && !ui->dateDebut_r->text().isEmpty() && !ui->dateFin_r->text().isEmpty())
+              && !verifierDates(ui->dateDebut_r->text(), ui->dateFin_r->text())) {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Warning");
+        msgBox.setText("<p align='center'>Attention ! <br>"
+                       "Les deux dates ne sont pas cohérentes !</p>");
+        msgBox.exec();
+        verifier= false;
     }
 
     if (verifier == true){  // Si le formulaire est correctement rempli
+
 
         modelPatient = new modelTablePatient(this, baseDonnee->getListePatientsFilter(requestDataBase,
                                                                                       ui->idPatient_r->text(),

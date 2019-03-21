@@ -41,7 +41,7 @@ public:
     QString getNomPatient(QSqlDatabase db, int numId);
     QString getNomPrenomPersonnelConsult(QSqlDatabase db, int idPatient);
     QList<Patient> getListePatients(QSqlDatabase db);
-    QList<Patient> getListePatientsFilter(QSqlDatabase db, QString idPatient, QString nomPatient, QString prenomPatient, QString dateDebut, QString dateFin);
+    QList<Patient> getListePatientsFilter(QSqlDatabase db, QString idPatient, QString nomPatient, QString prenomPatient, const QString dateDebut, const QString dateFin);
     QList<Consult> getListeConsults(QSqlDatabase db);
     QList<Compte> getListeComptes(QSqlDatabase db);
     QList<Personnel> getListePersonnel(QSqlDatabase db);

@@ -37,6 +37,7 @@ public:
     void resetTableTypesPersModel(QSqlDatabase db);
     void setStatusBar(const QString &message);
     bool verifierDate(QString date);
+    bool verifierDates(QString dateBefore, QString dateAfter);
     bool verifierNomPropre(QString nomPropre);
     bool verifierNumID(QString numId);
 
