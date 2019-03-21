@@ -1,6 +1,7 @@
 #include "modeltablepatient.h"
 #include <QFont>
 #include <QBrush>
+#include <qDebug>
 
 modelTablePatient::modelTablePatient(QObject *parent, QList<Patient> listePatients): QAbstractTableModel(parent)
 {
@@ -45,8 +46,10 @@ QVariant modelTablePatient::data(const QModelIndex &index, int role) const
                 return QString::fromStdString(listePatients.value(row).getNom());
             case 2:
                 return QString::fromStdString(listePatients.value(row).getPrenom());
-            case 3:
-                return QString::fromStdString(listePatients.value(row).getDateConsultation());
+            case 3: {
+                qDebug()<< listePatients.value(row).getDateConsultation();
+                QString ee = listePatients.value(row).getDateConsultation().toString("dd/MM/yyyy");
+                return ee; }
             default:
                 return QString("Row%1, Column%2 vide").arg(index.row() + 1)
                         .arg(index.column() +1);

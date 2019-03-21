@@ -115,13 +115,13 @@ modifierPatient::modifierPatient(QWidget *parent, int idPatient) :
     ui->PersonnelTraitant_treeView->setModel(modelPersonnelTraitant);
     //Affichage des informations actuelles du Patient selectionné
 
-    ui->lineEdit->setText(QString::fromStdString(currentPatient.getDateCreation()));
+    ui->lineEdit->setText(currentPatient.getDateCreation().toString("dd/MM/yyyy"));
     ui->lineEdit_2->setText(QString::fromStdString(currentPatient.getNom()));
     ui->lineEdit_3->setText(QString::fromStdString(currentPatient.getPrenom()));
     ui->lineEdit_4->setText(QString::fromStdString(currentPatient.getAdresse()));
     ui->lineEdit_5->setText(QString::fromStdString(currentPatient.getVille()));
     ui->lineEdit_6->setText(QString::fromStdString(currentPatient.getCodePostal()));
-    ui->lineEdit_7->setText(QString::fromStdString(currentPatient.getDateConsultation()));
+    ui->lineEdit_7->setText(currentPatient.getDateConsultation().toString("dd/MM/yyyy"));
     ui->lineEdit_10->setText(QString::fromStdString(currentPatient.getNumTelephone()));
     ui->lineEdit_11->setText(QString::fromStdString(currentPatient.getEmail()));
 
@@ -609,7 +609,12 @@ void modifierPatient::modificationPatient()
         }
     //Ajout du Patient à la base de données
         //Création du Patient en local
-        this->currentPatient.setDateCreation(ui->lineEdit->text().toStdString());
+        QString dateCreation_QS = QString::fromStdString(ui->lineEdit->text().toStdString());
+        QString dateConsultation_QS = QString::fromStdString(ui->lineEdit_7->text().toStdString());
+        QDate dateCreation = QDate::fromString(dateCreation_QS, "dd/MM/yyyy");
+        QDate dateConsultation = QDate::fromString(dateConsultation_QS, "dd/MM/yyyy");
+
+        this->currentPatient.setDateCreation(dateCreation);
         this->currentPatient.setNom(ui->lineEdit_2->text().toStdString());
         this->currentPatient.setPrenom(ui->lineEdit_3->text().toStdString());
         this->currentPatient.setAdresse(ui->lineEdit_4->text().toStdString());
@@ -617,7 +622,7 @@ void modifierPatient::modificationPatient()
         this->currentPatient.setCodePostal(ui->lineEdit_6->text().toStdString());
         this->currentPatient.setNumTelephone(ui->lineEdit_10->text().toStdString());
         this->currentPatient.setEmail(ui->lineEdit_11->text().toStdString());
-        this->currentPatient.setDateConsultation(ui->lineEdit_7->text().toStdString());
+        this->currentPatient.setDateConsultation(dateConsultation);
         this->currentPatient.setDureeConsultation(ui->spinBox->text().toStdString());
         //this->currentPatient.setMedecin(ui->comboBox->currentText().toStdString());
         this->currentPatient.setlistesMedecins(listeIdMedecins);

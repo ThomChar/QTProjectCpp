@@ -24,8 +24,8 @@ Patient::Patient(Patient* patient){
     this->commentaires = patient->getCommentaires();
 }
 
-Patient::Patient(string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
-                 string dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires){
+Patient::Patient(QDate dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+                 QDate dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires){
     this->dateCreation = dateCreation;
     this->numId = 0.0;
     this->nom = nom;
@@ -42,8 +42,8 @@ Patient::Patient(string dateCreation, string nom, string prenom, string adresse,
     this->commentaires = commentaires;
 }
 
-Patient::Patient(int numId, string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
-                 string dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires){
+Patient::Patient(int numId, QDate dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+                 QDate dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires){
     this->dateCreation = dateCreation;
     this->numId = numId;
     this->nom = nom;
@@ -60,8 +60,8 @@ Patient::Patient(int numId, string dateCreation, string nom, string prenom, stri
     this->commentaires = commentaires;
 }
 
-Patient::Patient( string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
-                 string dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires){
+Patient::Patient( QDate dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+                 QDate dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires){
     this->dateCreation = dateCreation;
     this->numId = numId;
     this->nom = nom;
@@ -78,8 +78,8 @@ Patient::Patient( string dateCreation, string nom, string prenom, string adresse
     this->commentaires = commentaires;
 }
 
-Patient::Patient(int numId, string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
-                 string dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires){
+Patient::Patient(int numId, QDate dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+                 QDate dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires){
     this->dateCreation = dateCreation;
     this->numId = numId;
     this->nom = nom;
@@ -100,10 +100,10 @@ Patient::~Patient(){
 
 }
 
-string Patient::getDateCreation(){
+QDate Patient::getDateCreation(){
     return this->dateCreation;
 }
-void Patient::setDateCreation(string dateCreation){
+void Patient::setDateCreation(QDate dateCreation){
     this->dateCreation = dateCreation;
 }
 int Patient::getNumId(){
@@ -155,10 +155,10 @@ string Patient::getEmail(){
 void Patient::setEmail(string email){
     this->email = email;
 }
-string Patient::getDateConsultation(){
+QDate Patient::getDateConsultation(){
     return this->dateConsultation;
 }
-void Patient::setDateConsultation(string dateConsultation){
+void Patient::setDateConsultation(QDate dateConsultation){
     this->dateConsultation = dateConsultation;
 }
 string Patient::getDureeConsultation(){
@@ -191,9 +191,3 @@ string Patient::getCommentaires(){
 void Patient::setCommentaires(string commentaires){
     this->commentaires = commentaires;
 }
-/*int Patient::getIdConsult(){
-    return this->idConsult;
-}
-void Patient::setIdConsult(int idConsult){
-    this->idConsult = idConsult;
-}*/

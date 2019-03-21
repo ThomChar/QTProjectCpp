@@ -3,6 +3,7 @@
 #include <string>
 #include <QList>
 #include <QString>
+#include <QDate>
 
 
 using namespace std;
@@ -12,18 +13,18 @@ class Patient
 public:
     Patient();
     Patient(Patient* patient);
-    Patient(string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
-            string dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires);
-    Patient(int numId, string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
-            string dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires);
-    Patient( string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
-            string dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires);
-    Patient(int numId, string dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
-                     string dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires);
+    Patient(QDate dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+            QDate dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires);
+    Patient(int numId, QDate dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+            QDate dateConsultation, string dureeConsultation, int priorite, string medecin, string commentaires);
+    Patient( QDate dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+            QDate dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires);
+    Patient(int numId, QDate dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
+                     QDate dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires);
 
     ~Patient();
-    string getDateCreation();
-    void setDateCreation(string dateCreation);
+    QDate getDateCreation();
+    void setDateCreation(QDate dateCreation);
     int getNumId();
     void setNumId(int numId);
     string getNom();
@@ -40,8 +41,8 @@ public:
     void setNumTelephone(string numTelephone);
     string getEmail();
     void setEmail(string email);
-    string getDateConsultation();
-    void setDateConsultation(string dateConsultation);
+    QDate getDateConsultation();
+    void setDateConsultation(QDate dateConsultation);
     string getDureeConsultation();
     void setDureeConsultation(string dureeConsultation);
     int getPriorite();
@@ -55,7 +56,7 @@ public:
     /*int getIdConsult();
     void setIdConsult(int idConsult);*/
 private:
-    string dateCreation;
+    QDate dateCreation;
     int numId;
     string nom;
     string prenom;
@@ -64,13 +65,12 @@ private:
     string codepostal;
     string numTelephone;
     string email;
-    string dateConsultation;
+    QDate dateConsultation;
     string dureeConsultation;
     int priorite;
      QList<int> listesMedecins;
     string medecin;
     string commentaires;
-    //int idConsult;
 };
 
 #endif // PATIENT_H

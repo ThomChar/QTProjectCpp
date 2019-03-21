@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <iostream>
+#include <QDate>
 
 using namespace std;
 
@@ -556,13 +557,19 @@ void ajoutPatient::ajouterPatient()
             listeIdMedecins.push_back(this->listePersonnelTraitant[i].getNumId());
         }
         qDebug() << listeIdMedecins.size();
-        Patient newPatient(ui->lineEdit->text().toStdString(),ui->lineEdit_2->text().toStdString(),
+        QString dateCreation_QS = QString::fromStdString(ui->lineEdit->text().toStdString());
+        QString dateConsultation_QS = QString::fromStdString(ui->lineEdit_7->text().toStdString());
+        QDate dateCreation = QDate::fromString(dateCreation_QS, "dd/MM/yyyy");
+        QDate dateConsultation = QDate::fromString(dateConsultation_QS, "dd/MM/yyyy");
+
+        Patient newPatient(dateCreation,ui->lineEdit_2->text().toStdString(),
                            ui->lineEdit_3->text().toStdString(),ui->lineEdit_4->text().toStdString(),
                            ui->lineEdit_5->text().toStdString(),ui->lineEdit_6->text().toStdString(),
                            ui->lineEdit_10->text().toStdString(),ui->lineEdit_11->text().toStdString(),
-                           ui->lineEdit_7->text().toStdString(), ui->spinBox->text().toStdString(),
+                           dateConsultation, ui->spinBox->text().toStdString(),
                            ui->comboBox_2->currentText().toInt(), listeIdMedecins,
                            ui->textEdit->toPlainText().toStdString());
+
         qDebug() << newPatient.getlistesMedecins().size();
 
 
