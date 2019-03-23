@@ -1,5 +1,4 @@
 #include <QMessageBox>
-#include <QDebug>
 #include "gestiontypemedecin.h"
 #include "ui_gestiontypemedecin.h"
 #include "mainwindow.h"
@@ -84,7 +83,6 @@ void gestionTypeMedecin::ajouterTypePersonnel(){
 }
 void gestionTypeMedecin::suppressionTypePersonnel(){
     bool selected = ui->tableView->currentIndex().isValid();// return selected row(s)
-    qDebug()<< selected ;
     if(selected){
         QString idType =  ui->tableView->selectionModel()->selectedIndexes()[0].data().toString();
 

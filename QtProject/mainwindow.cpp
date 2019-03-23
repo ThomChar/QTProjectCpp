@@ -5,7 +5,6 @@
 #include "apropos.h"
 #include "personnel.h"
 #include <QMessageBox>
-#include <QDebug>
 #include <iostream>
 #include <QAbstractItemModel>
 #include <QStandardItem>
@@ -95,7 +94,12 @@ RequeteBD* MainWindow::getBD(){
 }
 
 void  MainWindow::resetTablePatientModel(QSqlDatabase db){
-    this->modelPatient = new modelTablePatient(this, baseDonnee->getListePatients(db));
+    this->modelPatient = new modelTablePatient(this, baseDonnee->getListePatientsFilter(requestDataBase,
+                                                                                        ui->idPatient_r->text(),
+                                                                                        ui->nomPatient_r->text(),
+                                                                                        ui->prenomPatient_r->text(),
+                                                                                        ui->dateDebut_r->text(),
+                                                                                        ui->dateFin_r->text()));
     ui->tableView->setModel(this->modelPatient);
 }
 void MainWindow::resetTreePersonnelModel(QSqlDatabase db){

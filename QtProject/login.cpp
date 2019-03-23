@@ -4,22 +4,6 @@
 #include "requetebd.h"
 #include <QMessageBox>
 
-/*login::login(QWidget *parent, QSqlDatabase db) :
-    QDialog(parent),
-    ui(new Ui::login)
-{
-    ui->setupUi(this);
-    w = new MainWindow();
-    this->setWindowTitle("Authentification");
-    this->setFixedSize( this->size());
-
-    //connection
-    //evenement pour annuler
-    QObject::connect(ui->pushButton_2, SIGNAL(clicked()),this,SLOT(close()));
-    //evenement pour connecter
-    QObject::connect(ui->pushButton, SIGNAL(clicked()),this, SLOT(connection()));
-}*/
-
 login::login(/*QWidget *parent,*/QSqlDatabase db):
     /*QDialog(parent),*/
     ui(new Ui::login)

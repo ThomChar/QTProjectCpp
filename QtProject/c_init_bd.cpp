@@ -156,45 +156,6 @@ bool c_init_bd::Creation_BD()
             return false;
         }
 
-        //Test Implémentation et résupération d'objets
-
-       /* QString querys = "SELECT * FROM TPatient";
-           QSqlQuery SqlQuery = QSqlQuery( db );
-           SqlQuery.exec( querys );
-
-           while (SqlQuery.next())
-           {
-               int field_idx   = SqlQuery.record().indexOf("idPatient");
-               int field_idx2   = SqlQuery.record().indexOf("dateCreation");
-               int field_idx3   = SqlQuery.record().indexOf("nom");
-               int field_idx4   = SqlQuery.record().indexOf("prenom");
-               int field_idx5   = SqlQuery.record().indexOf("adresse");
-               int field_idx6   = SqlQuery.record().indexOf("ville");
-               int field_idx7   = SqlQuery.record().indexOf("cp");
-               int field_idx8   = SqlQuery.record().indexOf("tel");
-               int field_idx9   = SqlQuery.record().indexOf("email");
-               int field_idx10   = SqlQuery.record().indexOf("dateConsultation");
-               int field_idx11   = SqlQuery.record().indexOf("dureeConsultation");
-               int field_idx12   = SqlQuery.record().indexOf("priorite");
-               int field_idx13   = SqlQuery.record().indexOf("commentaire");
-               QString idPatient = SqlQuery.record().value(field_idx).toString();
-               QString dateCreation = SqlQuery.record().value(field_idx2).toString();
-               QString nom = SqlQuery.record().value(field_idx3).toString();
-               QString prenom = SqlQuery.record().value(field_idx4).toString();
-               QString adresse = SqlQuery.record().value(field_idx5).toString();
-               QString ville = SqlQuery.record().value(field_idx6).toString();
-               QString cp = SqlQuery.record().value(field_idx7).toString();
-               QString tel = SqlQuery.record().value(field_idx8).toString();
-               QString email = SqlQuery.record().value(field_idx9).toString();
-               QString dateConsulation = SqlQuery.record().value(field_idx10).toString();
-               QString dureeConsultation = SqlQuery.record().value(field_idx11).toString();
-               QString priorite = SqlQuery.record().value(field_idx12).toString();
-               QString commentaire = SqlQuery.record().value(field_idx13).toString();
-
-               qDebug() << idPatient << ", " << dateCreation << ", " << nom << ", " << prenom << ", "<< adresse << ", " << ville << ", " << cp << ", "<< tel << ", " << email << ", " << dateConsulation << ", " << dureeConsultation << ", " << priorite << ", " << dateConsulation << ", " << commentaire ;
-           };*/
-
-
         b_test=query.exec("INSERT INTO TRessource "
                           "SELECT '1' AS 'idRessource','01/06/2013' AS 'dateCreation', 'Admin' AS 'nom', 'Admin' AS 'prenom', '3 rue des justices' AS 'adresse', 'Tours' AS 'ville', '37200' AS 'cp', '247558963' AS 'tel', 'email1@gmail.com' AS 'email', '7' AS 'idType'"
                                   "UNION SELECT 2, '02/06/2013', 'Dubois', 'Jean', '3 rue des justices', 'Tours', '37200', '247558963', 'email2@gmail.com', 1 "
@@ -229,10 +190,6 @@ bool c_init_bd::Creation_BD()
             qDebug() << "Insertion de données dans TType impossible !\n";
             return false;
         }
-
-        //Pour fermer la base de donnée
-        /*db.close();
-        db.removeDatabase("QSQLITE");*/
 
         return true;
 

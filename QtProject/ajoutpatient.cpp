@@ -3,7 +3,6 @@
 #include "mainwindow.h"
 #include "patient.h"
 #include <QMessageBox>
-#include <QDebug>
 #include <iostream>
 #include <QDate>
 
@@ -34,14 +33,11 @@ ajoutPatient::ajoutPatient(QWidget *parent) :
 
     //Affectation de la combo box à la liste des personnels
     QList<Personnel> listePersonnel = qobject_cast<MainWindow*>(parent)->getBD()->getListePersonnel(qobject_cast<MainWindow*>(parent)->getBD()->getDB());
-    /*for(int i=0;i<listePersonnel.size();i++){
-    ui->comboBox->addItem(QString::fromStdString(listePersonnel[i].getNom()+" "+listePersonnel[i].getPrenom()));
-    }*/
 
     //Affectation de la liste des Types de personnel
     QList<typePersonnel> listeTypePersonnel = qobject_cast<MainWindow*>(parent)->getBD()->getListeTypePersonnels(qobject_cast<MainWindow*>(parent)->getBD()->getDB());
     for(int i=0;i<listeTypePersonnel.size();i++){
-    this->listeTypePersonnel.push_back(QString::fromStdString(listeTypePersonnel[i].getLabel()));
+        this->listeTypePersonnel.push_back(QString::fromStdString(listeTypePersonnel[i].getLabel()));
     }
 
     this->listePersonnelBD = listePersonnel;
@@ -122,19 +118,10 @@ void ajoutPatient::ajouterPersonnelTraitant(){
 
     if(selected and control){
         //Ajout d'une consultation pour le patient dans la BD
-        //QString nomPrenomPatient =  ui->PersonnelBD_treeView->selectionModel()->selectedIndexes()[0].data().toString();
-        /*qDebug()<< nomPrenomPatient;
-        int idPersonnel = qobject_cast<MainWindow*>(parent())->getBD()->getIdPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(), nomPrenomPatient.toStdString());
-        int idConsult = qobject_cast<MainWindow*>(parent())->getBD()->getListeConsults(qobject_cast<MainWindow*>(parent())->getBD()->getDB()).last().getIdConsult()+1;
-        Consult consult(idConsult,this->idPatient,idPersonnel);
-        qobject_cast<MainWindow*>(parent())->getBD()->ajouterConsult(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),consult);*/
-
         //Obtenir le Médecin à ajouter à la liste
         QString itemSelect =  ui->PersonnelBD_treeView->selectionModel()->selectedIndexes()[0].data().toString();
         int idPersonnelSelect = qobject_cast<MainWindow*>(parent())->getBD()->getIdPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),itemSelect.toStdString());
-        qDebug()<<idPersonnelSelect;
         Personnel persoSelect = qobject_cast<MainWindow*>(parent())->getBD()->getPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),idPersonnelSelect);
-        qDebug()<<persoSelect.getNumId();
 
         //QList<int> listeIdPersonnel; //=  qobject_cast<MainWindow*>(parent())->getBD()->getIdRessourcesPatient(qobject_cast<MainWindow*>(parent())->getBD()->getDB(), this->idPatient);
         QList<Personnel>listePersonnelMaj = qobject_cast<MainWindow*>(parent())->getBD()->getListePersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
@@ -147,8 +134,6 @@ void ajoutPatient::ajouterPersonnelTraitant(){
                     this->listePersonnelTraitant.push_back(listePersonnelMaj[i]);
                 }
         }
-
-       //this->listePersonnelTraitant = listePersonnelTraitantTemp;
 
         //Obtenir les personnels  sans ceux qui sont contenus dans la liste des médecin traitant
         bool idTrouve = true;
@@ -166,12 +151,6 @@ void ajoutPatient::ajouterPersonnelTraitant(){
             }
             idTrouve = false;
         }
-
-        /*for(int i=0;i<listePersonnelMaj.size();i++){
-                if(listePersonnelMaj[i].getNumId() != persoSelect.getNumId()){
-                    listePersonnelBDTemp.push_back(listePersonnelMaj[i]);
-                }
-        }*/
 
         this->listePersonnelBD = listePersonnelBDTemp;
 
@@ -216,17 +195,6 @@ void ajoutPatient::supprimerPersonnelTraitant(){
 
     if(selected and control){
         //Supprimer une consultation pour le patient dans la BD
-        /*QString nomPrenomPatient =  ui->PersonnelTraitant_treeView->selectionModel()->selectedIndexes()[0].data().toString();
-        int idPersonnel = qobject_cast<MainWindow*>(parent())->getBD()->getIdPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(), nomPrenomPatient.toStdString());
-        int idConsult = qobject_cast<MainWindow*>(parent())->getBD()->getIdConsult(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),this->idPatient,idPersonnel);*/
-        //Consult consult(idConsult,this->idPatient,idPersonnel);
-        //qobject_cast<MainWindow*>(parent())->getBD()->supprimerConsult(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),idConsult);
-
-        /*QList<int> listeIdPersonnel; //=  qobject_cast<MainWindow*>(parent())->getBD()->getIdRessourcesPatient(qobject_cast<MainWindow*>(parent())->getBD()->getDB(), this->idPatient);
-        QList<Personnel>listePersonnelMaj = qobject_cast<MainWindow*>(parent())->getBD()->getListePersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
-        QList<Personnel>listePersonnelBDTemp;
-        QList<Personnel>listePersonnelTraitantTemp;*/
-
         //Obtenir le Médecin à ajouter à la liste
         QString itemSelect =  ui->PersonnelTraitant_treeView->selectionModel()->selectedIndexes()[0].data().toString();
         int idPersonnelSelect = qobject_cast<MainWindow*>(parent())->getBD()->getIdPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),itemSelect.toStdString());
@@ -243,7 +211,6 @@ void ajoutPatient::supprimerPersonnelTraitant(){
                     listePersonnelTraitantTemp.push_back(this->listePersonnelTraitant[i]);
                 }
         }
-        qDebug() << "hello";
         this->listePersonnelTraitant = listePersonnelTraitantTemp;
 
         //Obtenir les personnels  sans ceux qui sont contenus dans la liste des médecin traitant
@@ -541,22 +508,11 @@ void ajoutPatient::ajouterPatient()
     if (verifier == true){  // Si le formulaire est correctement rempli
 
     //Ajout du Patient à la base de données
-        //...
-        //Création du Patient en local
-        /*Patient newPatient(ui->lineEdit->text().toStdString(),ui->lineEdit_2->text().toStdString(),
-                           ui->lineEdit_3->text().toStdString(),ui->lineEdit_4->text().toStdString(),
-                           ui->lineEdit_5->text().toStdString(),ui->lineEdit_6->text().toStdString(),
-                           ui->lineEdit_10->text().toStdString(),ui->lineEdit_11->text().toStdString(),
-                           ui->lineEdit_7->text().toStdString(), ui->spinBox->text().toStdString(),
-                           ui->comboBox_2->currentText().toInt(), ui->comboBox->currentText().toStdString(),
-                           ui->textEdit->toPlainText().toStdString());*/
-
+        // Création du Patient en local
         QList<int> listeIdMedecins;
-        qDebug() << this->listePersonnelTraitant.size();
         for(int i = 0;i<this->listePersonnelTraitant.size();i++){
             listeIdMedecins.push_back(this->listePersonnelTraitant[i].getNumId());
         }
-        qDebug() << listeIdMedecins.size();
         QString dateCreation_QS = QString::fromStdString(ui->lineEdit->text().toStdString());
         QString dateConsultation_QS = QString::fromStdString(ui->lineEdit_7->text().toStdString());
         QDate dateCreation = QDate::fromString(dateCreation_QS, "dd/MM/yyyy");
@@ -570,12 +526,8 @@ void ajoutPatient::ajouterPatient()
                            ui->comboBox_2->currentText().toInt(), listeIdMedecins,
                            ui->textEdit->toPlainText().toStdString());
 
-        qDebug() << newPatient.getlistesMedecins().size();
-
-
         //Obtenir la liste des patients de la BD
         QList<Patient> listePatients = qobject_cast<MainWindow*>(parent())->getBD()->getListePatients(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
-        qDebug() << listePatients.last().getlistesMedecins().size();
 
         //Définir Id du patient
         newPatient.setNumId(listePatients.last().getNumId()+1);
@@ -591,20 +543,5 @@ void ajoutPatient::ajouterPatient()
 
     // Fermeture du formulaire
     this->close();
-
-    // Réaffectation des champs du formulaire à vide
-    /*ui->lineEdit->setText("");
-    ui->lineEdit_2->setText("");
-    ui->lineEdit_3->setText("");
-    ui->lineEdit_4->setText("");
-    ui->lineEdit_5->setText("");
-    ui->lineEdit_6->setText("");
-    ui->lineEdit_7->setText("");
-    ui->timeEdit->setTime(QTime(1, 0));
-    ui->comboBox_2->setCurrentIndex(0);
-    ui->lineEdit_10->setText("");
-    ui->lineEdit_11->setText("");
-    ui->textEdit->setText("");
-    ui->comboBox->setCurrentIndex(0);*/
     }
 }

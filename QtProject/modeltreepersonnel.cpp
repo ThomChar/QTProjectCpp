@@ -1,7 +1,6 @@
 #include "modeltreepersonnel.h"
 #include <QAbstractItemModel>
 #include <QTreeView>
-//#include <QObject>
 #include <QTreeView>
 
 modelTreePersonnel::modelTreePersonnel(QObject *parent, QList<QString> typesRessources, QList<Personnel> listePersonnel) : QStandardItemModel(parent)

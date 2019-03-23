@@ -4,7 +4,6 @@
 #include "personnel.h"
 #include "calendrier.h"
 #include <QMessageBox>
-#include <QDebug>
 #include <iostream>
 
 ModifierPersonnel::ModifierPersonnel(QWidget *parent, QString nomPrenom) :
@@ -41,8 +40,6 @@ ModifierPersonnel::ModifierPersonnel(QWidget *parent, QString nomPrenom) :
     //Récupération du label medecin correspondant à idType personnel et affectation à typeMedecin de current Personnel
     QString typeMedecin = qobject_cast<MainWindow*>(parent)->getBD()->getTypeMedecin(qobject_cast<MainWindow*>(parent)->getBD()->getDB(),this->currentPersonnel.getNumId());
     this->currentPersonnel.setTypeMedecin(typeMedecin.toStdString());
-    qDebug()<<typeMedecin;
-    qDebug()<<QString::fromStdString(this->currentPersonnel.getTypeMedecin());
 
     //Si diférrent de "Informaticien" on cache les champs login et password
     if(this->currentPersonnel.getTypeMedecin() != "Informaticien"){
@@ -426,18 +423,14 @@ void ModifierPersonnel::modificationPersonnel()
 
         //Obtenir idCompte du Personnel
          int idCompte = qobject_cast<MainWindow*>(parent())->getBD()->getIdCompte(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),this->currentPersonnel.getNumId());
-         qDebug()<<idCompte;
 
          //Obtenir idType lié au Personnel
         int idType= qobject_cast<MainWindow*>(parent())->getBD()->getIdType(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),QString::fromStdString(this->currentPersonnel.getTypeMedecin()));
-        qDebug()<<idType;
-        qDebug()<<this->currentPersonnel.getNumId();
 
         //Modifie le personnel dans la BD
          qobject_cast<MainWindow*>(parent())->getBD()->modifierPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),this->currentPersonnel,idType,idCompte);
 
          Personnel test = qobject_cast<MainWindow*>(parent())->getBD()->getPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(), idPersonnel);
-         qDebug()<<QString::fromStdString(this->currentPersonnel.getTypeMedecin());
 
         //Si nouveau type est informaticien Creation compte
          if(this->currentPersonnel.getTypeMedecin() == "Informaticien" and ancienTypeMeddecin != "Informaticien"){
