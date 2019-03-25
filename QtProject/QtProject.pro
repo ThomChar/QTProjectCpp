@@ -49,7 +49,8 @@ SOURCES += \
     modeltabletypemedecin.cpp \
     modifiertypepersonnel.cpp \
     supprimertypepersonnel.cpp \
-    exporter.cpp
+    exporter.cpp \
+    verifierformat.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -75,7 +76,8 @@ HEADERS += \
     modeltabletypemedecin.h \
     modifiertypepersonnel.h \
     supprimertypepersonnel.h \
-    exporter.h
+    exporter.h \
+    verifierformat.h
 
 FORMS += \
         mainwindow.ui \

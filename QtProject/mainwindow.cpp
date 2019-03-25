@@ -3,6 +3,7 @@
 #include "ajoutpatient.h"
 #include "ajoutpersonnel.h"
 #include "apropos.h"
+#include "verifierformat.h"
 #include "personnel.h"
 #include <QMessageBox>
 #include <iostream>
@@ -282,106 +283,11 @@ void MainWindow::exportation(){
     exportWindow->exec();
 }
 
-/** Methode permettant de controler le format d'une date (verification simple pour commencer, on pourrait faire attention -> jours/mois)
- * @brief ajoutPersonnel::verifierDate
- * @param date
- * @return
- */
-bool MainWindow::verifierDate(QString date){
-    bool valide = true;
-    QRegExp rx("[0-3][0-9]/[0-1][0-9]/[0-9]{4}"); // règle de base
-
-    // règles pour mois de février
-    QRegExp rx1("[0-2][0-9]/[0-0][2-2]/[0-9]{4}"); // règle pour mois de février
-
-    // règles pour mois 10,11,12
-    QRegExp rx2_1("[0-3][0-1]/[1-1][0-2]/[0-9]{4}"); // règle pour jour 30 et 31 des mois 10,11,12
-    QRegExp rx2_2("[0-2][0-9]/[1-1][0-2]/[0-9]{4}"); // règle pour les autres jours des mois 10,11,12
-
-    // règles pour mois 3 à 9
-    QRegExp rx3_1("[0-3][0-1]/[0-0][3-9]/[0-9]{4}"); // règle pour jour 30 et 31 des mois 3 à 9
-    QRegExp rx3_2("[0-2][0-9]/[0-0][3-9]/[0-9]{4}"); // règle pour les autres jours des mois 3 à 9
-
-    // règles pour mois de janvier
-    QRegExp rx4_1("[0-3][0-1]/[0-0][1-1]/[0-9]{4}"); // règle pour jour 30 et 31 de janvier
-    QRegExp rx4_2("[0-2][0-9]/[0-0][1-1]/[0-9]{4}"); // règle pour les autres jours de janvier
-
-    //Verifications
-        if(!rx1.exactMatch(date) && date != ""){
-            if(!rx2_1.exactMatch(date)){
-                if(!rx2_2.exactMatch(date)){
-                    if(!rx3_1.exactMatch(date)){
-                        if(!rx3_2.exactMatch(date)){
-                            if(!rx4_1.exactMatch(date)){
-                                if(!rx4_2.exactMatch(date)){
-                                     valide = false;
-                                }
-                            }
-                        }
-                     }
-                }
-            }
-        }
-    return valide;
-}
-
-/** Methode permettant de controler si une date est après une autre
- * @brief ajoutPersonnel::verifierDate
- * @param date
- * @return
- */
-bool MainWindow::verifierDates(QString dateBefore, QString dateAfter){
-    bool valide = true;
-    QStringList date1 = dateBefore.split("/");
-    QStringList date2 = dateAfter.split("/");
-
-    int date1_jour = date1[0].toInt();
-    int date1_mois = date1[1].toInt();
-    int date1_annee = date1[2].toInt();
-
-    int date2_jour = date2[0].toInt();
-    int date2_mois = date2[1].toInt();
-    int date2_annee = date2[2].toInt();
-
-    if(date2_annee < date1_annee)
-        valide = false;
-    else if(date2_annee == date1_annee)
-    {
-        if(date2_mois < date1_mois)
-            valide = false;
-        else if(date2_mois == date1_mois)
-        {
-            if(date2_jour < date1_jour)
-                valide = false;
-        }
-    }
-
-    return valide;
-}
-
-bool MainWindow::verifierNomPropre(QString nomPropre){
-    bool valide = true;
-    QRegExp rx("[À-ŸA-Zà-ÿa-z]*");
-    if(!rx.exactMatch(nomPropre)){
-        valide = false;
-    }
-    return valide;
-}
-
-bool MainWindow::verifierNumID(QString numId){
-    bool valide = true;
-    QRegExp rx("[0-9]*");
-    if(!rx.exactMatch(numId)){
-        valide = false;
-    }
-    return valide;
-}
-
 void MainWindow::rechercherPatients(){
     bool verifier = true;
 
     //Verifications
-    if (!verifierNumID(ui->idPatient_r->text())){
+    if (!verifierFormat().verifierNumID(ui->idPatient_r->text())){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"
@@ -389,7 +295,7 @@ void MainWindow::rechercherPatients(){
                        "(uniquement des chiffres ou laisser libre)</p>");
         msgBox.exec();
         verifier= false;
-    }else if (!verifierNomPropre(ui->nomPatient_r->text())){
+    }else if (!verifierFormat().verifierNomPropreMainWindow(ui->nomPatient_r->text())){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"
@@ -397,7 +303,7 @@ void MainWindow::rechercherPatients(){
                        "(1 Majuscule + minuscules ou laisser vide)<br></p>");
         msgBox.exec();
         verifier= false;
-    }else if (!verifierNomPropre(ui->prenomPatient_r->text())){
+    }else if (!verifierFormat().verifierNomPropreMainWindow(ui->prenomPatient_r->text())){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"
@@ -405,7 +311,7 @@ void MainWindow::rechercherPatients(){
                        "(1 Majuscule + minuscules ou laisser vide)<br></p>");
         msgBox.exec();
         verifier= false;
-    }else if (!verifierDate(ui->dateDebut_r->text())){
+    }else if (!verifierFormat().verifierDate(ui->dateDebut_r->text())){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"
@@ -413,7 +319,7 @@ void MainWindow::rechercherPatients(){
                        "(JJ/MM/AAAA ou laisser vide)</p>");
         msgBox.exec();
         verifier= false;
-    }else if (!verifierDate(ui->dateFin_r->text())){
+    }else if (!verifierFormat().verifierDate(ui->dateFin_r->text())){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"
@@ -422,7 +328,7 @@ void MainWindow::rechercherPatients(){
         msgBox.exec();
         verifier= false;
     } else if((verifier == true && !ui->dateDebut_r->text().isEmpty() && !ui->dateFin_r->text().isEmpty())
-              && !verifierDates(ui->dateDebut_r->text(), ui->dateFin_r->text())) {
+              && !verifierFormat().verifierDates(ui->dateDebut_r->text(), ui->dateFin_r->text())) {
         QMessageBox msgBox;
         msgBox.setWindowTitle("Warning");
         msgBox.setText("<p align='center'>Attention ! <br>"

@@ -2,6 +2,7 @@
 #include "ui_modifierpatient.h"
 #include "mainwindow.h"
 #include "patient.h"
+#include "verifierformat.h"
 #include <QMessageBox>
 #include <iostream>
 
@@ -305,128 +306,6 @@ void modifierPatient::supprimerPersonnelTraitant(){
     ui->PersonnelTraitant_treeView->reset();
 }
 
-/** Methode permettant de controler le format d'une date (verification simple pour commencer, on pourrait faire attention -> jours/mois)
- * @brief ajoutPatient::verifierDate
- * @param date
- * @return
- */
-bool modifierPatient::verifierDate(QString date){
-    bool valide = true;
-    QRegExp rx("[0-3][0-9]/[0-1][0-9]/[0-9]{4}"); // règle de base
-
-    // règles pour mois de février
-    QRegExp rx1("[0-2][0-9]/[0-0][2-2]/[0-9]{4}"); // règle pour mois de février
-
-    // règles pour mois 10,11,12
-    QRegExp rx2_1("[0-3][0-1]/[1-1][0-2]/[0-9]{4}"); // règle pour jour 30 et 31 des mois 10,11,12
-    QRegExp rx2_2("[0-2][0-9]/[1-1][0-2]/[0-9]{4}"); // règle pour les autres jours des mois 10,11,12
-
-    // règles pour mois 3 à 9
-    QRegExp rx3_1("[0-3][0-1]/[0-0][3-9]/[0-9]{4}"); // règle pour jour 30 et 31 des mois 3 à 9
-    QRegExp rx3_2("[0-2][0-9]/[0-0][3-9]/[0-9]{4}"); // règle pour les autres jours des mois 3 à 9
-
-    // règles pour mois de janvier
-    QRegExp rx4_1("[0-3][0-1]/[0-0][1-1]/[0-9]{4}"); // règle pour jour 30 et 31 de janvier
-    QRegExp rx4_2("[0-2][0-9]/[0-0][1-1]/[0-9]{4}"); // règle pour les autres jours de janvier
-
-    //Verifications
-        if(!rx1.exactMatch(date)){
-            if(!rx2_1.exactMatch(date)){
-                if(!rx2_2.exactMatch(date)){
-                    if(!rx3_1.exactMatch(date)){
-                        if(!rx3_2.exactMatch(date)){
-                            if(!rx4_1.exactMatch(date)){
-                                if(!rx4_2.exactMatch(date)){
-                                     valide = false;
-                                }
-                            }
-                        }
-                     }
-                }
-            }
-        }
-    return valide;
-}
-bool modifierPatient::verifierNomPropre(QString nomPropre){
-    bool valide = true;
-    QRegExp rx("[À-ŸA-Z]{1}[à-ÿa-z]{0,39}");
-    if(!rx.exactMatch(nomPropre)){
-        valide = false;
-    }
-    return valide;
-}
-bool modifierPatient::verifierAdresse(QString adresse){
-    bool valide = true;
-    if(adresse == ""){
-        valide = false;
-    }
-    return valide;
-}
-bool modifierPatient::verifierCodePostale(QString cdepostal){
-    bool valide = true;
-    QRegExp rx("[0-9]*");
-    if(!rx.exactMatch(cdepostal)|| cdepostal == ""){
-        valide = false;
-    }
-    return valide;
-}
-bool modifierPatient::verifierDureeConsult(QString dureeConsult){
-    bool valide = true;
-    QRegExp rx("[0-9]*");
-    if(!rx.exactMatch(dureeConsult) || dureeConsult == ""){
-        valide = false;
-    }
-    return valide;
-}
-bool modifierPatient::verifierNumPrio(QString numPrio){
-    bool valide = true;
-    QRegExp rx("[1-5]");
-    if(!rx.exactMatch(numPrio) || numPrio == ""){
-        valide = false;
-    }
-    return valide;
-}
-bool modifierPatient::verifierNumTel(QString numTel){
-    bool valide = true;
-    QRegExp rx("[0-9]*");
-    if(!rx.exactMatch(numTel)){
-        valide = false;
-    }
-    return valide;
-}
-bool modifierPatient::verifierEmail(QString email){
-    bool valide = true;
-    QRegExp rx("[a-z]*.[a-z]*@[a-z]*.fr");
-    QRegExp rx1("[a-z]*@[a-z]*.fr");
-    QRegExp rx2("[a-z]*@[a-z]*.com");
-    QRegExp rx3("[a-z]*.[a-z]*@[a-z]*.com");
-    if(!rx.exactMatch(email) && email != ""){
-        if(!rx1.exactMatch(email)){
-            if(!rx2.exactMatch(email)){
-                if(!rx3.exactMatch(email)){
-                    valide = false;
-                }
-            }
-        }
-    }
-    return valide;
-}
-bool modifierPatient::verifierMedecin(QString medecin){
-    bool valide = true;
-    QRegExp rx("ex: Anne Marie");
-    if(rx.exactMatch(medecin)){
-        valide = false;
-    }
-    return valide;
-}
-bool modifierPatient::verifierlisteMedecins(QList<Personnel>listePersonnel){
-   bool valide = true;
-   if(listePersonnel.isEmpty()){
-       valide = false;
-   }
-   return valide;
-}
-
 /**
  * Methode permettant de verifier les informations entree et ajouter le patient si toutes les informations nécessaires sont correctes
  * @brief modifierPatient::modifierPatient
@@ -436,112 +315,10 @@ void modifierPatient::modificationPatient()
     bool verifier = true;
 
     //Verifications
-    if (!verifierDate(ui->lineEdit->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Date de création incorrect<br>"
-                       "(JJ/MM/AAAA)</p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierNomPropre(ui->lineEdit_2->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Nom du Patient incorrect<br>"
-                       "(1 Majuscule + minuscules)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierNomPropre(ui->lineEdit_3->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Prénom du Patient incorrect<br>"
-                       "(1 Majuscule + minuscules)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierAdresse(ui->lineEdit_4->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Champ Adresse ne peut pas être vide<br>"
-                       "(veuillez saisir une adresse)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierNomPropre(ui->lineEdit_5->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Ville incorrect<br>"
-                       "(1 Majuscule + minuscules)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierCodePostale(ui->lineEdit_6->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Code Postale incorrect<br>"
-                       "(uniquement des chiffres)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierDate(ui->lineEdit_7->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Date de RDV incorrect<br>"
-                       "(JJ/MM/AAAA)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierDureeConsult(ui->spinBox->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Durée de Consultation incorrect<br>"
-                       "1 (en minutes)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierNumPrio(ui->comboBox_2->currentText())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Num. Prioritaire incorrect<br>"
-                       "de 1 à 5 (5 le plus prioritaire)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierNumTel(ui->lineEdit_10->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Num. de Téléphone incorrect<br>"
-                       "(uniquement des chiffres)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierEmail(ui->lineEdit_11->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Email incorrect<br>"
-                       "(prenom.nom@email.fr ou prenom.nom@email.com)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    /*}else if (!verifierMedecin(ui->comboBox->currentText())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Champ médecin ne peut être vide"
-                       "(veuillez saisir un autre médecin que l'exemple)<br></p>");
-        msgBox.exec();
-        verifier= false;*/
-    }else if(!verifierlisteMedecins(listePersonnelTraitant)){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                   "Champ médecin ne peut être vide"
-                   "(veuillez chosir au moins un médecin dans l'arbre)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }
 
+    verifier = verifierFormat().verificationsAjoutPatient(ui->lineEdit->text(), ui->lineEdit_2->text(), ui->lineEdit_3->text(), ui->lineEdit_4->text(), ui->lineEdit_5->text(),
+                                         ui->lineEdit_6->text(), ui->lineEdit_7->text(), ui->spinBox->text(), ui->comboBox_2->currentText(), ui->lineEdit_10->text(),
+                                         ui->lineEdit_11->text(), listePersonnelTraitant);
     if (verifier == true){  // Si le formulaire est correctement rempli
 
         QList<int> listeIdMedecins;
@@ -565,7 +342,6 @@ void modifierPatient::modificationPatient()
         this->currentPatient.setEmail(ui->lineEdit_11->text().toStdString());
         this->currentPatient.setDateConsultation(dateConsultation);
         this->currentPatient.setDureeConsultation(ui->spinBox->text().toStdString());
-        //this->currentPatient.setMedecin(ui->comboBox->currentText().toStdString());
         this->currentPatient.setlistesMedecins(listeIdMedecins);
         this->currentPatient.setPriorite(ui->comboBox_2->currentText().toInt());
         this->currentPatient.setCommentaires(ui->textEdit->toPlainText().toStdString());
@@ -575,11 +351,11 @@ void modifierPatient::modificationPatient()
         //Redefini le model de BD
          qobject_cast<MainWindow*>(parent())->resetTablePatientModel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
 
-    //Envoyer l'information d'ajout dans status Bar
+        //Envoyer l'information d'ajout dans status Bar
 
-    qobject_cast<MainWindow*>(parent())->setStatusBar("Patient "+ui->lineEdit_2->text()+" "+ui->lineEdit_3->text()+" modifié !");
+        qobject_cast<MainWindow*>(parent())->setStatusBar("Patient "+ui->lineEdit_2->text()+" "+ui->lineEdit_3->text()+" modifié !");
 
-    // Fermeture du formulaire
-    this->close();
-    }
+        // Fermeture du formulaire
+        this->close();
+        }
 }

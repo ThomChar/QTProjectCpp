@@ -2,6 +2,7 @@
 #include "ui_ajoutpersonnel.h"
 #include "mainwindow.h"
 #include "personnel.h"
+#include "verifierformat.h"
 #include <QMessageBox>
 
 ajoutPersonnel::ajoutPersonnel(QWidget *parent) :
@@ -135,130 +136,6 @@ void ajoutPersonnel::ajouterTypePersonnel(){
     }
 }
 
-/** Methode permettant de controler le format d'une date (verification simple pour commencer, on pourrait faire attention -> jours/mois)
- * @brief ajoutPersonnel::verifierDate
- * @param date
- * @return
- */
-bool ajoutPersonnel::verifierDate(QString date){
-    bool valide = true;
-    QRegExp rx("[0-3][0-9]/[0-1][0-9]/[0-9]{4}"); // règle de base
-
-    // règles pour mois de février
-    QRegExp rx1("[0-2][0-9]/[0-0][2-2]/[0-9]{4}"); // règle pour mois de février
-
-    // règles pour mois 10,11,12
-    QRegExp rx2_1("[0-3][0-1]/[1-1][0-2]/[0-9]{4}"); // règle pour jour 30 et 31 des mois 10,11,12
-    QRegExp rx2_2("[0-2][0-9]/[1-1][0-2]/[0-9]{4}"); // règle pour les autres jours des mois 10,11,12
-
-    // règles pour mois 3 à 9
-    QRegExp rx3_1("[0-3][0-1]/[0-0][3-9]/[0-9]{4}"); // règle pour jour 30 et 31 des mois 3 à 9
-    QRegExp rx3_2("[0-2][0-9]/[0-0][3-9]/[0-9]{4}"); // règle pour les autres jours des mois 3 à 9
-
-    // règles pour mois de janvier
-    QRegExp rx4_1("[0-3][0-1]/[0-0][1-1]/[0-9]{4}"); // règle pour jour 30 et 31 de janvier
-    QRegExp rx4_2("[0-2][0-9]/[0-0][1-1]/[0-9]{4}"); // règle pour les autres jours de janvier
-
-    //Verifications
-        if(!rx1.exactMatch(date)){
-            if(!rx2_1.exactMatch(date)){
-                if(!rx2_2.exactMatch(date)){
-                    if(!rx3_1.exactMatch(date)){
-                        if(!rx3_2.exactMatch(date)){
-                            if(!rx4_1.exactMatch(date)){
-                                if(!rx4_2.exactMatch(date)){
-                                     valide = false;
-                                }
-                            }
-                        }
-                     }
-                }
-            }
-        }
-    return valide;
-}
-bool ajoutPersonnel::verifierNomPropre(QString nomPropre){
-    bool valide = true;
-    QRegExp rx("[A-Z][a-z]*");
-    if(!rx.exactMatch(nomPropre)){
-        valide = false;
-    }
-    return valide;
-}
-bool ajoutPersonnel::verifierAdresse(QString adresse){
-    bool valide = true;
-    if(adresse == ""){}
-      /*  valide = false;
-    }*/ //adresse facultative dans ce formulaire
-    return valide;
-}
-bool ajoutPersonnel::verifierVille(QString ville){
-    bool valide = true;
-    QRegExp rx("[A-Z][a-z]*");
-    if(!rx.exactMatch(ville) && ville !=""){
-        valide = false;
-    }
-    return valide;
-}
-bool ajoutPersonnel::verifierCodePostale(QString cdepostal){
-    bool valide = true;
-    QRegExp rx("[0-9]*");
-    if(!rx.exactMatch(cdepostal) && cdepostal !=""){
-        valide = false;
-    }
-    return valide;
-}
-bool ajoutPersonnel::verifierTypeMedecin(QString typeMedecin){
-    bool valide = true;
-    QRegExp rx("ex: médecin A");
-    if(rx.exactMatch(typeMedecin)){
-        valide = false;
-    }
-    return valide;
-}
-bool ajoutPersonnel::verifierLogin(QString login){
-    bool valide = true;
-    if(ui->comboBox_2->currentText() != "Informaticien" && login != ""){
-        valide = false;
-    }else if(ui->comboBox_2->currentText() == "Informaticien" && login == ""){
-        valide = false;
-    }
-    return valide;
-}
-bool ajoutPersonnel::verifierPassword(QString password){
-    bool valide = true;
-    if(ui->comboBox_2->currentText() != "Informaticien" && password != ""){
-        valide = false;
-    }else if(ui->comboBox_2->currentText() == "Informaticien" && password == ""){
-        valide = false;
-    }
-    return valide;
-}
-bool ajoutPersonnel::verifierNumTel(QString numTel){
-    bool valide = true;
-    QRegExp rx("[0-9]*");
-    if(!rx.exactMatch(numTel) && numTel !=""){
-        valide = false;
-    }
-    return valide;
-}
-bool ajoutPersonnel::verifierEmail(QString email){
-    bool valide = true;
-    QRegExp rx("[a-z]*.[a-z]*@[a-z]*.fr");
-    QRegExp rx1("[a-z]*@[a-z]*.fr");
-    QRegExp rx2("[a-z]*@[a-z]*.com");
-    QRegExp rx3("[a-z]*.[a-z]*@[a-z]*.com");
-    if(!rx.exactMatch(email) && email != ""){
-        if(!rx1.exactMatch(email)){
-            if(!rx2.exactMatch(email)){
-                if(!rx3.exactMatch(email)){
-                    valide = false;
-                }
-            }
-        }
-    }
-    return valide;
-}
 
 /**
  * Methode permettant de verifier les informations entree et ajouter le personnel si toutes les informations nécessaires sont correctes
@@ -269,95 +146,9 @@ void ajoutPersonnel::ajouterPersonnel()
     bool verifier = true;
 
     //Verifications
-    if (!verifierDate(ui->lineEdit->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Date de création incorrect<br>"
-                       "(JJ/MM/AAAA)</p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierNomPropre(ui->lineEdit_2->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Nom du Patient incorrect<br>"
-                       "(1 Majuscule + minuscules)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierNomPropre(ui->lineEdit_3->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Prénom du Patient incorrect<br>"
-                       "(1 Majuscule + minuscules)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierAdresse(ui->lineEdit_4->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Champ Adresse ne peut pas être vide<br>"
-                       "(veuillez saisir une adresse)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierVille(ui->lineEdit_5->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Ville incorrect<br>"
-                       "(1 Majuscule + minuscules)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierCodePostale(ui->lineEdit_6->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Code Postale incorrect<br>"
-                       "(uniquement des chiffres)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierTypeMedecin(ui->comboBox_2->currentText())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Type Médecin incorrect<br>"
-                       "Faire un autre choix que l'exemple<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierLogin(ui->lineEdit_8->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du Login incorrect<br>"
-                       "(si type Informaticien, veuillez saisir un login sinon ne pas compléter ce champ)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierPassword(ui->lineEdit_9->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du Password incorrect<br>"
-                       "si type Informaticien, veuillez saisir un password sinon ne pas compléter ce champ<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierNumTel(ui->lineEdit_10->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Num. de Téléphone incorrect<br>"
-                       "(uniquement des chiffres)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }else if (!verifierEmail(ui->lineEdit_11->text())){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Warning");
-        msgBox.setText("<p align='center'>Attention ! <br>"
-                       "Format du champ Email incorrect<br>"
-                       "(prenom.nom@email.fr ou prenom.nom@email.com)<br></p>");
-        msgBox.exec();
-        verifier= false;
-    }
+    verifier = verifierFormat().verificationsAjoutPersonnel(ui->lineEdit->text(), ui->lineEdit_2->text(), ui->lineEdit_3->text(), ui->lineEdit_4->text(), ui->lineEdit_5->text(),
+                                         ui->lineEdit_6->text(), ui->comboBox_2->currentText(), ui->lineEdit_8->text(), ui->lineEdit_9->text(), ui->lineEdit_10->text(),
+                                         ui->lineEdit_11->text());
 
     if (verifier == true){  // Si le formulaire est correctement rempli
 
