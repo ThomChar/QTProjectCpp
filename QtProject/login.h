@@ -13,7 +13,6 @@ class login : public QDialog
     Q_OBJECT
 
 public:
-    //login(QWidget *parent, QSqlDatabase db);
      login(QWidget *parent,QSqlDatabase db);
      login(QSqlDatabase db);
     ~login();

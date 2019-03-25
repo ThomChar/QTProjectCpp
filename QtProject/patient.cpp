@@ -63,7 +63,6 @@ Patient::Patient(int numId, QDate dateCreation, string nom, string prenom, strin
 Patient::Patient( QDate dateCreation, string nom, string prenom, string adresse, string ville, string codepostal, string numTelephone, string email,
                  QDate dateConsultation, string dureeConsultation, int priorite,  QList<int> listesMedecins, string commentaires){
     this->dateCreation = dateCreation;
-    this->numId = numId;
     this->nom = nom;
     this->prenom = prenom;
     this->adresse = adresse;

@@ -117,13 +117,14 @@ void ajoutPatient::ajouterPersonnelTraitant(){
     }
 
     if(selected and control){
+
         //Ajout d'une consultation pour le patient dans la BD
+
         //Obtenir le Médecin à ajouter à la liste
         QString itemSelect =  ui->PersonnelBD_treeView->selectionModel()->selectedIndexes()[0].data().toString();
         int idPersonnelSelect = qobject_cast<MainWindow*>(parent())->getBD()->getIdPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),itemSelect.toStdString());
         Personnel persoSelect = qobject_cast<MainWindow*>(parent())->getBD()->getPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),idPersonnelSelect);
 
-        //QList<int> listeIdPersonnel; //=  qobject_cast<MainWindow*>(parent())->getBD()->getIdRessourcesPatient(qobject_cast<MainWindow*>(parent())->getBD()->getDB(), this->idPatient);
         QList<Personnel>listePersonnelMaj = qobject_cast<MainWindow*>(parent())->getBD()->getListePersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
         QList<Personnel>listePersonnelBDTemp;
         QList<Personnel>listePersonnelTraitantTemp;// = this->listePersonnelTraitant;
@@ -195,12 +196,12 @@ void ajoutPatient::supprimerPersonnelTraitant(){
 
     if(selected and control){
         //Supprimer une consultation pour le patient dans la BD
+
         //Obtenir le Médecin à ajouter à la liste
         QString itemSelect =  ui->PersonnelTraitant_treeView->selectionModel()->selectedIndexes()[0].data().toString();
         int idPersonnelSelect = qobject_cast<MainWindow*>(parent())->getBD()->getIdPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),itemSelect.toStdString());
         Personnel persoSelect = qobject_cast<MainWindow*>(parent())->getBD()->getPersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),idPersonnelSelect);
 
-        //QList<int> listeIdPersonnel; //=  qobject_cast<MainWindow*>(parent())->getBD()->getIdRessourcesPatient(qobject_cast<MainWindow*>(parent())->getBD()->getDB(), this->idPatient);
         QList<Personnel>listePersonnelMaj = qobject_cast<MainWindow*>(parent())->getBD()->getListePersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
         QList<Personnel>listePersonnelBDTemp;
         QList<Personnel>listePersonnelTraitantTemp;
@@ -508,7 +509,9 @@ void ajoutPatient::ajouterPatient()
     if (verifier == true){  // Si le formulaire est correctement rempli
 
     //Ajout du Patient à la base de données
+
         // Création du Patient en local
+
         QList<int> listeIdMedecins;
         for(int i = 0;i<this->listePersonnelTraitant.size();i++){
             listeIdMedecins.push_back(this->listePersonnelTraitant[i].getNumId());

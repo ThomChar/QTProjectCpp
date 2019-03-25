@@ -15,7 +15,7 @@ int modelTablePatient::rowCount(const QModelIndex & /*parent*/) const
 
 int modelTablePatient::columnCount(const QModelIndex & /*parent*/) const
 {
-    return 4;// return 6; /* nom, prénom, date de rendez-vous, numéro d’identiﬁcation, lien modifier, bouton supprimer*/
+    return 4;
 }
 
 QVariant modelTablePatient::data(const QModelIndex &index, int role) const
@@ -35,12 +35,10 @@ QVariant modelTablePatient::data(const QModelIndex &index, int role) const
             default:
                 return QString("Row%1, Column%2 vide").arg(index.row() + 1)
                         .arg(index.column() +1);
-                /*return nullptr;*/
 
                }
     }
     return QVariant();
-
 }
 
 
@@ -57,7 +55,6 @@ QVariant modelTablePatient::headerData(int section, Qt::Orientation orientation,
             return QString("Prenom");
         case 3:
             return QString("Date RDV");
-
         }
     }
     return QVariant();

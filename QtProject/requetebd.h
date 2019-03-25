@@ -48,6 +48,9 @@ public:
     QList<typePersonnel> getListeTypePersonnels(QSqlDatabase db);
     QList<QString> getLabelsTypePersonnel(QSqlDatabase db);
     QList<int> getIdRessourcesPatient(QSqlDatabase db, int idPatient);
+    void getlisteNomPrePrioConsTot(QSqlDatabase db, ofstream &fichier);
+    void getListeExportPersonnels(QSqlDatabase db, ofstream &fichier);
+    void getListeExportTypes(QSqlDatabase db, ofstream &fichier);
 
 };
 

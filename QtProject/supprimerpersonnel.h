@@ -19,8 +19,6 @@ public:
 
 private:
     Ui::SupprimerPersonnel *ui;
-    /*string nom;
-    string prenom;*/
     QString nomPrenom;
 
 private slots:

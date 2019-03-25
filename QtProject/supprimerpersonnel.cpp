@@ -38,6 +38,7 @@ void SupprimerPersonnel::supprimerPersonnel(){
      qobject_cast<MainWindow*>(parent())->getBD()->removePersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),idPersonnel,idCompte);
 
      QList<Personnel> list = qobject_cast<MainWindow*>(parent())->getBD()->getListePersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
+
     //Redefinir le model de treeView
      qobject_cast<MainWindow*>(parent())->resetTreePersonnelModel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
 

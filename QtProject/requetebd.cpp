@@ -2,10 +2,13 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QSqlError>
+#include <QDebug>
+#include <QDate>
+#include <fstream>
+#include <iostream>
 #include "requetebd.h"
 #include "patient.h"
 #include "compte.h"
-#include <QDate>
 
 RequeteBD::RequeteBD(QSqlDatabase db)
 {
@@ -62,9 +65,10 @@ void RequeteBD::addPatient(QSqlDatabase db, Patient patient){
     SqlQuery.bindValue(":dureeConsultation", patient.getDureeConsultation().c_str());
     SqlQuery.bindValue(":priorite", patient.getPriorite());
     SqlQuery.bindValue(":commentaire", patient.getCommentaires().c_str());
-    //SqlQuery.bindValue(":idConsult", patient.getIdConsult());
 
     SqlQuery.exec();
+
+   // Obteir l'ID de la personne ayant effectuée la consultation
 
     for(int i =0;i<patient.getlistesMedecins().size();i++){
         //Ajoute un consultation
@@ -91,9 +95,6 @@ int RequeteBD::getIdPersonnel(QSqlDatabase db, string nomPrenom){
 
 QString RequeteBD::getNomPrenomPersonnelConsult(QSqlDatabase db, int idPatient){
     QSqlQuery SqlQuery = QSqlQuery( db );
-    /*SqlQuery.prepare( "select * from TPatient TP NATURAL JOIN TConsult TC"
-                      "LEFT JOIN TRessource TR ON TC.idRessource = TR.idRessource ");
-                      "WHERE idPatient=:idPatient ");*/
 
     QList<Consult> listeConsult = getListeConsults(db);
     int idRessource = 0;
@@ -190,7 +191,6 @@ QString RequeteBD::getNomPatient(QSqlDatabase db, int numId){
     SqlQuery.exec();
     int field_idx   = SqlQuery.record().indexOf("nom");
     QString nom = SqlQuery.record().value(field_idx).toString();
-    //qDebug() << nom;
     return SqlQuery.record().value(field_idx).toString();
 }
 /**
@@ -573,6 +573,7 @@ int RequeteBD::getIdConsult(QSqlDatabase db,int idPatient, int idPersonnel){
  * @param numId
  */
 Personnel RequeteBD::getPersonnel(QSqlDatabase db, int idPersonnel){
+
     QList<Personnel> listePersonnels = this->getListePersonnel(db);
     int indicePersonnel = 0;
     for (int i = 0;i<listePersonnels.size();i++){
@@ -585,6 +586,7 @@ Personnel RequeteBD::getPersonnel(QSqlDatabase db, int idPersonnel){
 }
 
 int RequeteBD::getIdCompte(QSqlDatabase db, int idRessource){
+
     QList<Compte> listeComptes = getListeComptes(db);
     int idCompte = 0;
     for (int i = 0;i<listeComptes.size();i++){
@@ -596,6 +598,7 @@ int RequeteBD::getIdCompte(QSqlDatabase db, int idRessource){
 }
 
 int  RequeteBD::getIdType(QSqlDatabase db, QString typeMedecin){
+
     QList<typePersonnel> listetypePersonnels = getListeTypePersonnels(db);
     int idType = 0;
     for (int i = 0;i<listetypePersonnels.size();i++){
@@ -658,7 +661,6 @@ QList<Personnel> RequeteBD::getListePersonnel(QSqlDatabase db){
            QString mdp = SqlQuery.record().value(field_idx12).toString();
 
            Personnel personnel(idPersonnel,dateCreation.toStdString(), nom.toStdString(), prenom.toStdString(), adresse.toStdString(), ville.toStdString(), cp.toStdString(), tel.toStdString(), email.toStdString(),typeMedecin.toStdString(),login.toStdString(),mdp.toStdString());
-           //qDebug() << idPersonnel << ", " << dateCreation << ", " << nom << ", " << prenom << ", "<< adresse << ", " << ville << ", " << cp << ", "<< tel << ", " << email << ", " << typeMedecin << ", " << login << ", " << mdp ;
            listePersonnels.push_back(personnel);
        };
 
@@ -684,7 +686,6 @@ QList<typePersonnel> RequeteBD::getListeTypePersonnels(QSqlDatabase db){
            QString label = SqlQuery.record().value(field_idx2).toString();
 
            typePersonnel typeMedecin(idType,label.toStdString());
-           //qDebug() << idType << ", " << label;
            listeTypePersonnels.push_back(typeMedecin);
 
        };
@@ -707,7 +708,6 @@ QList<QString> RequeteBD::getLabelsTypePersonnel(QSqlDatabase db){
        {
            int field_idx   = SqlQuery.record().indexOf("label");
            QString label = SqlQuery.record().value(field_idx).toString();
-           //qDebug() << label;
            listeLabelsTypePersonnel.push_back(label);
        };
 
@@ -727,4 +727,73 @@ QList<int> RequeteBD::getIdRessourcesPatient(QSqlDatabase db, int idPatient){
     }
 
     return listeIdPersonnel;
+}
+
+void RequeteBD::getlisteNomPrePrioConsTot(QSqlDatabase db, ofstream &fichier){
+
+     if (fichier)
+     {
+         fichier << "Liste des Patients : " << endl;
+
+        //Obtenir la liste de tous les patients
+        QList<Patient> listePatients = getListePatients(db);
+        string nomPrenomPatient;
+        int prioriteMoyenne = 0;
+        int sommeTotalDureeConsult= 0;//en minutes
+
+        foreach( Patient item, listePatients )
+        {
+            fichier << item.getNom() << item.getPrenom()<<","<< endl;
+            prioriteMoyenne = prioriteMoyenne + item.getPriorite();// Déterminer la priorité moyenne de l'ensemble des patients
+            sommeTotalDureeConsult = sommeTotalDureeConsult + stoi(item.getDureeConsultation());// Déterminer somme consult pour l'ensemble des patients
+
+        }
+        fichier << "La Priorité moyenne : " << prioriteMoyenne/listePatients.size() <<","<< endl;
+        fichier << "La Durée total de Consultation (en minutes) : " << sommeTotalDureeConsult << endl;
+        fichier << endl;
+    }else {
+        cerr << "impossible d'ouvrir le fichier !" << endl;
+    }
+}
+
+void RequeteBD::getListeExportPersonnels(QSqlDatabase db, ofstream &fichier){
+
+     if (fichier)
+     {
+         fichier << "Liste des Personnels : " << endl;
+
+        //Obtenir la liste de tous les personnels
+        QList<Personnel> listePersonnels = getListePersonnel(db);
+        string nomPrenomPersonnel;
+
+        foreach( Personnel item, listePersonnels )
+        {
+            fichier << item.getNom() << item.getPrenom()<<","<< endl;
+
+        }
+         fichier << endl;
+    }else {
+        cerr << "impossible d'ouvrir le fichier !" << endl;
+    }
+}
+
+void RequeteBD::getListeExportTypes(QSqlDatabase db, ofstream &fichier){
+
+     if (fichier)
+     {
+         fichier << "Liste des Types de Médecin : " << endl;
+
+        //Obtenir la liste de tous les types de médecin
+        QList<typePersonnel> listeTypesPersonnel = getListeTypePersonnels(db);
+        string typeMedecin;
+
+        foreach( typePersonnel item, listeTypesPersonnel )
+        {
+            fichier << item.getLabel()<< endl;
+
+        }
+        fichier << endl;
+    }else {
+        cerr << "impossible d'ouvrir le fichier !" << endl;
+    }
 }

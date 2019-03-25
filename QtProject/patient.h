@@ -53,8 +53,6 @@ public:
     void setlistesMedecins( QList<int> listesMedecins);
     string getCommentaires();
     void setCommentaires(string commentaires);
-    /*int getIdConsult();
-    void setIdConsult(int idConsult);*/
 private:
     QDate dateCreation;
     int numId;

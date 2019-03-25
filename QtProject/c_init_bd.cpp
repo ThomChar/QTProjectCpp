@@ -13,6 +13,12 @@ c_init_bd::c_init_bd()
 {
 }
 
+c_init_bd::~c_init_bd()
+{
+    db.close();
+    db.removeDatabase("QSQLITE");
+}
+
 QSqlDatabase c_init_bd::getDataBase(){
     return this->db;
 }
@@ -130,10 +136,10 @@ bool c_init_bd::Creation_BD()
                                   "UNION SELECT 4, 4, 6 "
                                   "UNION SELECT 5, 5, 2 "
                                   "UNION SELECT 6, 6, 4 ");
-                                  //"UNION SELECT 7, 7, 12 "
-                                  //"UNION SELECT 8, 8, 8 "
-                                  //"UNION SELECT 9, 9, 9 "
-                                  //"UNION SELECT 10, 10, 8");
+                                  //"UNION SELECT 7, 1, 12 "
+                                  //"UNION SELECT 8, 2, 8 "
+                                  //"UNION SELECT 9, 3, 9 "
+                                  //"UNION SELECT 10, 5, 8");
         if(!b_test)
         {
             qDebug() << query.lastError().text();

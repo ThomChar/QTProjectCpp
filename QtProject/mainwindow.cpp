@@ -9,6 +9,8 @@
 #include <QAbstractItemModel>
 #include <QStandardItem>
 #include <QString>
+#include <QCloseEvent>
+#include <QDebug>
 
 
 MainWindow::MainWindow(QSqlDatabase db, QString login) : ui(new Ui::MainWindow)
@@ -74,11 +76,31 @@ MainWindow::MainWindow(QSqlDatabase db, QString login) : ui(new Ui::MainWindow)
     QObject::connect(calendrier_2->findChild<QWidget *>("pushButton"), SIGNAL(clicked()),this, SLOT(afficherDateSelect_2()));
     //evenement pour effectuer la recherche selon les critères
     QObject::connect(ui->tabWidget->findChild<QWidget *>("searchButton"), SIGNAL(clicked()),this, SLOT(rechercherPatients()));
+    //evenement pour afficher fenêtre permettant d'exporter des données dans un fichier de sortie
+    QObject::connect(ui->actionExporter, SIGNAL(triggered()),this, SLOT(exportation()));
+    //evenement pour fermer la BD on close de l'application
+    //QObject::connect(SLOT(quit()), SIGNAL(triggered()),this, SLOT(exportation()));
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::closeEvent (QCloseEvent *event)
+{
+    /*QMessageBox::StandardButton resBtn = QMessageBox::question( this,"Fermeture Application",
+                                                                tr("Etes vous sûr de vouloir fermer l'applciation?\n"),
+                                                                QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes);
+    if (resBtn != QMessageBox::Yes) {
+        event->ignore();
+    } else {
+        event->accept();
+    }*/
+
+    baseDonnee->getDB().close();
+    qDebug()<<"Fin des Transactions. Base de donnée fermée";
 }
 
 /**
@@ -245,14 +267,19 @@ void MainWindow::modifierPersonnel(){
 }
 
 void MainWindow::gererTypesPersonnel(){
-    //modelTypePers = new modelTableTypeMedecin(this, baseDonnee->getListeTypePersonnels(this->getBD()->getDB()));;
     gestionTypesPerWindow = new gestionTypeMedecin(this);
     gestionTypesPerWindow->exec();
 }
 
 // afficher page apropos (on pourrait mettre  bloquant par soucis de ne pas surcharger la vue)
 void MainWindow::afficherAPropos(){
-    aProposWindow->show();
+    aProposWindow->exec();
+}
+
+// afficher fenêtre permettant d'exporter données dans fichier
+void MainWindow::exportation(){
+    this->exportWindow = new exporter(this);
+    exportWindow->exec();
 }
 
 /** Methode permettant de controler le format d'une date (verification simple pour commencer, on pourrait faire attention -> jours/mois)

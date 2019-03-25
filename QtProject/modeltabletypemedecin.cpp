@@ -14,7 +14,7 @@ int modelTableTypeMedecin::rowCount(const QModelIndex & /*parent*/) const
 
 int modelTableTypeMedecin::columnCount(const QModelIndex & /*parent*/) const
 {
-    return 2; /* nom, prénom, date de rendez-vous, numéro d’identiﬁcation, lien modifier, bouton supprimer*/
+    return 2;
 }
 
 QVariant modelTableTypeMedecin::data(const QModelIndex &index, int role) const

@@ -4,13 +4,11 @@
 #include "requetebd.h"
 #include <QMessageBox>
 
-login::login(/*QWidget *parent,*/QSqlDatabase db):
-    /*QDialog(parent),*/
+login::login(QSqlDatabase db):
     ui(new Ui::login)
 {
     ui->setupUi(this);
     this->database = db;
-    //w = new MainWindow(/*this,*/ this->database ,login);
     this->setWindowTitle("Authentification");
     this->setFixedSize( this->size());
 
@@ -42,12 +40,7 @@ void login::connection()
             w = new MainWindow(/*this,*/ this->database ,login);
             w->setWindowTitle("Gestion Patient");
             w->show();
-    /*if(verificationLogin(login, password)){ // à relier avec la fonction pour controler l'identifiant user
-        this->close();
-        w->setWindowTitle("Gestion Patient");
-        w->show();*/
-    }
-    else {
+    }else {
         ui->lineEdit -> setText(login);
         ui->lineEdit_2 -> setText("");
         QMessageBox msgBox;
@@ -65,7 +58,7 @@ bool login::verificationLogin(QString login, QString password) {
     bool test = false;
 
     // verifications
-    if(login == "admin" && password == "password"){ // à relier avec la fonction pour controler l'identifiant user
+    if(login == "admin" && password == "password"){
        test = true;
     }
 

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>exporter</class>
+ <widget class="QDialog" name="exporter">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>339</width>
+    <height>439</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLineEdit" name="extension_edit">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>360</y>
+     <width>161</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="extension_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>360</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Extension fichier</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="nomfichier_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>320</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Nom du fichier</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="objectExport_comboBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>281</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="addObjectToExport_toolButton">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>90</y>
+     <width>27</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>...</string>
+   </property>
+   <property name="icon">
+    <iconset resource="ressources/ressources.qrc">
+     <normaloff>:/add_icon.png</normaloff>:/add_icon.png</iconset>
+   </property>
+  </widget>
+  <widget class="QLabel" name="listeExport_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>130</y>
+     <width>231</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Liste des exports sélectionnés :</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="add_button">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>400</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Ajouter</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="Line" name="line_4">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>321</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancel_button">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>400</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Annuler</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>380</y>
+     <width>321</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="nomfichier_edit">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>320</y>
+     <width>161</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>300</y>
+     <width>321</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="addObject_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Objet(s) à exporter :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="titre_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>521</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Menu Exportation des données</string>
+   </property>
+  </widget>
+  <widget class="QListView" name="listeExport_listView">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>281</width>
+     <height>151</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="viderListe_toolButton">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>280</y>
+     <width>27</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>...</string>
+   </property>
+   <property name="icon">
+    <iconset resource="ressources/ressources.qrc">
+     <normaloff>:/remove_icon.png</normaloff>:/remove_icon.png</iconset>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="ressources/ressources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

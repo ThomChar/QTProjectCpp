@@ -39,7 +39,6 @@ private:
     Ui::ModifierPersonnel *ui;
     Calendrier *calendrier;
     Personnel currentPersonnel;
-    //int pastIdPersonnel;
 };
 
 #endif // MODIFIERPERSONNEL_H

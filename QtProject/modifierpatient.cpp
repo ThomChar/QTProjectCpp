@@ -20,6 +20,7 @@ modifierPatient::modifierPatient(QWidget *parent, int idPatient) :
     this->currentPatient = qobject_cast<MainWindow*>(parent)->getBD()->getPatient(qobject_cast<MainWindow*>(parent)->getBD()->getDB(),idPatient);
     this->currentPatient.setMedecin(qobject_cast<MainWindow*>(parent)->getBD()->getNomPrenomPersonnelConsult(
                                         qobject_cast<MainWindow*>(parent)->getBD()->getDB(),idPatient).toStdString());
+
     this->idPatient = idPatient;
     this->pastIdPersonnel = qobject_cast<MainWindow*>(parent)->getBD()->getIdPersonnel(qobject_cast<MainWindow*>(parent)->getBD()->getDB(),currentPatient.getMedecin());
 
@@ -41,7 +42,8 @@ modifierPatient::modifierPatient(QWidget *parent, int idPatient) :
     this->listeTypePersonnel.push_back(QString::fromStdString(listeTypePersonnel[i].getLabel()));
     }
 
-    QList<int> listeIdPersonnel =  qobject_cast<MainWindow*>(parent)->getBD()->getIdRessourcesPatient(qobject_cast<MainWindow*>(parent)->getBD()->getDB(), idPatient);
+    //Obtenir l'id des personnels du patient sélectionné
+     QList<int> listeIdPersonnel =  qobject_cast<MainWindow*>(parent)->getBD()->getIdRessourcesPatient(qobject_cast<MainWindow*>(parent)->getBD()->getDB(), idPatient);
 
     //Obtenir les personnels liés à la liste des id et remplir la liste des Personnel traitant
     for(int i=0;i<listeIdPersonnel.size();i++){
@@ -84,6 +86,7 @@ modifierPatient::modifierPatient(QWidget *parent, int idPatient) :
     modelPersonnelTraitant->setHeaderData(0, Qt::Horizontal, "Personnels de santé Traitant");
     ui->PersonnelTraitant_treeView->setModel(modelPersonnelTraitant);
 
+    //Affichage des informations actuelles du Patient selectionné
     ui->lineEdit->setText(currentPatient.getDateCreation().toString("dd/MM/yyyy"));
     ui->lineEdit_2->setText(QString::fromStdString(currentPatient.getNom()));
     ui->lineEdit_3->setText(QString::fromStdString(currentPatient.getPrenom()));
@@ -94,7 +97,7 @@ modifierPatient::modifierPatient(QWidget *parent, int idPatient) :
     ui->lineEdit_10->setText(QString::fromStdString(currentPatient.getNumTelephone()));
     ui->lineEdit_11->setText(QString::fromStdString(currentPatient.getEmail()));
 
-        //Trouver la duree de Consultation
+    //Trouver la duree de Consultation
     ui->spinBox->setValue(QString::fromStdString(currentPatient.getDureeConsultation()).toInt());
 
         //Trouver la priorité associé au patient
@@ -102,7 +105,8 @@ modifierPatient::modifierPatient(QWidget *parent, int idPatient) :
     indicePriorite = ui->comboBox_2->findText(to_string(currentPatient.getPriorite()).c_str());
     ui->comboBox_2->setCurrentIndex(indicePriorite);
 
-        //Trouver le medecin de la consultation
+    //Trouver le medecin de la consultation
+
     ui->textEdit->setText(QString::fromStdString(currentPatient.getCommentaires()));
 
 
@@ -132,7 +136,6 @@ modifierPatient::~modifierPatient()
 // afficher calendrier1 ajouterPatient (bloquant)
 void modifierPatient::afficherCalendrier(){
     calendrier->exec();  // force l'affichage de la fenetre en mode modal, fenetre bloquante
-    //calendrier->setModal(true);
 }
 
 // afficher calendrier1 ajouterPatient (bloquant)
@@ -143,7 +146,6 @@ void modifierPatient::afficherDateSelect(){
 // afficher calendrier ajouterPatient (bloquant)
 void modifierPatient::afficherCalendrier_2(){
     calendrier_2->exec();  // force l'affichage de la fenetre en mode modal, fenetre bloquante
-    //calendrier->setModal(true);
 }
 
 // afficher calendrier1 ajouterPatient (bloquant)

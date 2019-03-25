@@ -20,8 +20,6 @@ ajoutPersonnel::ajoutPersonnel(QWidget *parent) :
     ui->lineEdit_4->setPlaceholderText("ex: 65 avenue Jean Portalis");
     ui->lineEdit_5->setPlaceholderText("ex: Tours");
     ui->lineEdit_6->setPlaceholderText("ex: 37200");
-    //ui->lineEdit_8->setPlaceholderText("ex: 15 (en minutes)s");           //login
-    //ui->lineEdit_9->setPlaceholderText("ex: 5 (le plus prioritaire)");    //password
     ui->label_11->hide();
     ui->label_12->hide();
     ui->label_16->hide();
@@ -35,6 +33,7 @@ ajoutPersonnel::ajoutPersonnel(QWidget *parent) :
     for(int i=0;i<listeTypesPersonnel.size();i++){
     ui->comboBox_2->addItem(listeTypesPersonnel[i]);
     }
+
     //Evennements
     //evenements pour afficher calendrier
     QObject::connect(ui->toolButton, SIGNAL(clicked()),this, SLOT(afficherCalendrier()));
@@ -228,10 +227,6 @@ bool ajoutPersonnel::verifierLogin(QString login){
 }
 bool ajoutPersonnel::verifierPassword(QString password){
     bool valide = true;
-    /*QRegExp rx("[1-5]");
-    if(!rx.exactMatch(password) || password == ""){
-        valide = false;
-    }*/
     if(ui->comboBox_2->currentText() != "Informaticien" && password != ""){
         valide = false;
     }else if(ui->comboBox_2->currentText() == "Informaticien" && password == ""){
@@ -395,11 +390,10 @@ void ajoutPersonnel::ajouterPersonnel()
          qobject_cast<MainWindow*>(parent())->resetTreePersonnelModel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
 
 
-    //Mise à jour de la status Bar
+        //Mise à jour de la status Bar
+        qobject_cast<MainWindow*>(parent())->setStatusBar("Personnel "+ui->lineEdit_2->text()+" "+ui->lineEdit_3->text()+" ajouté !");
 
-    qobject_cast<MainWindow*>(parent())->setStatusBar("Personnel "+ui->lineEdit_2->text()+" "+ui->lineEdit_3->text()+" ajouté !");
-
-    // Fermeture du formulaire
-    this->close();
+        // Fermeture du formulaire
+        this->close();
     }
 }
