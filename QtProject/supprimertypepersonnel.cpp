@@ -36,10 +36,6 @@ void supprimerTypePersonnel::suppressionTypePersonnel(){
      qobject_cast<MainWindow*>(parent())->getBD()->supprimerTypePersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB(),this->idType);
 
      QList<Personnel> list = qobject_cast<MainWindow*>(parent())->getBD()->getListePersonnel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
-     //qDebug()<<list.size();
-
-    //Redefinir le model de tableTypePersonnel
-     //qobject_cast<MainWindow*>(parent())->resetTableTypesPersModel(qobject_cast<MainWindow*>(parent())->getBD()->getDB());
 
     // Fermeture du formulaire
      this->close();

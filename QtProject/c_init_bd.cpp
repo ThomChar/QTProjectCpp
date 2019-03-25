@@ -13,6 +13,12 @@ c_init_bd::c_init_bd()
 {
 }
 
+c_init_bd::~c_init_bd()
+{
+    db.close();
+    db.removeDatabase("QSQLITE");
+}
+
 QSqlDatabase c_init_bd::getDataBase(){
     return this->db;
 }
@@ -130,10 +136,10 @@ bool c_init_bd::Creation_BD()
                                   "UNION SELECT 4, 4, 6 "
                                   "UNION SELECT 5, 5, 2 "
                                   "UNION SELECT 6, 6, 4 ");
-                                  //"UNION SELECT 7, 7, 12 "
-                                  //"UNION SELECT 8, 8, 8 "
-                                  //"UNION SELECT 9, 9, 9 "
-                                  //"UNION SELECT 10, 10, 8");
+                                  //"UNION SELECT 7, 1, 12 "
+                                  //"UNION SELECT 8, 2, 8 "
+                                  //"UNION SELECT 9, 3, 9 "
+                                  //"UNION SELECT 10, 5, 8");
         if(!b_test)
         {
             qDebug() << query.lastError().text();
@@ -155,45 +161,6 @@ bool c_init_bd::Creation_BD()
             qDebug() << "Insertion de données dans TPatient impossible !\n";
             return false;
         }
-
-        //Test Implémentation et résupération d'objets
-
-       /* QString querys = "SELECT * FROM TPatient";
-           QSqlQuery SqlQuery = QSqlQuery( db );
-           SqlQuery.exec( querys );
-
-           while (SqlQuery.next())
-           {
-               int field_idx   = SqlQuery.record().indexOf("idPatient");
-               int field_idx2   = SqlQuery.record().indexOf("dateCreation");
-               int field_idx3   = SqlQuery.record().indexOf("nom");
-               int field_idx4   = SqlQuery.record().indexOf("prenom");
-               int field_idx5   = SqlQuery.record().indexOf("adresse");
-               int field_idx6   = SqlQuery.record().indexOf("ville");
-               int field_idx7   = SqlQuery.record().indexOf("cp");
-               int field_idx8   = SqlQuery.record().indexOf("tel");
-               int field_idx9   = SqlQuery.record().indexOf("email");
-               int field_idx10   = SqlQuery.record().indexOf("dateConsultation");
-               int field_idx11   = SqlQuery.record().indexOf("dureeConsultation");
-               int field_idx12   = SqlQuery.record().indexOf("priorite");
-               int field_idx13   = SqlQuery.record().indexOf("commentaire");
-               QString idPatient = SqlQuery.record().value(field_idx).toString();
-               QString dateCreation = SqlQuery.record().value(field_idx2).toString();
-               QString nom = SqlQuery.record().value(field_idx3).toString();
-               QString prenom = SqlQuery.record().value(field_idx4).toString();
-               QString adresse = SqlQuery.record().value(field_idx5).toString();
-               QString ville = SqlQuery.record().value(field_idx6).toString();
-               QString cp = SqlQuery.record().value(field_idx7).toString();
-               QString tel = SqlQuery.record().value(field_idx8).toString();
-               QString email = SqlQuery.record().value(field_idx9).toString();
-               QString dateConsulation = SqlQuery.record().value(field_idx10).toString();
-               QString dureeConsultation = SqlQuery.record().value(field_idx11).toString();
-               QString priorite = SqlQuery.record().value(field_idx12).toString();
-               QString commentaire = SqlQuery.record().value(field_idx13).toString();
-
-               qDebug() << idPatient << ", " << dateCreation << ", " << nom << ", " << prenom << ", "<< adresse << ", " << ville << ", " << cp << ", "<< tel << ", " << email << ", " << dateConsulation << ", " << dureeConsultation << ", " << priorite << ", " << dateConsulation << ", " << commentaire ;
-           };*/
-
 
         b_test=query.exec("INSERT INTO TRessource "
                           "SELECT '1' AS 'idRessource','01/06/2013' AS 'dateCreation', 'Admin' AS 'nom', 'Admin' AS 'prenom', '3 rue des justices' AS 'adresse', 'Tours' AS 'ville', '37200' AS 'cp', '247558963' AS 'tel', 'email1@gmail.com' AS 'email', '7' AS 'idType'"

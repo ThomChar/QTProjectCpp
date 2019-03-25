@@ -17,6 +17,7 @@
 #include "gestiontypemedecin.h"
 #include "modeltreepersonnel.h"
 #include "modeltabletypemedecin.h"
+#include "exporter.h"
 
 namespace Ui {
 class MainWindow;
@@ -52,6 +53,7 @@ private slots:
     void modifierPersonnel();
     void gererTypesPersonnel();
     void afficherAPropos();
+    void exportation();
 
     //affichage
     void afficherDateSelect();
@@ -75,6 +77,8 @@ private:
     modelTablePatient *modelPatient;
     modelTreePersonnel *modelPersonnel;
     modelTableTypeMedecin *modelTypePers;
+    exporter *exportWindow;
+    void closeEvent (QCloseEvent *event);
 };
 
 #endif // MAINWINDOW_H

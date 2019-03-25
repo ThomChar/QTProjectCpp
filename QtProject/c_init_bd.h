@@ -10,6 +10,7 @@ private:
      QSqlDatabase db;
 public:
     c_init_bd();
+    ~c_init_bd();
     bool Creation_BD(void);
     bool Fermeture_BD(void);
     QSqlDatabase getDataBase();

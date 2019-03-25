@@ -9,5 +9,7 @@
 	<file>typePerson_icon.png</file>
 	<file>rightArrow_icon.png</file>
 	<file>leftArrow_icon.png</file>
+	<file>export_import_icon.png</file>
+	<file>remove_icon.png</file>
     </qresource>
 </RCC>

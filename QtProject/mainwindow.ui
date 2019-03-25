@@ -664,6 +664,7 @@
     </widget>
     <addaction name="menuAjouter"/>
     <addaction name="actionG_rer_Types_Personnel"/>
+    <addaction name="actionExporter"/>
     <addaction name="actionQuitter"/>
    </widget>
    <widget class="QMenu" name="menu">
@@ -685,6 +686,7 @@
    <addaction name="actionPatient"/>
    <addaction name="actionPersonnel_de_soins"/>
    <addaction name="actionG_rer_Types_Personnel"/>
+   <addaction name="actionExporter"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionQuitter">
@@ -726,6 +728,15 @@
    </property>
    <property name="text">
     <string>Gérer Types Personnel</string>
+   </property>
+  </action>
+  <action name="actionExporter">
+   <property name="icon">
+    <iconset resource="ressources/ressources.qrc">
+     <normaloff>:/export_import_icon.png</normaloff>:/export_import_icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exporter</string>
    </property>
   </action>
  </widget>
